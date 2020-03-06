@@ -15,10 +15,22 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/"
+            }
+          }
+        ]
+      },
+      {
         test: /\.(jpg|jpeg|png|svg)$/,
         loader: "url-loader",
         options: {
-          limit: 66666
+          limit: 1024 * 500
         }
       }
     ]

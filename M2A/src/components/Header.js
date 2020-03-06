@@ -1,34 +1,36 @@
 import React from "react";
 import { Layout, Row, Col } from "antd";
 const { Header } = Layout;
-import { OnPageContext } from "../context";
-import SearchBar from "./SearchBar";
+import logo from "../assets/images/logo.png";
+
 class PageHeader extends React.Component {
   render() {
     return (
       <>
         <Header
           style={{
-            backgroundColor: "white",
-            paddingTop: "30px",
-            paddingBottom: "20px"
+            height: "100%",
+            paddingTop: "10px",
+            paddingBottom: "10px",
+            background: "#1B394E"
           }}
         >
           <Row gutter={0}>
             <Col
-              lg={8}
+              lg={4}
+              md={24}
               id="banner"
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", textAlign: "center" }}
               onClick={_ =>
                 (window.location = `${
                   document.getElementById("session-id").innerText
                 }?get&file=[MIT_ROOT]home.html`)
               }
             >
-              ARCHIVES <br /> COLLECTIONS
-            </Col>
-            <Col lg={16}>
-              <SearchBar />
+              <img
+                src={logo}
+                style={{ width: "100%", maxWidth: "250px", minWidth: "200px" }}
+              ></img>
             </Col>
           </Row>
         </Header>
@@ -36,5 +38,5 @@ class PageHeader extends React.Component {
     );
   }
 }
-PageHeader.contextType = OnPageContext;
+
 export default PageHeader;

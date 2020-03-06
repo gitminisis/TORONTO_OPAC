@@ -1,116 +1,93 @@
 import React from "react";
-import { Row, Col, Button, Input, Form, Menu, Dropdown, Icon } from "antd";
-const { Search } = Input;
-import { isLogged, invalidLogin } from "../../services/authentication";
-import LoginModal from "../LoginModal";
-import { logout } from "../../services/logout";
-import { getAll } from "../../services/savedBag";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FaQuestionCircle, FaCaretDown } from "react-icons/fa";
+import Button from "react-bootstrap/Button";
+
+import "./searchBar.css";
+import AdvancedSearch from "./AdvancedSearch";
+import HelpModal from "./HelpModal";
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      showModal: false
+      open: false,
+      isHover: false,
+      openHelp: false
     };
   }
-  openModal = _ => {
-    this.setState({
-      showModal: true
-    });
+
+  closeHelp = _ => {
+    this.setState({ openHelp: false });
+    console.log(this.state);
   };
-  closeModal = _ => {
-    this.setState({
-      showModal: false
-    });
+  openHelp = _ => {
+    this.setState({ openHelp: true });
   };
 
   render() {
-    let isLoggedOn = isLogged();
-
-    let user = document.getElementById("userid").innerText;
-
-    let sessionId = document.getElementById("session-id").innerText;
+    const action = this.props.search;
 
     return (
-      <Row gutter={0}>
-        <LoginModal
-          visible={this.state.showModal}
-          closeHandler={this.closeModal}
-        ></LoginModal>
-        {isLoggedOn ? (
-          <>
-            <Col span={6}>
-              <Dropdown
-                overlay={
-                  <Menu style={{ textAlign: "center" }}>
-                    <Menu.Item
-                      key="1"
-                      onClick={_ => {
-                        window.location = `${
-                          document.getElementById("session-id").innerText
-                        }?get&file=[MIT_ROOT]view-bag.html`;
-                      }}
-                    >
-                      Saved Bag
-                    </Menu.Item>
-
-                    <Menu.Item key="2">Saved Search</Menu.Item>
-                    <Menu.Item key="3">
-                      <Button
-                        onClick={_ => {
-                          logout(sessionId).then(res => {
-                            window.location = "/";
-                          });
-                        }}
-                        type="danger"
-                        ghost
-                      >
-                        LOGOUT
-                      </Button>
-                    </Menu.Item>
-                  </Menu>
-                }
-              >
-                <Button id="welcome-button">
-                  Welcome <strong> {user}</strong> <Icon type="down" />
+      <Col xs={12} className="searchBar">
+        <Form action={action} method="POST">
+          <Form.Group controlId="simpleSearch">
+            <InputGroup>
+              <InputGroup.Prepend>
+                <Button
+                  variant="secondary"
+                  id="simpleSearchHelp"
+                  onClick={_ => this.openHelp()}
+                >
+                  <FaQuestionCircle className="no-format-svg" />
+                </Button>{" "}
+                <HelpModal
+                  open={this.state.openHelp}
+                  close={_ => this.closeHelp()}
+                />
+              </InputGroup.Prepend>
+              <Form.Control
+                size="lg"
+                type="text"
+                placeholder="Search keyword"
+                aria-describedby="simpleSearchHelp"
+                name="KEYWORD_CL"
+                required
+              />
+              <InputGroup.Append>
+                <Button type="submit" size="lg">
+                  Go
                 </Button>
-              </Dropdown>
-            </Col>
-          </>
-        ) : (
-          <Col span={6}>
-            <Button id="welcome-button" onClick={_ => this.openModal()}>
-              Login
-            </Button>
-          </Col>
-        )}
-
-        <Col span={18}>
-          <Form
-            style={{ marginTop: "1px" }}
-            method="POST"
-            id="searchBarForm"
-            action={`${sessionId}?UNIONSEARCH&APPLICATION=UNION_VIEW&LANGUAGE=144&SIMPLE_EXP=Y&ERRMSG=[MIT_ROOT]no-record.html`}
-          >
-            <Search
-              allowClear
-              disabled={!isLoggedOn}
-              prefix={
-                <Icon type="search" style={{ color: "rgba(0,0,0,.25)" }} />
-              }
-              name="KEYWORD_CL"
-              placeholder="Search Term"
-              enterButton={
-                <Button type="submit" id="searchSubmitBtn">
-                  Search
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  onMouseEnter={() => {
+                    this.setState({ isHover: !this.state.isHover });
+                  }}
+                  onMouseLeave={() => {
+                    this.setState({ isHover: !this.state.isHover });
+                  }}
+                  onClick={() => this.setState({ open: !this.state.open })}
+                >
+                  {this.state.isHover ? (
+                    <FaCaretDown className="no-format-svg" />
+                  ) : (
+                    <FaCaretDown className="no-format-svg" />
+                  )}
                 </Button>
-              }
-              onSearch={value =>
-                document.getElementById("searchBarForm").submit()
-              }
-            />
-          </Form>
-        </Col>
-      </Row>
+              </InputGroup.Append>
+            </InputGroup>
+          </Form.Group>
+        </Form>
+        <AdvancedSearch
+          session={this.props.session}
+          action={action}
+          open={this.state.open}
+        />
+      </Col>
     );
   }
 }

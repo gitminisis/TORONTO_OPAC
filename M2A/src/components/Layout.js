@@ -5,82 +5,37 @@ import Header from "./Header";
 import { Layout, Row, Col, Card, Button } from "antd";
 
 import { BackTop } from "antd";
+import SearchBar from "./SearchBar";
 
 class PageLayout extends React.Component {
   render() {
     return (
-      <Row style={{ background: "darkgray" }}>
-        <Col span={18} offset={3}>
+      <Row>
+        <Layout>
+          <Header />
+
           <Layout>
-            <Header />
-
-            <Layout
-              id="main-content"
-              style={{
-                backgroundColor: "white",
-                padding: "50px"
-              }}
-            >
-              <Card style={{ marginTop: "50px" }}>
-                <Row gutter={24}>
-                  <Col span={6}>
-                    <Button style={{ width: "100%" }}>Search</Button>{" "}
-                  </Col>
-                  <Col span={6}>
-                    <Button style={{ width: "100%" }}>
-                      Library &amp; Archives Catalog
-                    </Button>{" "}
-                  </Col>
-                  <Col span={6}>
-                    <Button style={{ width: "100%" }}>
-                      Laboratory History
-                    </Button>
-                  </Col>
-                  <Col span={6}>
-                    <Button style={{ width: "100%" }}>Exhibitions</Button>
-                  </Col>
-                </Row>
-              </Card>
-              <Card
-                hoverable
-                style={{ width: "100%" }}
-                bodyStyle={{ padding: 0 }}
-                cover={
-                  <img
-                    className="homeImage"
-                    alt="Banner Image"
-                    src="/m2a/src/assets/images/MWI_Header.png"
-                  />
-                }
+            <Row justify="center" align="middle">
+              <Col lg={6} md={0}></Col>
+              <Col
+                lg={12}
+                md={24}
+                style={{
+                 
+                  padding: "30px"
+                }}
               >
-                {this.props.children}
-                <Card>
-                  <Row gutter={24}>
-                    <Col span={6}>
-                      <Button style={{ width: "100%" }}>Search</Button>{" "}
-                    </Col>
-                    <Col span={6}>
-                      <Button style={{ width: "100%" }}>
-                        Library &amp; Archives Catalog
-                      </Button>{" "}
-                    </Col>
-                    <Col span={6}>
-                      <Button style={{ width: "100%" }}>
-                        Laboratory History
-                      </Button>
-                    </Col>
-                    <Col span={6}>
-                      <Button style={{ width: "100%" }}>Exhibitions</Button>
-                    </Col>
-                  </Row>
-                </Card>
-              </Card>
-              <BackTop />
-            </Layout>
+                {" "}
+                <SearchBar />
+              </Col>
+            </Row>
+            {this.props.children}
 
-            <Footer />
+            <BackTop />
           </Layout>
-        </Col>
+
+          <Footer />
+        </Layout>
       </Row>
     );
   }
