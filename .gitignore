@@ -2,3 +2,5 @@ scripts/
 M2A/dist/
 M2A/node_modules/*
 M2A/node_modules
+web.config
+*/web.config
