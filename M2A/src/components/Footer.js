@@ -9,7 +9,7 @@ class PageFooter extends React.Component {
       <Footer
         style={{
           textAlign: "center",
-          backgroundColor: "#425968",
+          backgroundColor: "#242424",
           color: "white"
         }}
       >

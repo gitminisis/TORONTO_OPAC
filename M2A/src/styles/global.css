@@ -25,6 +25,7 @@
 }
 
 .btn-primary {
+  color: white !important;
   background-color: #2d96cd !important;
   border: 1px solid #2d96cd !important;
 }
@@ -59,4 +60,70 @@
 .ant-tree-switcher {
   background-color: transparent !important;
   color: black !important;
+}
+.ant-tree-switcher-line-icon svg {
+  margin-bottom: 5px !important;
+}
+
+.ant-tree-title {
+  font-size: 16px !important;
+}
+
+.drawerButton {
+  position: fixed !important;
+  top: 80px !important;
+  left: 0 !important;
+  z-index: 9000;
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 20px;
+  text-align: center;
+  border-left: 0;
+  border-radius: 0;
+}
+@media only screen and (min-width: 769px) {
+  .drawerButton {
+    display: none !important;
+  }
+}
+
+.backTop {
+  width: 50px !important;
+  height: 50px !important;
+  background-color: #2d96cd !important;
+  color: white !important;
+  text-align: center;
+  font-size: 25px !important;
+  border-radius: 10% !important;
+}
+.headerNavigation {
+  color: white !important;
+  font-weight: 600 !important;
+
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s !important;
+}
+
+.headerNavigation:hover {
+  color: white !important;
+  background-color: #2d96cd !important;
+}
+
+.homeCard {
+  border: 1px solid #e5e5e5 !important;
+}
+
+.homeCard:hover {
+  background: #dbdbdb !important;
+}
+
+.homeList {
+  background: white !important;
+  cursor: pointer;
+ 
+}
+
+.homeList:hover {
+  background: #e5e5e5 !important;
 }

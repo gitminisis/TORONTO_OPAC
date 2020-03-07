@@ -60,14 +60,15 @@ class Home extends React.Component {
                   ></PageHeader>
                 </Col>
                 <Col span={24}>
-                  <Row gutter={4}>
+                  <Row>
                     {new Array(12).fill("").map(e => {
                       if (this.state.grid) {
                         return (
                           <Col lg={6} xs={24}>
                             <Card
+                              className="homeCard"
                               hoverable
-                              style={{ width: "100%", marginTop: "4px" }}
+                              style={{ width: "100%", marginTop: "2px" }}
                               cover={
                                 <img
                                   alt="example"
@@ -93,6 +94,7 @@ class Home extends React.Component {
                         dataSource={new Array(12).fill("")}
                         renderItem={item => (
                           <List.Item
+                            className="homeList"
                             style={{ paddingLeft: "20px" }}
                             extra={
                               <img

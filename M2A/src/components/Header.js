@@ -6,21 +6,25 @@ import logo from "../assets/images/logo.png";
 class PageHeader extends React.Component {
   render() {
     return (
-      <>
+      <Layout>
+        {" "}
         <Header
           style={{
             height: "100%",
-            paddingTop: "10px",
-            paddingBottom: "10px",
+            paddingTop: "0",
+            paddingBottom: "0",
             background: "#1B394E"
           }}
         >
           <Row gutter={0}>
             <Col
-              lg={4}
+              lg={3}
               md={24}
               id="banner"
-              style={{ cursor: "pointer", textAlign: "center" }}
+              style={{
+                cursor: "pointer",
+                textAlign: "center"
+              }}
               onClick={_ =>
                 (window.location = `${
                   document.getElementById("session-id").innerText
@@ -29,12 +33,25 @@ class PageHeader extends React.Component {
             >
               <img
                 src={logo}
-                style={{ width: "100%", maxWidth: "250px", minWidth: "200px" }}
+                style={{ width: "100%", maxWidth: "150px", minWidth: "120px" }}
               ></img>
+            </Col>
+            <Col lg={2} md={0} sm={0} xs={0} className="headerNavigation">
+              HOME
+            </Col>
+            <Col
+              lg={6}
+              xxl={3}
+              md={0}
+              sm={0}
+              xs={0}
+              className="headerNavigation"
+            >
+              ONLINE EXHIBITION
             </Col>
           </Row>
         </Header>
-      </>
+      </Layout>
     );
   }
 }
