@@ -29,8 +29,7 @@ class SearchBar extends React.Component {
   };
 
   render() {
-    const action = this.props.search;
-
+    const action = document.getElementById("search-link").innerText;
     return (
       <Col xs={12} className="searchBar">
         <Form action={action} method="POST">
