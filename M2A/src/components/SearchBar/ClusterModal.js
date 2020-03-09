@@ -36,6 +36,7 @@ class ClusterModal extends React.Component {
     });
   };
   listSelect = val => {
+    console.log(val);
     this.setState({
       option: val
     });

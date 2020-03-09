@@ -15,7 +15,7 @@ import axios from "axios";
 import { xmlToJson } from "../../services/index";
 import { getClusterList, getCluster, pageAction } from "../../services/cluster";
 import ClusterModal from "./ClusterModal";
-
+import { Input } from "antd";
 class AdvancedSearch extends React.Component {
   constructor(props) {
     super(props);
@@ -81,7 +81,6 @@ class AdvancedSearch extends React.Component {
   openModal = field => {
     getClusterList(this.props.session, field)
       .then(res => {
-        console.log(res);
         this.updateClusterList(res.data);
       })
       .catch(function(error) {
@@ -120,20 +119,16 @@ class AdvancedSearch extends React.Component {
   };
 
   selectCluster = (val, keyname) => {
-    switch (keyname) {
-      case "title":
-        this.setState({ title: val });
-        break;
-      case "originator":
-        this.setState({ originator: val });
-        break;
-      case "date_search":
-        this.setState({ date: val });
-        break;
-      case "tag":
-        this.setState({ collection: val });
-        break;
-    }
+    console.log(val, keyname);
+    let searchExp = this.state.searchExp;
+    let field = searchExp.filter(
+      e => e.field.toLowerCase() === keyname.toLowerCase()
+    )[0];
+    let index = this.state.searchExp.indexOf(field);
+    searchExp[index].keyword = val;
+    this.setState({
+      searchExp: searchExp
+    });
   };
 
   updateField = (value, index, field) => {
@@ -141,16 +136,35 @@ class AdvancedSearch extends React.Component {
     let searchInput = searchExp[index];
     searchInput[field] = value;
     console.log(searchExp);
-    // this.setState({
-    //   searchExp: searchExp
-    // });
+    this.setState({
+      searchExp: searchExp
+    });
+  };
+  submitSearch = _ => {
+    let data = this.state.searchExp.filter(e => e.keyword !== "");
+    let len = data.length;
+    data =
+      "++@" +
+      data
+        .map((exp, index) => ` ${exp.boolean} ${exp.field} "${exp.keyword}"`)
+        .join(" ");
+    console.log(data);
+    document.getElementById("advancedSearchInput").value = data;
   };
   render() {
     let { searchExp } = this.state;
     console.log(searchExp);
     return (
       <Collapse in={this.props.open}>
-        <Form action={this.props.action} method="POST">
+        <Form>
+          <Form
+            hidden
+            method="POST"
+            id="advancedSearchForm"
+            action={this.props.action}
+          >
+            <Input name="KEYWORDS" hidden id="advancedSearchInput" />
+          </Form>
           <Card className="text-center">
             <ClusterModal
               open={this.state.openModal}
@@ -194,7 +208,7 @@ class AdvancedSearch extends React.Component {
               </Form.Group>
             </Card.Body>
             <Card.Footer>
-              <Button type="submit">Search</Button>
+              <Button onClick={_ => this.submitSearch()}>Search</Button>
             </Card.Footer>
           </Card>
         </Form>
@@ -212,7 +226,7 @@ const FieldGroup = props => {
           onChange={e => props.update(e.target.value, props.index, "boolean")}
         >
           <option value="AND">And</option> <option value="OR">Or</option>
-          <option value="NOT">Not</option>
+          <option value="AND NOT">Not</option>
         </Form.Control>
       </InputGroup.Prepend>
       <Form.Control
@@ -221,7 +235,7 @@ const FieldGroup = props => {
         id={props.form_name}
         name={props.form_name}
         placeholder={props.field}
-        defaultValue={props.val}
+        value={props.val}
       />
       <InputGroup.Append>
         <Button
