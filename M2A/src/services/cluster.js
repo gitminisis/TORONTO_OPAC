@@ -1,17 +1,7 @@
 import axios from "axios";
-const BROWSE_CLUSTER = {
-  title:
-    "/FIRST?INDEXLIST&KEYNAME=TITLE&DATABASE=DESCRIPTION&form=[RHPL_WEB]includes/cluster.html&TITLE=Browse%20Title",
-  author:
-    "/FIRST?INDEXLIST&KEYNAME=ORIGINATOR&DATABASE=DESCRIPTION&form=[RHPL_WEB]includes/cluster.html&TITLE=Browse%20Creators",
-  date:
-    "/FIRST?INDEXLIST&KEYNAME=DATE_SEARCH&DATABASE=DESCRIPTION&form=[RHPL_WEB]includes/cluster.html&TITLE=Browse%20Date",
-  collection:
-    "/FIRST?INDEXLIST&KEYNAME=TAG&DATABASE=DESCRIPTION&form=[RHPL_WEB]includes/cluster.html&TITLE=Browse%20Collections"
-};
 
-export function getClusterUrl(session, field) {
-  return session + BROWSE_CLUSTER[field.toLowerCase().trim()];
+export function getClusterUrl(session, exp) {
+  return `${session}/FIRST?INDEXLIST&KEYNAME=${exp.field}&DATABASE=DESCRIPTION&form=[FORD_OPAC]M2A/includes/cluster.html&TITLE=Browse%20${exp.title}`;
 }
 
 export function getClusterList(session, field) {

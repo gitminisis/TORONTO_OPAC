@@ -35,11 +35,15 @@
   color: #425968 !important;
 }
 
-.btn-secondary {
+.btn-secondary,
+#advanced-keyword {
   background-color: #1b394e !important;
   border: 1px solid #1b394e !important;
+  color: white !important;
 }
+
 .btn-secondary:hover {
+  background-color: #1b394e !important;
   border: 1px solid #1b394e !important;
   color: white !important;
 }
@@ -121,9 +125,18 @@
 .homeList {
   background: white !important;
   cursor: pointer;
- 
 }
 
 .homeList:hover {
   background: #e5e5e5 !important;
+}
+
+.card-header {
+  background-color: #1b394e !important;
+  color: white !important;
+}
+
+.card-footer {
+  background-color: white !important;
+  color: white !important;
 }

@@ -25,12 +25,52 @@ class AdvancedSearch extends React.Component {
       title: "",
       originator: "",
       date: "",
-      collection: ""
+      collection: "",
+      searchExp: [
+        {
+          field: "BOX_QUALIFIER",
+          title: "Box Qualifier",
+          keyword: "",
+          boolean: "and"
+        },
+        {
+          field: "ORIGINATOR",
+          title: "Creator/Author",
+          keyword: "",
+          boolean: "and"
+        },
+        {
+          field: "SUBJECT",
+          title: "Major Subjects",
+          keyword: "",
+          boolean: "and"
+        },
+        {
+          field: "FORD_YEAR",
+          title: "Year",
+          keyword: "",
+          boolean: "and"
+        },
+        {
+          field: "A_MEDIA_MAKE",
+          title: "Make",
+          keyword: "",
+          boolean: "and"
+        },
+        {
+          field: "A_MEDIA_MODEL",
+          title: "Model",
+          keyword: "",
+          boolean: "and"
+        },
+        {
+          field: "A_MATERIAL",
+          title: "Material",
+          keyword: "",
+          boolean: "and"
+        }
+      ]
     };
-    this.getCluster = this.getCluster.bind(this);
-    this.updateClusterList = this.updateClusterList.bind(this);
-    this.pageAction = this.pageAction.bind(this);
-    this.selectCluster = this.selectCluster.bind(this);
   }
   updateClusterList(data) {
     let parser = new DOMParser();
@@ -40,6 +80,7 @@ class AdvancedSearch extends React.Component {
   openModal(field) {
     getClusterList(this.props.session, field)
       .then(res => {
+        console.log(res);
         this.updateClusterList(res.data);
       })
       .catch(function(error) {
@@ -93,6 +134,8 @@ class AdvancedSearch extends React.Component {
   }
 
   render() {
+    let { searchExp } = this.state.searchExp;
+    console.log(searchExp);
     return (
       <Collapse in={this.props.open}>
         <Form action={this.props.action} method="POST">
@@ -125,36 +168,14 @@ class AdvancedSearch extends React.Component {
                   </InputGroup.Append>
                 </InputGroup>
                 {/* <RadioGroup name="FIELD_OP_1" /> */}
-                <FieldGroup
-                  handleClick={field => this.openModal(field)}
-                  form_name="BOOL_TITLE"
-                  select_name="BOOL1"
-                  field="Title"
-                  val={this.state.title}
-                />
-                {/* <RadioGroup name="FIELD_OP_2" /> */}
-                <FieldGroup
-                  handleClick={field => this.openModal(field)}
-                  form_name="BOOL_ORIGINATOR"
-                  select_name="BOOL2"
-                  field="Author"
-                  val={this.state.originator}
-                />
-                {/* <RadioGroup name="FIELD_OP_3" /> */}
-                <FieldGroup
-                  handleClick={field => this.openModal(field)}
-                  form_name="BOOL_DATE"
-                  select_name="BOOL3"
-                  field="Date"
-                  val={this.state.date}
-                />
-                <FieldGroup
-                  handleClick={field => this.openModal(field)}
-                  form_name="BOOL_COLLECTION"
-                  select_name="BOOL4"
-                  field="Collection"
-                  val={this.state.collection}
-                />
+                {this.state.searchExp.map((exp, index) => (
+                  <FieldGroup
+                    handleClick={field => this.openModal(exp)}
+                    form_name={exp.keyword}
+                    field={exp.title}
+                    val={this.state.searchExp[index].keyword}
+                  />
+                ))}
               </Form.Group>
             </Card.Body>
             <Card.Footer>
@@ -171,12 +192,13 @@ const FieldGroup = props => {
   return (
     <InputGroup className="fieldGroup">
       <InputGroup.Prepend>
-        <Form.Control as="select" name={props.select_name}>
+        <Form.Control as="select" onChange={e => console.log(e.target.value)}>
           <option value="AND">And</option> <option value="OR">Or</option>
           <option value="NOT">Not</option>
         </Form.Control>
       </InputGroup.Prepend>
       <Form.Control
+        onChange={e => console.log(e.target.value)}
         type="text"
         id={props.form_name}
         name={props.form_name}
@@ -195,40 +217,4 @@ const FieldGroup = props => {
   );
 };
 
-const RadioGroup = props => {
-  return (
-    <InputGroup className="radioGroup">
-      <Col xs={4}>
-        <Form.Check
-          inline
-          label="All Words"
-          type="radio"
-          name={props.name}
-          value="AND_WORD"
-          readOnly
-        />
-      </Col>
-      <Col xs={4}>
-        <Form.Check
-          inline
-          label="Any Words"
-          type="radio"
-          name={props.name}
-          value="OR_WORD"
-          readOnly
-        />
-      </Col>
-      <Col xs={4}>
-        <Form.Check
-          inline
-          label="Exact Phrase"
-          type="radio"
-          name={props.name}
-          value="ADJ_WORD"
-          readOnly
-        />
-      </Col>
-    </InputGroup>
-  );
-};
 export default AdvancedSearch;

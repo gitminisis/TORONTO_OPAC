@@ -15,14 +15,13 @@ class SearchBar extends React.Component {
 
     this.state = {
       open: false,
-      isHover: false,
+
       openHelp: false
     };
   }
 
   closeHelp = _ => {
     this.setState({ openHelp: false });
-    console.log(this.state);
   };
   openHelp = _ => {
     this.setState({ openHelp: true });
@@ -30,6 +29,7 @@ class SearchBar extends React.Component {
 
   render() {
     const action = document.getElementById("search-link").innerText;
+    const session = document.getElementById("session-id").innerText;
     return (
       <Col xs={12} className="searchBar">
         <Form action={action} method="POST">
@@ -63,26 +63,16 @@ class SearchBar extends React.Component {
                 <Button
                   variant="secondary"
                   size="lg"
-                  onMouseEnter={() => {
-                    this.setState({ isHover: !this.state.isHover });
-                  }}
-                  onMouseLeave={() => {
-                    this.setState({ isHover: !this.state.isHover });
-                  }}
                   onClick={() => this.setState({ open: !this.state.open })}
                 >
-                  {this.state.isHover ? (
-                    <FaCaretDown className="no-format-svg" />
-                  ) : (
-                    <FaCaretDown className="no-format-svg" />
-                  )}
+                  <FaCaretDown className="no-format-svg" />
                 </Button>
               </InputGroup.Append>
             </InputGroup>
           </Form.Group>
         </Form>
         <AdvancedSearch
-          session={this.props.session}
+          session={session}
           action={action}
           open={this.state.open}
         />
