@@ -22,27 +22,25 @@ class ClusterModal extends React.Component {
       keyvalue: "",
       option: ""
     };
-    this.handleKeyvalueChange = this.handleKeyvalueChange.bind(this);
-    this.handleClose = this.handleClose.bind(this);
   }
-  handleKeyvalueChange(event) {
+  handleKeyvalueChange = event => {
     this.setState({
       keyvalue: event.target.value
     });
-  }
-  handleClose() {
+  };
+  handleClose = _ => {
     this.props.close();
     this.setState({
       keyvalue: "",
       option: ""
     });
-  }
-  listSelect(val) {
+  };
+  listSelect = val => {
     this.setState({
       option: val
     });
-  }
-  submit() {
+  };
+  submit = () => {
     this.props.submit(
       this.state.option,
       this.props.data.cluster.keyname.toLowerCase()
@@ -52,7 +50,7 @@ class ClusterModal extends React.Component {
       keyvalue: "",
       option: ""
     });
-  }
+  };
   render() {
     let { open, close, data } = this.props;
 
@@ -145,7 +143,10 @@ class ClusterModal extends React.Component {
                   {data.cluster.index_list.option.map((option, index) => {
                     return (
                       <ListGroup.Item
-                        style={{ width: "100% !important", height: "50px !important" }}
+                        style={{
+                          width: "100% !important",
+                          height: "50px !important"
+                        }}
                         action
                         href={`#cluster-${index}`}
                         key={index}

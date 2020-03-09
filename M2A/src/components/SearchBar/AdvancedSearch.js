@@ -72,12 +72,13 @@ class AdvancedSearch extends React.Component {
       ]
     };
   }
-  updateClusterList(data) {
+  updateClusterList = data => {
     let parser = new DOMParser();
     let xml = parser.parseFromString(data, "text/xml");
     this.setState({ openModal: true, clusterList: xmlToJson(xml) });
-  }
-  openModal(field) {
+  };
+
+  openModal = field => {
     getClusterList(this.props.session, field)
       .then(res => {
         console.log(res);
@@ -86,13 +87,15 @@ class AdvancedSearch extends React.Component {
       .catch(function(error) {
         console.log(error);
       });
-  }
+  };
 
-  closeModal() {
+  closeModal = _ => {
     this.setState({ openModal: false });
-  }
+  };
 
-  getCluster(keyvalue, keyname, url) {
+  getCluster = (keyvalue, keyname, url) => {
+    console.log(keyvalue, keyname);
+    console.log(url);
     let data = `KEYNAME=${keyname}&KEYVALUE=${keyvalue}`;
     getCluster(url, data)
       .then(res => {
@@ -101,9 +104,9 @@ class AdvancedSearch extends React.Component {
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
-  pageAction(url) {
+  pageAction = url => {
     url = url.replace(/--/g, "");
     pageAction(url)
       .then(res => {
@@ -114,9 +117,9 @@ class AdvancedSearch extends React.Component {
       .catch(function(error) {
         console.log(error);
       });
-  }
+  };
 
-  selectCluster(val, keyname) {
+  selectCluster = (val, keyname) => {
     switch (keyname) {
       case "title":
         this.setState({ title: val });
@@ -131,10 +134,19 @@ class AdvancedSearch extends React.Component {
         this.setState({ collection: val });
         break;
     }
-  }
+  };
 
+  updateField = (value, index, field) => {
+    let searchExp = this.state.searchExp;
+    let searchInput = searchExp[index];
+    searchInput[field] = value;
+    console.log(searchExp);
+    // this.setState({
+    //   searchExp: searchExp
+    // });
+  };
   render() {
-    let { searchExp } = this.state.searchExp;
+    let { searchExp } = this.state;
     console.log(searchExp);
     return (
       <Collapse in={this.props.open}>
@@ -170,10 +182,13 @@ class AdvancedSearch extends React.Component {
                 {/* <RadioGroup name="FIELD_OP_1" /> */}
                 {this.state.searchExp.map((exp, index) => (
                   <FieldGroup
+                    update={this.updateField}
+                    exp={exp}
                     handleClick={field => this.openModal(exp)}
                     form_name={exp.keyword}
                     field={exp.title}
                     val={this.state.searchExp[index].keyword}
+                    index={index}
                   />
                 ))}
               </Form.Group>
@@ -192,13 +207,16 @@ const FieldGroup = props => {
   return (
     <InputGroup className="fieldGroup">
       <InputGroup.Prepend>
-        <Form.Control as="select" onChange={e => console.log(e.target.value)}>
+        <Form.Control
+          as="select"
+          onChange={e => props.update(e.target.value, props.index, "boolean")}
+        >
           <option value="AND">And</option> <option value="OR">Or</option>
           <option value="NOT">Not</option>
         </Form.Control>
       </InputGroup.Prepend>
       <Form.Control
-        onChange={e => console.log(e.target.value)}
+        onChange={e => props.update(e.target.value, props.index, "keyword")}
         type="text"
         id={props.form_name}
         name={props.form_name}
