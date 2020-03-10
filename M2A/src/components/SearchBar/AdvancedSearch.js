@@ -150,6 +150,7 @@ class AdvancedSearch extends React.Component {
         .join(" ");
     console.log(data);
     document.getElementById("advancedSearchInput").value = data;
+    document.getElementById("advancedSearchForm").submit();
   };
   render() {
     let { searchExp } = this.state;
@@ -163,7 +164,7 @@ class AdvancedSearch extends React.Component {
             id="advancedSearchForm"
             action={this.props.action}
           >
-            <Input name="KEYWORDS" hidden id="advancedSearchInput" />
+            <Input name="KEYWORD" hidden id="advancedSearchInput" />
           </Form>
           <Card className="text-center">
             <ClusterModal
@@ -177,22 +178,6 @@ class AdvancedSearch extends React.Component {
             <Card.Header as="h4">Advanced Search</Card.Header>
             <Card.Body>
               <Form.Group>
-                <InputGroup>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text id="advanced-keyword">
-                      Keyword
-                    </InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <Form.Control
-                    type="text"
-                    placeholder="Search keyword"
-                    aria-describedby="advanced-keyword"
-                    name="KEYWORD_CL"
-                  />
-                  <InputGroup.Append>
-                    <Button type="submit">Go</Button>
-                  </InputGroup.Append>
-                </InputGroup>
                 {/* <RadioGroup name="FIELD_OP_1" /> */}
                 {this.state.searchExp.map((exp, index) => (
                   <FieldGroup
