@@ -1,16 +1,35 @@
 import React from "react";
-import { Tree, Drawer, Button } from "antd";
+import { Tree, Drawer, Button, Input } from "antd";
 const { TreeNode, DirectoryTree } = Tree;
 import axios from "axios";
 import { xmlToJson } from "../../services";
 import { FaTree } from "react-icons/fa";
+const { Search } = Input;
+const getParentKey = (key, tree) => {
+  let parentKey;
+  for (let i = 0; i < tree.length; i++) {
+    const node = tree[i];
+    if (node.children) {
+      if (node.children.some(item => item.key === key)) {
+        parentKey = node.key;
+      } else if (getParentKey(key, node.children)) {
+        parentKey = getParentKey(key, node.children);
+      }
+    }
+  }
+  return parentKey;
+};
 class TreeView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      gData: [],
       visible: false,
-      placement: "left"
+      placement: "left",
+      expandedKeys: [],
+      searchValue: "",
+      autoExpandParent: true
     };
   }
   showDrawer = () => {
@@ -83,20 +102,33 @@ class TreeView extends React.Component {
           "report.terms.upper"
         ]);
         console.log(json);
+        let gData = this.state.gData;
         let data = json.report.terms.map(e => {
-          return {
+          let parent = {
             title: e.term,
-            isLeaf: !e.lower,
-            children: e.lower
-              ? e.lower.map(c => {
-                  return {
-                    title: c
-                  };
-                })
-              : null
+            key: e.term,
+            isLeaf: !e.lower
           };
+          gData.push({
+            title: e.term,
+            key: e.term,
+            isLeaf: !e.lower
+          });
+          let children = e.lower
+            ? e.lower.map(c => {
+                let node = {
+                  title: c,
+                  key: c
+                };
+                gData.push(node);
+                return node;
+              })
+            : null;
+          parent.children = children;
+          return parent;
         });
-        this.setState({ data: data });
+
+        this.setState({ data: data, gData: gData });
       });
   };
   componentDidMount() {
@@ -109,14 +141,17 @@ class TreeView extends React.Component {
         resolve();
         return;
       }
+      console.log(treeNode);
       setTimeout(() => {
         this.loadNode(`eng_term "${treeNode.props.title}"`, treeNode);
         resolve();
       }, 1000);
     });
 
-  renderTreeNodes = data =>
-    data.map(item => {
+  renderTreeNodes = data => {
+    const { searchValue, expandedKeys, autoExpandParent } = this.state;
+
+    return data.map(item => {
       if (item.children) {
         return (
           <TreeNode title={item.title} key={item.title}>
@@ -125,20 +160,56 @@ class TreeView extends React.Component {
         );
       }
 
-      return <TreeNode key={item.title} {...item} dataRef={item} />;
+      return <TreeNode key={item.title} title={item.title} dataRef={item} />;
     });
+  };
 
+  onSearch = value => {
+    if (value.trim() !== "") {
+      let data = this.state.data;
+      let gData = this.state.gData;
+      console.log(gData);
+      const expandedKeys = gData
+        .map(item => {
+          if (item.title.indexOf(value) > -1) {
+            return getParentKey(item.key, data);
+          }
+          return null;
+        })
+        .filter((item, i, self) => item && self.indexOf(item) === i);
+      this.setState({
+        expandedKeys,
+        searchValue: value,
+        autoExpandParent: true
+      });
+    } else {
+      this.setState({
+        expandedKeys: [],
+        searchValue: "",
+        autoExpandParent: true
+      });
+    }
+  };
   render() {
+    const { expandedKeys, autoExpandParent } = this.state;
+    console.log(expandedKeys, autoExpandParent);
     return (
       <div>
         <Drawer
-          width={800}
+          width={700}
           title="SUBJECT SEARCH"
           placement={this.state.placement}
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible}
         >
+          {" "}
+          {/* <Search
+            style={{ marginBottom: 8 }}
+            placeholder="Search"
+            enterButton
+            onSearch={value => this.onSearch(value)}
+          /> */}
           {this.state.data.length ? (
             <Tree
               showLine
