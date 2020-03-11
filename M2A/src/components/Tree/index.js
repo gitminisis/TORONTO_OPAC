@@ -1,8 +1,99 @@
-import { TREE_DATA } from "../../services/treeData";
 import React from "react";
 import { Tree } from "antd";
 const { TreeNode, DirectoryTree } = Tree;
+import axios from "axios";
+import { xmlToJson } from "../../services";
 class TreeView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    };
+  }
+  loadNode = (exp, node) => {
+    let session = document.getElementById("session-id").innerText;
+    axios
+      .get(
+        `${session}/1/1?SEARCH&&DATABASE=FORD_SUBJECT_OPAC&EXP=${exp}&ERRMSG=[FORD_OPAC]/no-record.html`
+      )
+      .then(res => {
+        let dataXML = res.data;
+        let newDocument = document
+          .createRange()
+          .createContextualFragment(dataXML);
+
+        let xml = newDocument.querySelector("#subject_xml");
+
+        let json = xmlToJson(xml, ["report.terms.lower", "report.terms.upper"]);
+        let data = json.report.terms;
+        node.props.dataRef.children = data.lower
+          ? data.lower.map(e => {
+              return {
+                title: e,
+                isLeaf: false
+              };
+            })
+          : null;
+        if (!data.lower) {
+          console.log(node);
+          node.props.dataRef.isLeaf = true;
+        }
+        this.setState({ data: [...this.state.data] });
+      });
+  };
+  initTree = exp => {
+    let session = document.getElementById("session-id").innerText;
+    axios
+      .get(
+        `${session}/1/1?SEARCH&&DATABASE=FORD_SUBJECT_OPAC&EXP=${exp}&ERRMSG=[FORD_OPAC]/no-record.html`
+      )
+      .then(res => {
+        console.log(res);
+        let dataXML = res.data;
+        let newDocument = document
+          .createRange()
+          .createContextualFragment(dataXML);
+        console.log(newDocument);
+        let xml = newDocument.querySelector("#subject_xml");
+
+        let json = xmlToJson(xml, [
+          "report.terms",
+          "report.terms.lower",
+          "report.terms.upper"
+        ]);
+        console.log(json);
+        let data = json.report.terms.map(e => {
+          return {
+            title: e.term,
+            isLeaf: !e.lower,
+            children: e.lower
+              ? e.lower.map(c => {
+                  return {
+                    title: c
+                  };
+                })
+              : null
+          };
+        });
+        this.setState({ data: data });
+      });
+  };
+  componentDidMount() {
+    this.initTree("sisn present and eng_desc present and not eng_bt present");
+  }
+
+  onLoadData = treeNode =>
+    new Promise(resolve => {
+      if (treeNode.props.children) {
+        resolve();
+        return;
+      }
+      setTimeout(() => {
+        this.loadNode(`eng_term "${treeNode.props.title}"`, treeNode);
+        resolve();
+      }, 1000);
+    });
+
   renderTreeNodes = data =>
     data.map(item => {
       if (item.children) {
@@ -18,9 +109,20 @@ class TreeView extends React.Component {
 
   render() {
     return (
-      <DirectoryTree showLine showIcon={false} selectable={false}>
-        {this.renderTreeNodes(TREE_DATA.data)}
-      </DirectoryTree>
+      <>
+        {this.state.data.length ? (
+          <DirectoryTree
+            showLine
+            showIcon={false}
+            selectable={false}
+            loadData={this.onLoadData}
+          >
+            {this.renderTreeNodes(this.state.data)}
+          </DirectoryTree>
+        ) : (
+          <> loading tree</>
+        )}
+      </>
     );
   }
 }

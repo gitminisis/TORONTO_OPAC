@@ -156,48 +156,51 @@ class AdvancedSearch extends React.Component {
     let { searchExp } = this.state;
     console.log(searchExp);
     return (
-      <Collapse in={this.props.open}>
-        <Form>
-          <Form
-            hidden
-            method="POST"
-            id="advancedSearchForm"
-            action={this.props.action}
-          >
-            <Input name="KEYWORD" hidden id="advancedSearchInput" />
-          </Form>
-          <Card className="text-center">
-            <ClusterModal
-              open={this.state.openModal}
-              close={_ => this.closeModal()}
-              data={this.state.clusterList}
-              getCluster={this.getCluster}
-              pageAction={this.pageAction}
-              submit={this.selectCluster}
-            />
-            <Card.Header as="h4">Advanced Search</Card.Header>
-            <Card.Body>
-              <Form.Group>
-                {/* <RadioGroup name="FIELD_OP_1" /> */}
-                {this.state.searchExp.map((exp, index) => (
-                  <FieldGroup
-                    update={this.updateField}
-                    exp={exp}
-                    handleClick={field => this.openModal(exp)}
-                    form_name={exp.keyword}
-                    field={exp.title}
-                    val={this.state.searchExp[index].keyword}
-                    index={index}
-                  />
-                ))}
-              </Form.Group>
-            </Card.Body>
-            <Card.Footer>
-              <Button onClick={_ => this.submitSearch()}>Search</Button>
-            </Card.Footer>
-          </Card>
+      <>
+        {" "}
+        <Form
+          hidden
+          method="POST"
+          id="advancedSearchForm"
+          action={this.props.action}
+        >
+          <Input name="KEYWORD" hidden id="advancedSearchInput" />
         </Form>
-      </Collapse>
+        <Collapse in={this.props.open}>
+          <Form>
+            <Card className="text-center">
+              <ClusterModal
+                open={this.state.openModal}
+                close={_ => this.closeModal()}
+                data={this.state.clusterList}
+                getCluster={this.getCluster}
+                pageAction={this.pageAction}
+                submit={this.selectCluster}
+              />
+              <Card.Header as="h4">Advanced Search</Card.Header>
+              <Card.Body>
+                <Form.Group>
+                  {/* <RadioGroup name="FIELD_OP_1" /> */}
+                  {this.state.searchExp.map((exp, index) => (
+                    <FieldGroup
+                      update={this.updateField}
+                      exp={exp}
+                      handleClick={field => this.openModal(exp)}
+                      form_name={exp.keyword}
+                      field={exp.title}
+                      val={this.state.searchExp[index].keyword}
+                      index={index}
+                    />
+                  ))}
+                </Form.Group>
+              </Card.Body>
+              <Card.Footer>
+                <Button onClick={_ => this.submitSearch()}>Search</Button>
+              </Card.Footer>
+            </Card>
+          </Form>
+        </Collapse>
+      </>
     );
   }
 }
