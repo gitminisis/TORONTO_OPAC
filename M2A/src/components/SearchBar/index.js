@@ -32,7 +32,10 @@ class SearchBar extends React.Component {
     const session = document.getElementById("session-id").innerText;
     return (
       <Col xs={12} className="searchBar">
-        <Form action={action} method="POST">
+        <Form
+          action={`${session}/1/1?SEARCH&&DATABASE=DESCRIPTION_OPAC&ERRMSG=[FORD_OPAC]/no-record.html`}
+          method="POST"
+        >
           <Form.Group controlId="simpleSearch">
             <InputGroup>
               <InputGroup.Prepend>
