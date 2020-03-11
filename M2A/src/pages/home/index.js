@@ -1,11 +1,20 @@
 import React from "react";
 import PageLayout from "../../components/Layout";
-
-import { Row, Col, List, Layout, Card, PageHeader, Button, Icon } from "antd";
+import Car from "../../assets/images/ford_car.jpeg";
+import {
+  Row,
+  Col,
+  List,
+  Layout,
+  Card,
+  PageHeader,
+  Button,
+  Icon,
+  Radio
+} from "antd";
 const { Content } = Layout;
-import { FaTh, FaList } from "react-icons/fa";
+import { FaTh, FaList, FaTree } from "react-icons/fa";
 import Tree from "../../components/Tree";
-
 
 const { Meta } = Card;
 class Home extends React.Component {
@@ -14,7 +23,11 @@ class Home extends React.Component {
     this.state = {
       grid: true
     };
+    this.tree = React.createRef();
   }
+  openTree = _ => {
+    this.tree.current.showDrawer();
+  };
   render() {
     let searchLink = document.getElementById("search-link");
     if (searchLink) {
@@ -23,40 +36,36 @@ class Home extends React.Component {
 
     return (
       <PageLayout>
-        <Content>
+        <Row>
           <Row>
-            <Col lg={6} md={0} sm={0} xs={0}>
-              <Card
-                className="sideBarCard"
-                title="SUBJECT SEARCH"
-                style={{ width: "100%" }}
-                bordered={false}
-              >
-                <Tree />
-              </Card>
-            </Col>
-            <Col lg={18} md={24}>
+            <Col lg={{ span: 18, offset: 3 }} md={24}>
               <Row>
                 <Col span={24}>
                   {" "}
+                  <Tree ref={this.tree}></Tree>
                   <PageHeader
                     ghost={false}
                     title="FEATURE COLLECTION"
                     extra={[
-                      <Button
-                        key="2"
-                        style={{ fontSize: "20px" }}
-                        onClick={_ => this.setState({ grid: false })}
-                      >
-                        <FaList />
+                      <Button type="primary" onClick={this.openTree}>
+                        <FaTree />
                       </Button>,
-                      <Button
-                        key="1"
-                        style={{ fontSize: "20px" }}
-                        onClick={_ => this.setState({ grid: true })}
-                      >
-                        <FaTh />
-                      </Button>
+                      <Radio.Group defaultValue="grid" buttonStyle="solid">
+                        <Radio.Button
+                          onClick={_ => this.setState({ grid: true })}
+                          value="grid"
+                        >
+                          {" "}
+                          <FaTh />
+                        </Radio.Button>
+                        <Radio.Button
+                          onClick={_ => this.setState({ grid: false })}
+                          value="list"
+                        >
+                          {" "}
+                          <FaList />
+                        </Radio.Button>
+                      </Radio.Group>
                     ]}
                   ></PageHeader>
                 </Col>
@@ -65,21 +74,48 @@ class Home extends React.Component {
                     {new Array(12).fill("").map(e => {
                       if (this.state.grid) {
                         return (
-                          <Col lg={6} xs={24}>
+                          // <Col md={8} xs={24}>
+                          //   <Card
+                          //     className="homeCard"
+                          //     hoverable
+                          //     style={{
+                          //       width: "100%",
+                          //       marginTop: "2px",
+                          //       height: "25vw",
+                          //       backgroundImage: `url(${Car})`,
+                          //       backgroundRepeat: "no-repeat",
+                          //       backgroundPosition: "center",
+                          //       backgroundSize: "contain"
+                          //     }}
+                          //   >
+                          //     <div
+                          //       style={{
+                          //         width: "100%",
+                          //         height: "100%"
+                          //       }}
+                          //     >
+                          //       <Meta
+                          //         title="Ford Sedan"
+                          //         description="Search Ford Sedan"
+                          //       />
+                          //     </div>
+                          //   </Card>
+                          // </Col>
+                          <Col md={8} xs={24}>
                             <Card
                               className="homeCard"
                               hoverable
-                              style={{ width: "100%", marginTop: "2px" }}
-                              cover={
-                                <img
-                                  alt="example"
-                                  src="https://www.perrys.co.uk/static/images/unity/default/templates/vehicles/new/ford/mustang-mach-e/u19/overview.jpg"
-                                />
-                              }
+                              style={{
+                                width: "100%",
+                                marginTop: "2px",
+                                height: "auto"
+                              }}
                             >
+                              <img className="cardImage" src={Car} />
+
                               <Meta
-                                title="Ford Sedan"
-                                description="Search Ford Sedan"
+                                title="Ford Mustang"
+                                description="Search Ford Mustang"
                               />
                             </Card>
                           </Col>
@@ -94,22 +130,31 @@ class Home extends React.Component {
                         size="large"
                         dataSource={new Array(12).fill("")}
                         renderItem={item => (
-                          <List.Item
-                            className="homeList"
-                            style={{ paddingLeft: "20px" }}
-                            extra={
-                              <img
-                                width={272}
-                                alt="logo"
-                                src="https://www.perrys.co.uk/static/images/unity/default/templates/vehicles/new/ford/mustang-mach-e/u19/overview.jpg"
-                              />
-                            }
-                          >
-                            <List.Item.Meta title={<h3>Ford Sedan</h3>} />
-                            About Ford Sedans. The Ford Motor Company has a
-                            long, storied and innovative history of building
-                            cars, going all the way back to 1913, when the Ford
-                            ...
+                          <List.Item className="homeList">
+                            <Row gutter={12}>
+                              <Col span={5} sm={5} xs={7}>
+                                {" "}
+                                <div className="cardListImage">
+                                  <img src={Car} />
+                                </div>
+                              </Col>
+                              <Col
+                                lg={{ offset: 6 }}
+                                sm={{ offset: 6 }}
+                                xs={{ offset: 7 }}
+                              >
+                                {" "}
+                                <div className="cardListDesc">
+                                  <h3>Ford Mustang</h3>
+                                  <p>
+                                    The Ford Mustang is an American car
+                                    manufactured by Ford. It was originally
+                                    conceived by Lee Iacocca. The Mustang
+                                    debuted in 1964 with a price of $2,368, ...
+                                  </p>
+                                </div>
+                              </Col>
+                            </Row>
                           </List.Item>
                         )}
                       ></List>
@@ -119,7 +164,7 @@ class Home extends React.Component {
               </Row>
             </Col>
           </Row>
-        </Content>
+        </Row>
       </PageLayout>
     );
   }

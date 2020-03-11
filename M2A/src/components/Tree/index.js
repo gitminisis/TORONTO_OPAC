@@ -1,15 +1,36 @@
 import React from "react";
-import { Tree } from "antd";
+import { Tree, Drawer, Button } from "antd";
 const { TreeNode, DirectoryTree } = Tree;
 import axios from "axios";
 import { xmlToJson } from "../../services";
+import { FaTree } from "react-icons/fa";
 class TreeView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      visible: false,
+      placement: "left"
     };
   }
+  showDrawer = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false
+    });
+  };
+
+  onChange = e => {
+    this.setState({
+      placement: e.target.value
+    });
+  };
+
   loadNode = (exp, node) => {
     let session = document.getElementById("session-id").innerText;
     axios
@@ -26,6 +47,9 @@ class TreeView extends React.Component {
 
         let json = xmlToJson(xml, ["report.terms.lower", "report.terms.upper"]);
         let data = json.report.terms;
+        if (!data.lower) {
+          node.props.dataRef.isLeaf = true;
+        }
         node.props.dataRef.children = data.lower
           ? data.lower.map(e => {
               return {
@@ -34,10 +58,7 @@ class TreeView extends React.Component {
               };
             })
           : null;
-        if (!data.lower) {
-          console.log(node);
-          node.props.dataRef.isLeaf = true;
-        }
+
         this.setState({ data: [...this.state.data] });
       });
   };
@@ -109,20 +130,29 @@ class TreeView extends React.Component {
 
   render() {
     return (
-      <>
-        {this.state.data.length ? (
-          <DirectoryTree
-            showLine
-            showIcon={false}
-            selectable={false}
-            loadData={this.onLoadData}
-          >
-            {this.renderTreeNodes(this.state.data)}
-          </DirectoryTree>
-        ) : (
-          <> loading tree</>
-        )}
-      </>
+      <div>
+        <Drawer
+          width={800}
+          title="SUBJECT SEARCH"
+          placement={this.state.placement}
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible}
+        >
+          {this.state.data.length ? (
+            <Tree
+              showLine
+              showIcon={false}
+              selectable={false}
+              loadData={this.onLoadData}
+            >
+              {this.renderTreeNodes(this.state.data)}
+            </Tree>
+          ) : (
+            <> loading tree</>
+          )}
+        </Drawer>
+      </div>
     );
   }
 }

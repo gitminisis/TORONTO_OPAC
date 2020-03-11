@@ -2,9 +2,9 @@
   /* Antenna Bold */
   font-family: "AntennaBold";
 
-  src: 
-    /*IE8*/ url("./85bf2123-24cb-4bfd-a720-efe63c68c84d-3.woff")
-    format("woff");
+  src:
+    /*IE8*/
+    url("./85bf2123-24cb-4bfd-a720-efe63c68c84d-3.woff") format("woff");
 }
 
 @font-face {
@@ -20,6 +20,23 @@
 
   src: url("./39ab3e39-bb44-43df-a570-b883a82bfbaf-3.woff") format("woff");
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #888;
+}
+
 * {
   font-family: "Antenna", Arial, Helvetica, sans-serif;
 }
@@ -29,6 +46,7 @@
   background-color: #2d96cd !important;
   border: 1px solid #2d96cd !important;
 }
+
 .btn-primary:hover {
   background-color: white !important;
   border: 1px solid #425968 !important;
@@ -47,10 +65,12 @@
   border: 1px solid #1b394e !important;
   color: white !important;
 }
+
 .btn.focus,
 .btn:focus {
   box-shadow: none !important;
 }
+
 .sideBarCard .ant-card-head {
   background-color: #1b394e !important;
   color: white !important;
@@ -58,13 +78,16 @@
   font-weight: 600 !important;
   padding-top: 4px !important;
 }
+
 .sideBarCard .ant-card-body {
   background-color: #dbdbdb !important;
 }
+
 .ant-tree-switcher {
   background-color: transparent !important;
   color: black !important;
 }
+
 .ant-tree-switcher-line-icon svg {
   margin-bottom: 5px !important;
 }
@@ -85,11 +108,22 @@
   border-left: 0;
   border-radius: 0;
 }
+
 @media only screen and (min-width: 769px) {
   .drawerButton {
     display: none !important;
   }
 }
+
+@media only screen and (max-width: 760px) {
+  .homeCard {
+    height: auto !important;
+  }
+
+
+}
+
+
 
 .backTop {
   width: 50px !important;
@@ -100,6 +134,7 @@
   font-size: 25px !important;
   border-radius: 10% !important;
 }
+
 .headerNavigation {
   color: white !important;
   font-weight: 600 !important;
@@ -116,20 +151,28 @@
 
 .homeCard {
   border: 1px solid #e5e5e5 !important;
+
 }
 
-.homeCard:hover {
-  background: #dbdbdb !important;
+
+.cardImage {
+  object-fit: cover !important;
+  width: 100%;
+  height: auto;
 }
 
 .homeList {
   background: white !important;
   cursor: pointer;
+
 }
 
-.homeList:hover {
-  background: #e5e5e5 !important;
+.cardListImage img {
+  object-fit: cover !important;
+  width: 100%;
+  height: auto;
 }
+
 
 .card-header {
   background-color: #1b394e !important;
