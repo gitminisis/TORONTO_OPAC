@@ -117,9 +117,31 @@
   .drawerButton {
     display: none !important;
   }
+
+  .listRow,
+  .listRowMediaCol {
+    min-height: 220px;
+  }
+
+
+
+  .summaryListImageContainer {
+    min-height: 220px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .summaryListImageContainer img {
+    object-fit: cover !important;
+    width: 80%;
+    height: auto;
+
+  }
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 768px) {
   .homeCard {
     height: auto !important;
   }
@@ -134,6 +156,27 @@
     height: 100vw !important
   }
 
+  .listRow,
+  .listRowMediaCol {
+    min-height: 220px;
+  }
+
+
+
+  .summaryListImageContainer {
+    min-height: 220px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .summaryListImageContainer img {
+    object-fit: cover !important;
+    width: 80%;
+    height: auto;
+
+  }
 }
 
 
@@ -167,6 +210,8 @@
   border: 1px solid #e5e5e5 !important;
 
 }
+
+
 
 .summaryImageContainer {
   height: 20vw;

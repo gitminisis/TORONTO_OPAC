@@ -30,7 +30,7 @@ class Summary extends React.Component {
     let json = xmlToJson(xml, JSON_ARRAY_FIELD);
     this.state = {
       data: json.report,
-      grid: true
+      grid: false
     };
     this.tree = React.createRef();
   }
@@ -81,7 +81,7 @@ class Summary extends React.Component {
                             <Option value="box">box</Option>
                             <Option value="folder">Folder</Option>
                           </Select> */}
-                          <Radio.Group defaultValue="grid" buttonStyle="solid">
+                          <Radio.Group defaultValue="list" buttonStyle="solid">
                             <Radio.Button
                               onClick={_ => this.setState({ grid: true })}
                               value="grid"
