@@ -54,7 +54,7 @@ class TreeView extends React.Component {
     let session = document.getElementById("session-id").innerText;
     axios
       .get(
-        `${session}/1/1?SEARCH&&DATABASE=FORD_SUBJECT_OPAC&EXP=${exp}&ERRMSG=[FORD_OPAC]/no-record.html`
+        `${session}/1/1?SEARCH&DATABASE=FORD_SUBJECT_OPAC&EXP=${exp}&ERRMSG=[FORD_OPAC]/no-record.html`
       )
       .then(res => {
         let dataXML = res.data;
@@ -85,7 +85,7 @@ class TreeView extends React.Component {
     let session = document.getElementById("session-id").innerText;
     axios
       .get(
-        `${session}/1/1?SEARCH&&DATABASE=FORD_SUBJECT_OPAC&EXP=${exp}&ERRMSG=[FORD_OPAC]/no-record.html`
+        `${session}/1/1?SEARCH&DATABASE=FORD_SUBJECT_OPAC&EXP=${exp}&ERRMSG=[FORD_OPAC]/no-record.html`
       )
       .then(res => {
         console.log(res);
@@ -102,33 +102,44 @@ class TreeView extends React.Component {
           "report.terms.upper"
         ]);
         console.log(json);
-        let gData = this.state.gData;
+        // let gData = this.state.gData;
         let data = json.report.terms.map(e => {
           let parent = {
             title: e.term,
             key: e.term,
-            isLeaf: !e.lower
+            isLeaf: !e.lower,
+            children: e.lower
+              ? e.lower.map(c => {
+                  let node = {
+                    title: c,
+                    key: c
+                  };
+
+                  return node;
+                })
+              : null
           };
-          gData.push({
-            title: e.term,
-            key: e.term,
-            isLeaf: !e.lower
-          });
-          let children = e.lower
-            ? e.lower.map(c => {
-                let node = {
-                  title: c,
-                  key: c
-                };
-                gData.push(node);
-                return node;
-              })
-            : null;
-          parent.children = children;
+          console.log(parent);
+          // gData.push({
+          //   title: e.term,
+          //   key: e.term,
+          //   isLeaf: !e.lower
+          // });
+          // let children = e.lower
+          //   ? e.lower.map(c => {
+          //       let node = {
+          //         title: c,
+          //         key: c
+          //       };
+          //       gData.push(node);
+          //       return node;
+          //     })
+          //   : null;
+          // parent.children = children;
           return parent;
         });
 
-        this.setState({ data: data, gData: gData });
+        this.setState({ data: data });
       });
   };
   componentDidMount() {
@@ -160,7 +171,7 @@ class TreeView extends React.Component {
         );
       }
 
-      return <TreeNode key={item.title} title={item.title} dataRef={item} />;
+      return <TreeNode key={item.title} {...item} dataRef={item} />;
     });
   };
 

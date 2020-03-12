@@ -155,6 +155,7 @@ class AdvancedSearch extends React.Component {
   render() {
     let { searchExp } = this.state;
     console.log(searchExp);
+    const session = document.getElementById("session-id").innerText;
     return (
       <>
         {" "}
@@ -162,7 +163,8 @@ class AdvancedSearch extends React.Component {
           hidden
           method="POST"
           id="advancedSearchForm"
-          action={this.props.action}
+          action={`${session}/1/1?SEARCH&DATABASE=DESCRIPTION_OPAC&ERRMSG=[FORD_OPAC]/no-record.html`}
+          method="POST"
         >
           <Input name="KEYWORD" hidden id="advancedSearchInput" />
         </Form>
