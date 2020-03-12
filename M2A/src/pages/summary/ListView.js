@@ -11,12 +11,6 @@ class ListView extends React.Component {
       <List
         itemLayout="vertical"
         size="large"
-        pagination={{
-          onChange: page => {
-            console.log(page);
-          },
-          pageSize: 3
-        }}
         dataSource={data.item}
         footer={
           <div>
@@ -36,37 +30,16 @@ class ListView extends React.Component {
             </Col>
             <Col lg={20} md={12}>
               {" "}
-              <List.Item
-                key={item.item_sisn}
-                actions={[
-                  <IconText
-                    type="star-o"
-                    text="156"
-                    key="list-vertical-star-o"
-                  />,
-                  <IconText
-                    type="like-o"
-                    text="156"
-                    key="list-vertical-like-o"
-                  />,
-                  <IconText
-                    type="message"
-                    text="2"
-                    key="list-vertical-message"
-                  />
-                ]}
-              >
+              <List.Item key={item.item_sisn}>
                 <List.Item.Meta
                   title={
                     <a href={item.item_link}>
                       <strong>{item.item_title}</strong>
                     </a>
                   }
-                  description={item.item_level_desc}
+                  description={`Level: ${item.item_level_desc}`}
                 />
-                We supply a series of design principles, practical patterns and
-                high quality design resources (Sketch and Axure), to help people
-                create their product prototypes beautifully and efficiently.
+                <p> {`Reference Code: ${item.item_id}`}</p>
               </List.Item>
             </Col>
           </Row>
