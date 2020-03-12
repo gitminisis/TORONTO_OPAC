@@ -25,11 +25,7 @@ class PageHeader extends React.Component {
                 cursor: "pointer",
                 textAlign: "center"
               }}
-              onClick={_ =>
-                (window.location = `${
-                  document.getElementById("session-id").innerText
-                }?get&file=[MIT_ROOT]home.html`)
-              }
+              onClick={_ => (window.location = "/")}
             >
               <img
                 src={logo}

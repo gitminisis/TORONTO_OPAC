@@ -93,7 +93,7 @@ class TreeView extends React.Component {
         let newDocument = document
           .createRange()
           .createContextualFragment(dataXML);
-        console.log(newDocument);
+
         let xml = newDocument.querySelector("#subject_xml");
 
         let json = xmlToJson(xml, [
@@ -101,43 +101,51 @@ class TreeView extends React.Component {
           "report.terms.lower",
           "report.terms.upper"
         ]);
-        console.log(json);
-        // let gData = this.state.gData;
-        let data = json.report.terms.map(e => {
-          let parent = {
-            title: e.term,
-            key: e.term,
-            isLeaf: !e.lower,
-            children: e.lower
-              ? e.lower.map(c => {
-                  let node = {
-                    title: c,
-                    key: c
-                  };
 
-                  return node;
-                })
-              : null
-          };
-          console.log(parent);
-          // gData.push({
-          //   title: e.term,
-          //   key: e.term,
-          //   isLeaf: !e.lower
-          // });
-          // let children = e.lower
-          //   ? e.lower.map(c => {
-          //       let node = {
-          //         title: c,
-          //         key: c
-          //       };
-          //       gData.push(node);
-          //       return node;
-          //     })
-          //   : null;
-          // parent.children = children;
-          return parent;
-        });
+        // let gData = this.state.gData;
+        let data = json.report.terms
+          .map(e => {
+            let parent = {
+              title: e.term,
+              key: e.term,
+              isLeaf: !e.lower,
+              children: e.lower
+                ? e.lower.map(c => {
+                    let node = {
+                      title: c,
+                      key: c
+                    };
+
+                    return node;
+                  })
+                : null
+            };
+
+            // gData.push({
+            //   title: e.term,
+            //   key: e.term,
+            //   isLeaf: !e.lower
+            // });
+            // let children = e.lower
+            //   ? e.lower.map(c => {
+            //       let node = {
+            //         title: c,
+            //         key: c
+            //       };
+            //       gData.push(node);
+            //       return node;
+            //     })
+            //   : null;
+            // parent.children = children;
+            return parent;
+          })
+          .sort((a, b) =>
+            a.title.toLowerCase() > b.title.toLowerCase()
+              ? 1
+              : b.title.toLowerCase() > a.title.toLowerCase()
+              ? -1
+              : 0
+          );
 
         this.setState({ data: data });
       });
