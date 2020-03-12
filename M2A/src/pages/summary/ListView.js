@@ -18,8 +18,8 @@ class ListView extends React.Component {
           </div>
         }
         renderItem={(item, index) => (
-          <Row className="listRow">
-            <Col lg={4} md={12} className="listRowMediaCol">
+          <Row className="listRow" gutter={8}>
+            <Col lg={5} md={10} className="listRowMediaCol">
               {" "}
               <Row>
                 {" "}
@@ -28,7 +28,7 @@ class ListView extends React.Component {
                 </Col>
               </Row>
             </Col>
-            <Col lg={20} md={12}>
+            <Col lg={19} md={14}>
               {" "}
               <List.Item key={item.item_sisn}>
                 <List.Item.Meta

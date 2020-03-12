@@ -8,7 +8,7 @@ class GridView extends React.Component {
   render() {
     let { data } = this.props;
     return data.item.map((item, index) => (
-      <Col md={8} xs={24}>
+      <Col lg={8} md={12} xs={24}>
         <Card
           bordered
           onClick={_ => (window.location = item.item_link)}

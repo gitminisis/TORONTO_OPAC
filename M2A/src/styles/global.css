@@ -113,20 +113,32 @@
   border-radius: 0;
 }
 
+
 @media only screen and (min-width: 769px) {
   .drawerButton {
     display: none !important;
   }
 
   .listRow,
-  .listRowMediaCol {
-    min-height: 220px;
+  .listRowMediaCol,
+  .summaryListImageContainer {
+    height: auto;
+
   }
 
 
 
+  .listRow {
+    padding-bottom: 24px;
+
+    margin-top: 24px;
+    border-bottom: 1px solid #c5c7c7;
+
+  }
+
+
   .summaryListImageContainer {
-    min-height: 220px;
+    max-height: 220px;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
@@ -136,10 +148,13 @@
   .summaryListImageContainer img {
     object-fit: cover !important;
     width: 80%;
+    max-width: 220px;
     height: auto;
 
   }
 }
+
+
 
 @media only screen and (max-width: 768px) {
   .homeCard {
@@ -161,6 +176,14 @@
     min-height: 220px;
   }
 
+  .listRow {
+    border: 1px solid #c5c7c7;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    padding: 5px;
+    text-align: center;
+  }
+
 
 
   .summaryListImageContainer {
@@ -173,12 +196,23 @@
 
   .summaryListImageContainer img {
     object-fit: cover !important;
-    width: 80%;
+    width: 60%;
     height: auto;
 
   }
 }
 
+@media screen and (min-device-width: 481px) and (max-device-width: 768px) {
+  .summaryCard {
+    height: 50vw !important
+  }
+
+  .listRow {
+
+    text-align: left;
+  }
+
+}
 
 
 .backTop {
@@ -214,8 +248,7 @@
 
 
 .summaryImageContainer {
-  height: 20vw;
-  max-height: 300px;
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 60%;
