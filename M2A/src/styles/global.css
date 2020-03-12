@@ -124,6 +124,15 @@
     height: auto !important;
   }
 
+  .summaryImageContainer {
+    height: 90% !important;
+    background-size: auto 70% !important;
+
+  }
+
+  .summaryCard {
+    height: 100vw !important
+  }
 
 }
 
@@ -153,10 +162,25 @@
   background-color: #2d96cd !important;
 }
 
-.homeCard {
+.homeCard,
+.summaryCard {
   border: 1px solid #e5e5e5 !important;
 
 }
+
+.summaryImageContainer {
+  height: 20vw;
+  max-height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 60%;
+  transition: all .3s;
+}
+
+.summaryImageContainer:hover {
+  transform: scale(1.05);
+}
+
 
 
 .cardImage {
@@ -190,4 +214,21 @@
 
 .reportTree svg {
   margin-top: 5px !important;
+}
+
+
+#summary_report .ant-radio-button-wrapper>.ant-radio-button {
+  display: inherit !important
+}
+
+#summary_report .backTop svg {
+  margin-top: 12px !important;
+}
+
+.ant-radio-button-wrapper:hover {
+  color: #2d96cd !important;
+}
+
+.ant-radio-button-wrapper.ant-radio-button-wrapper-checked:hover {
+  color: white !important
 }

@@ -108,7 +108,8 @@ class Home extends React.Component {
                               style={{
                                 width: "100%",
                                 marginTop: "2px",
-                                height: "auto"
+                                height: "auto",
+                                textAlign: "center"
                               }}
                             >
                               <img className="cardImage" src={Car} />

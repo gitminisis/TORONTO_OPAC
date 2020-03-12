@@ -93,8 +93,6 @@ class AdvancedSearch extends React.Component {
   };
 
   getCluster = (keyvalue, keyname, url) => {
-    console.log(keyvalue, keyname);
-    console.log(url);
     let data = `KEYNAME=${keyname}&KEYVALUE=${keyvalue}`;
     getCluster(url, data)
       .then(res => {
@@ -119,7 +117,6 @@ class AdvancedSearch extends React.Component {
   };
 
   selectCluster = (val, keyname) => {
-    console.log(val, keyname);
     let searchExp = this.state.searchExp;
     let field = searchExp.filter(
       e => e.field.toLowerCase() === keyname.toLowerCase()
@@ -135,7 +132,7 @@ class AdvancedSearch extends React.Component {
     let searchExp = this.state.searchExp;
     let searchInput = searchExp[index];
     searchInput[field] = value;
-    console.log(searchExp);
+
     this.setState({
       searchExp: searchExp
     });
@@ -148,13 +145,13 @@ class AdvancedSearch extends React.Component {
       data
         .map((exp, index) => ` ${exp.boolean} ${exp.field} "${exp.keyword}"`)
         .join(" ");
-    console.log(data);
+
     document.getElementById("advancedSearchInput").value = data;
     document.getElementById("advancedSearchForm").submit();
   };
   render() {
     let { searchExp } = this.state;
-    console.log(searchExp);
+
     const session = document.getElementById("session-id").innerText;
     return (
       <>

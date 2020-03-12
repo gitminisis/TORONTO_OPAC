@@ -88,7 +88,7 @@ class TreeView extends React.Component {
         `${session}/1/1?SEARCH&DATABASE=FORD_SUBJECT_OPAC&EXP=${exp}&ERRMSG=[FORD_OPAC]/no-record.html`
       )
       .then(res => {
-        console.log(res);
+       
         let dataXML = res.data;
         let newDocument = document
           .createRange()
@@ -160,7 +160,7 @@ class TreeView extends React.Component {
         resolve();
         return;
       }
-      console.log(treeNode);
+     
       setTimeout(() => {
         this.loadNode(`eng_term "${treeNode.props.title}"`, treeNode);
         resolve();
@@ -187,7 +187,7 @@ class TreeView extends React.Component {
     if (value.trim() !== "") {
       let data = this.state.data;
       let gData = this.state.gData;
-      console.log(gData);
+  
       const expandedKeys = gData
         .map(item => {
           if (item.title.indexOf(value) > -1) {
@@ -213,7 +213,7 @@ class TreeView extends React.Component {
     const { expandedKeys, autoExpandParent } = this.state;
     let home = document.getElementById("home");
 
-    console.log(expandedKeys, autoExpandParent);
+  
     return (
       <div>
         <Drawer
