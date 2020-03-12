@@ -45,31 +45,23 @@ class Summary extends React.Component {
                   <Tree ref={this.tree}></Tree>
                   <PageHeader
                     ghost={false}
-                    title="FEATURE COLLECTION"
+                    title="SUMMARY LIST"
                     extra={[
                       <Button type="primary" onClick={this.openTree}>
                         <FaTree />
                       </Button>,
-                      <Radio.Group defaultValue="grid" buttonStyle="solid">
-                        <Radio.Button
-                          onClick={_ => this.setState({ grid: true })}
-                          value="grid"
-                        >
-                          {" "}
-                          <FaTh />
-                        </Radio.Button>
-                        <Radio.Button
-                          onClick={_ => this.setState({ grid: false })}
-                          value="list"
-                        >
-                          {" "}
-                          <FaList />
-                        </Radio.Button>
-                      </Radio.Group>
+                      <Button type="primary" onClick={this.openTree}>
+                        <FaTree />
+                      </Button>,
+                      <Button type="primary" onClick={this.openTree}>
+                        <FaTree />
+                      </Button>
                     ]}
                   ></PageHeader>
                 </Col>
-                <Col span={24}></Col>
+                <Col span={24}>
+                  <div style={{ height: "1200px" }}></div>
+                </Col>
               </Row>
             </Col>
           </Row>

@@ -187,3 +187,7 @@
   background-color: white !important;
   color: white !important;
 }
+
+.reportTree svg {
+  margin-top: 5px !important;
+}

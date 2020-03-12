@@ -211,6 +211,8 @@ class TreeView extends React.Component {
   };
   render() {
     const { expandedKeys, autoExpandParent } = this.state;
+    let home = document.getElementById("home");
+
     console.log(expandedKeys, autoExpandParent);
     return (
       <div>
@@ -231,6 +233,7 @@ class TreeView extends React.Component {
           /> */}
           {this.state.data.length ? (
             <Tree
+              className={home ? "homeTree" : "reportTree"}
               showLine
               showIcon={false}
               selectable={false}
