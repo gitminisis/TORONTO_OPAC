@@ -53,19 +53,20 @@ class ListView extends React.Component {
                   {" "}
                   <Card title="Media" className="mediaCard">
                     <Card.Grid
+                      hoverable={false}
                       style={gridStyle}
                       className={index % 2 === 0 ? "mediaFile" : ""}
                     >
                       <Icon type="picture" />
                     </Card.Grid>
 
-                    <Card.Grid style={gridStyle}>
+                    <Card.Grid hoverable={false} style={gridStyle}>
                       <Icon type="audio" />
                     </Card.Grid>
-                    <Card.Grid style={gridStyle}>
+                    <Card.Grid hoverable={false} style={gridStyle}>
                       <Icon type="video-camera" />
                     </Card.Grid>
-                    <Card.Grid style={gridStyle}>
+                    <Card.Grid hoverable={false} style={gridStyle}>
                       <Icon type="file-text" />
                     </Card.Grid>
                   </Card>

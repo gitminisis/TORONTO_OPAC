@@ -1,5 +1,6 @@
 import React from "react";
 import PageLayout from "../../components/Layout";
+import { MdTune, MdSort } from "react-icons/md";
 
 import { xmlToJson } from "../../services";
 import {
@@ -111,6 +112,22 @@ class Summary extends React.Component {
                             <ListView data={data} />
                           )}
                         </Row>
+                      </Col>
+                      <Col sm={24} md={0} lg={0} id="sumNavBar">
+                        
+                          <Button sm={6} className="sumNavBarButton">
+                            <MdTune />
+                          </Button>
+                          <Button sm={6} className="sumNavBarButton">
+                            <MdSort />
+                          </Button>
+                          <Button sm={6} className="sumNavBarButton">
+                            <FaTree />
+                          </Button>
+                          <Button sm={6} className="sumNavBarButton">
+                            <MdTune />
+                          </Button>
+                       
                       </Col>
                     </Row>
                   </Card>

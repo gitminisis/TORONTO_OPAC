@@ -257,6 +257,7 @@
   text-align: center;
   font-size: 25px !important;
   border-radius: 10% !important;
+  bottom: 80px !important;
 }
 
 .headerNavigation {
@@ -344,4 +345,22 @@
 
 .ant-radio-button-wrapper.ant-radio-button-wrapper-checked:hover {
   color: white !important
+}
+
+#sumNavBar {
+  width: 100% !important;
+  height: 60px;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+
+
+}
+
+.sumNavBarButton {
+  border-radius: 0 !important;
+  height: 100% !important;
+  width: 25% !important;
+  border: 0 !important;
+  font-size: 16px !important;
 }
