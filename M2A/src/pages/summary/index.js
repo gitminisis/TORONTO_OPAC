@@ -19,6 +19,7 @@ import {
 const { Content } = Layout;
 import { FaTh, FaList, FaTree } from "react-icons/fa";
 import Tree from "../../components/Tree";
+import FilterDrawer from "../../components/FilterDrawer";
 import { JSON_ARRAY_FIELD } from "../../services/index";
 import GridView from "./GridView";
 import ListView from "./ListView";
@@ -36,9 +37,13 @@ class Summary extends React.Component {
       grid: false
     };
     this.tree = React.createRef();
+    this.filter = React.createRef();
   }
   openTree = _ => {
     this.tree.current.showDrawer();
+  };
+  openFilter = _ => {
+    this.filter.current.showDrawer();
   };
   render() {
     let searchLink = document.getElementById("search-link").innerText;
@@ -85,6 +90,10 @@ class Summary extends React.Component {
                             <Option value="folder">Folder</Option>
                           </Select> */}
                           <Tree ref={this.tree}></Tree>
+                          <FilterDrawer
+                            data={data.filters.div.xml.filter}
+                            ref={this.filter}
+                          ></FilterDrawer>
                           <Button type="primary" onClick={this.openTree}>
                             <FaTree />
                           </Button>
@@ -116,7 +125,11 @@ class Summary extends React.Component {
                         </Row>
                       </Col>
                       <Col sm={24} md={0} lg={0} id="sumNavBar">
-                        <Button sm={6} className="sumNavBarButton">
+                        <Button
+                          sm={6}
+                          className="sumNavBarButton"
+                          onClick={this.openFilter}
+                        >
                           <MdTune />
                         </Button>
                         <Button sm={6} className="sumNavBarButton">
