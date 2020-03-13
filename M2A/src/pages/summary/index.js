@@ -13,6 +13,7 @@ import {
   Button,
   Icon,
   Radio,
+  Collapse,
   Select
 } from "antd";
 const { Content } = Layout;
@@ -23,6 +24,7 @@ import GridView from "./GridView";
 import ListView from "./ListView";
 const { Meta } = Card;
 const { Option } = Select;
+import Filter from "./Filter";
 class Summary extends React.Component {
   constructor(props) {
     super(props);
@@ -58,7 +60,7 @@ class Summary extends React.Component {
                     }
                   >
                     {" "}
-                    <Card title={<h5>Filter By:</h5>}></Card>
+                    <Filter data={data.filters.div.xml.filter} />
                     <Row>
                       {" "}
                       <Col lg={{ span: 8, offset: 16 }} md={{ span: 24 }}>
@@ -114,20 +116,28 @@ class Summary extends React.Component {
                         </Row>
                       </Col>
                       <Col sm={24} md={0} lg={0} id="sumNavBar">
-                        
-                          <Button sm={6} className="sumNavBarButton">
-                            <MdTune />
-                          </Button>
-                          <Button sm={6} className="sumNavBarButton">
-                            <MdSort />
-                          </Button>
-                          <Button sm={6} className="sumNavBarButton">
-                            <FaTree />
-                          </Button>
-                          <Button sm={6} className="sumNavBarButton">
-                            <MdTune />
-                          </Button>
-                       
+                        <Button sm={6} className="sumNavBarButton">
+                          <MdTune />
+                        </Button>
+                        <Button sm={6} className="sumNavBarButton">
+                          <MdSort />
+                        </Button>
+                        <Button
+                          sm={6}
+                          className="sumNavBarButton"
+                          onClick={this.openTree}
+                        >
+                          <FaTree />
+                        </Button>
+                        <Button
+                          sm={6}
+                          className="sumNavBarButton"
+                          onClick={_ =>
+                            this.setState({ grid: !this.state.grid })
+                          }
+                        >
+                          {!this.state.grid ? <FaTh /> : <FaList />}
+                        </Button>
                       </Col>
                     </Row>
                   </Card>

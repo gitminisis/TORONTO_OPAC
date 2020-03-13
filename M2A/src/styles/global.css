@@ -7,12 +7,7 @@
     url("./85bf2123-24cb-4bfd-a720-efe63c68c84d-3.woff") format("woff");
 }
 
-@font-face {
-  /* Antenna */
-  font-family: "Antenna";
 
-  src: url("./a249ec5c-51a0-4581-a866-722ded577e7d-3.woff") format("woff");
-}
 
 @font-face {
   /* Antenna Light */
@@ -101,9 +96,10 @@
 }
 
 .drawerButton {
+  box-shadow: 1px 1px 1px #888888 !important;
   position: fixed !important;
   top: 80px !important;
-  left: 0 !important;
+  left: -10 !important;
   z-index: 9000;
   width: 50px !important;
   height: 50px !important;
@@ -131,6 +127,15 @@
   background: #004B87 !important;
   color: white !important;
   font-weight: bold;
+}
+
+@media only screen and (min-width: 1921px) {
+
+  #layoutMainRow {
+    width: 1920px;
+    margin: 0 auto;
+  }
+
 }
 
 @media only screen and (min-width: 769px) {
@@ -183,6 +188,7 @@
 
 
 @media only screen and (max-width: 768px) {
+
   .homeCard {
     height: auto !important;
   }
@@ -257,7 +263,7 @@
   text-align: center;
   font-size: 25px !important;
   border-radius: 10% !important;
-  bottom: 80px !important;
+  bottom: 100px !important;
 }
 
 .headerNavigation {
@@ -348,6 +354,8 @@
 }
 
 #sumNavBar {
+  border-top: 1px solid #cccccc5e;
+  box-shadow: 5px 10px 18px #888888;
   width: 100% !important;
   height: 60px;
   position: fixed !important;
@@ -362,5 +370,10 @@
   height: 100% !important;
   width: 25% !important;
   border: 0 !important;
-  font-size: 16px !important;
+  font-size: 20px !important;
+}
+
+#treeDrawer .ant-drawer-content-wrapper {
+  width: 100vw !important;
+  max-width: 700px !important;
 }

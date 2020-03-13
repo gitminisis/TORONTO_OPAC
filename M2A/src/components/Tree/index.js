@@ -88,7 +88,6 @@ class TreeView extends React.Component {
         `${session}/1/1?SEARCH&DATABASE=FORD_SUBJECT_OPAC&EXP=${exp}&ERRMSG=[FORD_OPAC]/no-record.html`
       )
       .then(res => {
-       
         let dataXML = res.data;
         let newDocument = document
           .createRange()
@@ -153,14 +152,25 @@ class TreeView extends React.Component {
   componentDidMount() {
     this.initTree("sisn present and eng_desc present and not eng_bt present");
   }
+  componentWillUpdate() {
+    window.addEventListener("touchmove", ontouchmove);
+    function ontouchmove(e) {
 
+      if (e.cancelable) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+
+      }
+    }
+  }
   onLoadData = treeNode =>
     new Promise(resolve => {
       if (treeNode.props.children) {
         resolve();
         return;
       }
-     
+
       setTimeout(() => {
         this.loadNode(`eng_term "${treeNode.props.title}"`, treeNode);
         resolve();
@@ -187,7 +197,7 @@ class TreeView extends React.Component {
     if (value.trim() !== "") {
       let data = this.state.data;
       let gData = this.state.gData;
-  
+
       const expandedKeys = gData
         .map(item => {
           if (item.title.indexOf(value) > -1) {
@@ -213,16 +223,19 @@ class TreeView extends React.Component {
     const { expandedKeys, autoExpandParent } = this.state;
     let home = document.getElementById("home");
 
-  
     return (
       <div>
         <Drawer
-          width={700}
+          id="treeDrawer"
+          width={"100vw"}
+          zIndex={9001}
           title="SUBJECT SEARCH"
           placement={this.state.placement}
-          closable={false}
+          closable
           onClose={this.onClose}
           visible={this.state.visible}
+          draggable={true}
+         
         >
           {" "}
           {/* <Search
