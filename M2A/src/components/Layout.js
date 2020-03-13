@@ -16,21 +16,25 @@ class PageLayout extends React.Component {
           <Header />
           <PageDrawer />
           <Row justify="center" align="middle">
-            <Col lg={6} md={0}></Col>
             <Col
-              lg={12}
+              lg={{ offset: 6, span: 12 }}
               md={24}
               style={{
                 paddingTop: "30px",
-                paddingBottom: "30px"
+
+                paddingBottom: "30px",
+                
               }}
             >
               {" "}
               <SearchBar />
             </Col>
+          </Row>{" "}
+          <Row justify="center" align="middle" id="layoutMainRow">
+            <Col span={24} >
+              {this.props.children}
+            </Col>
           </Row>
-          {this.props.children}
-
           <BackTop className="backTop">
             <Icon type="caret-up" />
           </BackTop>

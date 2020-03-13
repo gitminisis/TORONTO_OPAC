@@ -4,6 +4,10 @@ const { Meta } = Card;
 import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
 import { FiCameraOff } from "react-icons/fi";
+const gridStyle = {
+  width: "50%",
+  textAlign: "center"
+};
 class ListView extends React.Component {
   render() {
     let { data } = this.props;
@@ -30,17 +34,43 @@ class ListView extends React.Component {
             </Col>
             <Col lg={19} md={14}>
               {" "}
-              <List.Item key={item.item_sisn}>
-                <List.Item.Meta
-                  title={
-                    <a href={item.item_link}>
-                      <strong>{item.item_title}</strong>
-                    </a>
-                  }
-                  description={`Level: ${item.item_level_desc}`}
-                />
-                <p> {`Reference Code: ${item.item_id}`}</p>
-              </List.Item>
+              <Row>
+                <Col lg={16} md={24}>
+                  {" "}
+                  <List.Item key={item.item_sisn}>
+                    <List.Item.Meta
+                      title={
+                        <a href={item.item_link}>
+                          <strong>{item.item_title}</strong>
+                        </a>
+                      }
+                      description={`Level: ${item.item_level_desc}`}
+                    />
+                    <p> {`Reference Code: ${item.item_id}`}</p>
+                  </List.Item>
+                </Col>
+                <Col lg={8} md={12}>
+                  {" "}
+                  <Card title="Media" className="mediaCard">
+                    <Card.Grid
+                      style={gridStyle}
+                      className={index % 2 === 0 ? "mediaFile" : ""}
+                    >
+                      <Icon type="picture" />
+                    </Card.Grid>
+
+                    <Card.Grid style={gridStyle}>
+                      <Icon type="audio" />
+                    </Card.Grid>
+                    <Card.Grid style={gridStyle}>
+                      <Icon type="video-camera" />
+                    </Card.Grid>
+                    <Card.Grid style={gridStyle}>
+                      <Icon type="file-text" />
+                    </Card.Grid>
+                  </Card>
+                </Col>
+              </Row>
             </Col>
           </Row>
         )}

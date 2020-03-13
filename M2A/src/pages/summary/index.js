@@ -81,6 +81,10 @@ class Summary extends React.Component {
                             <Option value="box">box</Option>
                             <Option value="folder">Folder</Option>
                           </Select> */}
+                          <Tree ref={this.tree}></Tree>
+                          <Button type="primary" onClick={this.openTree}>
+                            <FaTree />
+                          </Button>
                           <Radio.Group defaultValue="list" buttonStyle="solid">
                             <Radio.Button
                               onClick={_ => this.setState({ grid: true })}

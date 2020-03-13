@@ -27,7 +27,11 @@ class GridView extends React.Component {
               backgroundImage: `url(${index % 2 === 0 ? FordCar : noImage})`
             }}
           ></div>
-          <Meta title={item.item_title} description={item.item_level_desc} />
+          <Meta
+          
+            title={item.item_title}
+            description={item.item_level_desc}
+          />
         </Card>
       </Col>
     ));

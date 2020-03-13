@@ -113,8 +113,29 @@
   border-radius: 0;
 }
 
+.mediaCard {
+  font-weight: bold !important;
+}
+
+.mediaCard>.ant-card-body {
+  font-size: 1.1rem !important;
+}
+
+.mediaCard>.ant-card-head {
+  background: #DBDBDB !important;
+  color: #003478 !important;
+  font-weight: bold;
+}
+
+.mediaFile {
+  background: #004B87 !important;
+  color: white !important;
+  font-weight: bold;
+}
 
 @media only screen and (min-width: 769px) {
+
+
   .drawerButton {
     display: none !important;
   }
@@ -126,6 +147,11 @@
 
   }
 
+  .mediaCard {
+    width: 180px;
+    float: right !important;
+
+  }
 
 
   .listRow {
@@ -148,7 +174,7 @@
   .summaryListImageContainer img {
     object-fit: cover !important;
     width: 80%;
-    max-width: 220px;
+    max-width: 180px;
     height: auto;
 
   }
@@ -162,7 +188,7 @@
   }
 
   .summaryImageContainer {
-    height: 90% !important;
+    height: 65% !important;
     background-size: auto 70% !important;
 
   }
@@ -177,10 +203,12 @@
   }
 
   .listRow {
+
     border: 1px solid #c5c7c7;
     margin-bottom: 12px;
     margin-top: 12px;
-    padding: 5px;
+    padding: 20px;
+
     text-align: center;
   }
 
@@ -200,6 +228,11 @@
     height: auto;
 
   }
+
+  .mediaCard {
+    width: 190px;
+    margin: 0 auto !important;
+  }
 }
 
 @media screen and (min-device-width: 481px) and (max-device-width: 768px) {
@@ -208,6 +241,7 @@
   }
 
   .listRow {
+    padding-bottom: 20px;
 
     text-align: left;
   }
@@ -248,7 +282,8 @@
 
 
 .summaryImageContainer {
-
+  height: 20vw;
+  max-height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 60%;
