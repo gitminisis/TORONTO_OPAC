@@ -94,25 +94,28 @@ class Summary extends React.Component {
                             data={data.filters.div.xml.filter}
                             ref={this.filter}
                           ></FilterDrawer>
-                          <Button type="primary" onClick={this.openTree}>
-                            <FaTree />
-                          </Button>
-                          <Radio.Group defaultValue="list" buttonStyle="solid">
-                            <Radio.Button
+                          <Button.Group>
+                            {" "}
+                            <Button onClick={this.openTree}>
+                              <FaTree />
+                            </Button>
+                            <Button
+                              type={this.state.grid ? "primary" : ""}
                               onClick={_ => this.setState({ grid: true })}
                               value="grid"
                             >
                               {" "}
                               <FaTh />
-                            </Radio.Button>
-                            <Radio.Button
+                            </Button>
+                            <Button
+                              type={!this.state.grid ? "primary" : ""}
                               onClick={_ => this.setState({ grid: false })}
                               value="list"
                             >
                               {" "}
                               <FaList />
-                            </Radio.Button>
-                          </Radio.Group>
+                            </Button>
+                          </Button.Group>
                         </div>
                       </Col>
                       <Col span={24}>
