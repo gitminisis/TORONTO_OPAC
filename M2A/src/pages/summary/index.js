@@ -66,6 +66,30 @@ class Summary extends React.Component {
                         "
                       </h4>
                     }
+                    extra={
+                      <Button.Group id="summaryButtonGroup">
+                        {" "}
+                        <Button onClick={this.openTree}>
+                          <FaTree />
+                        </Button>
+                        <Button
+                          type={this.state.grid ? "primary" : ""}
+                          onClick={_ => this.setState({ grid: true })}
+                          value="grid"
+                        >
+                          {" "}
+                          <FaTh />
+                        </Button>
+                        <Button
+                          type={!this.state.grid ? "primary" : ""}
+                          onClick={_ => this.setState({ grid: false })}
+                          value="list"
+                        >
+                          {" "}
+                          <FaList />
+                        </Button>
+                      </Button.Group>
+                    }
                   >
                     {" "}
                     <Filter data={data.filters.div.xml.filter} />
@@ -97,28 +121,6 @@ class Summary extends React.Component {
                             data={data.filters.div.xml.filter}
                             ref={this.filter}
                           ></FilterDrawer>
-                          <Button.Group>
-                            {" "}
-                            <Button onClick={this.openTree}>
-                              <FaTree />
-                            </Button>
-                            <Button
-                              type={this.state.grid ? "primary" : ""}
-                              onClick={_ => this.setState({ grid: true })}
-                              value="grid"
-                            >
-                              {" "}
-                              <FaTh />
-                            </Button>
-                            <Button
-                              type={!this.state.grid ? "primary" : ""}
-                              onClick={_ => this.setState({ grid: false })}
-                              value="list"
-                            >
-                              {" "}
-                              <FaList />
-                            </Button>
-                          </Button.Group>
                         </div>
                       </Col>
                       <Col span={24}>

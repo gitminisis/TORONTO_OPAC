@@ -254,6 +254,14 @@
 
 }
 
+@media only screen and (max-width: 580px) {
+  #summaryButtonGroup {
+    display: none !important;
+  }
+
+
+}
+
 
 .backTop {
   width: 50px !important;
