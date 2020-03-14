@@ -14,7 +14,8 @@ import {
   Icon,
   Radio,
   Collapse,
-  Select
+  Select,
+  Pagination
 } from "antd";
 const { Content } = Layout;
 import { FaTh, FaList, FaTree } from "react-icons/fa";
@@ -48,7 +49,9 @@ class Summary extends React.Component {
   render() {
     let searchLink = document.getElementById("search-link").innerText;
     let { data } = this.state;
-    console.log(data);
+    let pagination = data.pagination.a;
+    let currentPage = pagination.filter(e => e.b)[0].b;
+    console.log(currentPage);
     return (
       <PageLayout>
         <Row>
@@ -126,6 +129,14 @@ class Summary extends React.Component {
                             <ListView data={data} />
                           )}
                         </Row>
+                        <Pagination
+                          onChange={e => {
+                            let url = pagination[e - 1]._href;
+                            window.location = url;
+                          }}
+                          defaultCurrent={Number.parseInt(currentPage)}
+                          total={pagination.length}
+                        />
                       </Col>
                       <Col sm={24} md={0} lg={0} id="sumNavBar">
                         <Button

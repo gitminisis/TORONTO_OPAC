@@ -377,3 +377,11 @@
   width: 100vw !important;
   max-width: 700px !important;
 }
+
+.ant-pagination {
+  text-align: center !important;
+}
+
+.ant-pagination-item-link i {
+  margin-top: 10px !important;
+}
