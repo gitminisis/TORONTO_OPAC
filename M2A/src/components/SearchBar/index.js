@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
     return (
       <Col xs={12} className="searchBar">
         <Form
-          action={`${session}/1/1?SEARCH&DATABASE=DESCRIPTION_OPAC&ERRMSG=[FORD_OPAC]/no-record.html`}
+          action={action}
           method="POST"
         >
           <Form.Group controlId="simpleSearch">

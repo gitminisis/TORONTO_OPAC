@@ -33,6 +33,7 @@ class Summary extends React.Component {
     let xml = document.querySelector("#summary_xml");
 
     let json = xmlToJson(xml, JSON_ARRAY_FIELD);
+
     this.state = {
       data: json.report,
       grid: false
@@ -49,9 +50,7 @@ class Summary extends React.Component {
   render() {
     let searchLink = document.getElementById("search-link").innerText;
     let { data } = this.state;
-    let pagination = data.pagination.a;
-    let currentPage = pagination.filter(e => e.b)[0].b;
-    console.log(currentPage);
+
     return (
       <PageLayout>
         <Row>
@@ -131,14 +130,18 @@ class Summary extends React.Component {
                             <ListView data={data} />
                           )}
                         </Row>
-                        <Pagination
-                          onChange={e => {
-                            let url = pagination[e - 1]._href;
-                            window.location = url;
-                          }}
-                          defaultCurrent={Number.parseInt(currentPage)}
-                          total={pagination.length}
-                        />
+                        {/* {data.pagination ? (
+                          <Pagination
+                            onChange={e => {
+                              let url = data.pagination.a[e - 1]._href;
+                              window.location = url;
+                            }}
+                            defaultCurrent={Number.parseInt(
+                              data.pagination.a.filter(e => e.b)[0].b
+                            )}
+                            total={data.pagination.a.length}
+                          />
+                        ) : null} */}
                       </Col>
                       <Col sm={24} md={0} lg={0} id="sumNavBar">
                         <Button

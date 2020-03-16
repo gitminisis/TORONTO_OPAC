@@ -1,8 +1,8 @@
 import React from "react";
-
+import PageLayout from "../../components/Layout";
 class Detail extends React.Component {
   render() {
-    return <h1>Detail</h1>;
+    return <PageLayout></PageLayout>;
   }
 }
 

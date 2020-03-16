@@ -10,7 +10,7 @@ class PageHeader extends React.Component {
         {" "}
         <Header
           style={{
-            height: "100%",
+         
             paddingTop: "0",
             paddingBottom: "0",
             background: "#1B394E"

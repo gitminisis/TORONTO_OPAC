@@ -99,7 +99,7 @@
   box-shadow: 1px 1px 1px #888888 !important;
   position: fixed !important;
   top: 80px !important;
-  left: -10 !important;
+  left: -10px !important;
   z-index: 9000;
   width: 50px !important;
   height: 50px !important;
