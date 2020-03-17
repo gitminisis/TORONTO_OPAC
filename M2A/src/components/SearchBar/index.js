@@ -32,7 +32,10 @@ class SearchBar extends React.Component {
     const session = document.getElementById("session-id").innerText;
     return (
       <Col xs={12} className="searchBar">
-        <Form action={action} method="POST">
+        <Form
+          action={action}
+          method="POST"
+        >
           <Form.Group controlId="simpleSearch">
             <InputGroup>
               <InputGroup.Prepend>

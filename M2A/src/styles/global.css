@@ -2,17 +2,12 @@
   /* Antenna Bold */
   font-family: "AntennaBold";
 
-  src: 
-    /*IE8*/ url("./85bf2123-24cb-4bfd-a720-efe63c68c84d-3.woff")
-    format("woff");
+  src:
+    /*IE8*/
+    url("./85bf2123-24cb-4bfd-a720-efe63c68c84d-3.woff") format("woff");
 }
 
-@font-face {
-  /* Antenna */
-  font-family: "Antenna";
 
-  src: url("./a249ec5c-51a0-4581-a866-722ded577e7d-3.woff") format("woff");
-}
 
 @font-face {
   /* Antenna Light */
@@ -20,16 +15,38 @@
 
   src: url("./39ab3e39-bb44-43df-a570-b883a82bfbaf-3.woff") format("woff");
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #888;
+}
+
 * {
   font-family: "Antenna", Arial, Helvetica, sans-serif;
 }
 
-.btn-primary {
+
+.btn-primary,
+.ant-btn-primary,
+.ant-radio-button-wrapper-checked {
   color: white !important;
   background-color: #2d96cd !important;
   border: 1px solid #2d96cd !important;
 }
-.btn-primary:hover {
+
+.btn-primary:hover,
+.ant-btn-primary:hover {
   background-color: white !important;
   border: 1px solid #425968 !important;
   color: #425968 !important;
@@ -58,9 +75,11 @@
   font-weight: 600 !important;
   padding-top: 4px !important;
 }
+
 .sideBarCard .ant-card-body {
   background-color: #dbdbdb !important;
 }
+
 .ant-tree-switcher {
   background-color: transparent !important;
   color: black !important;
@@ -74,9 +93,10 @@
 }
 
 .drawerButton {
+  box-shadow: 1px 1px 1px #888888 !important;
   position: fixed !important;
   top: 80px !important;
-  left: 0 !important;
+  left: -10px !important;
   z-index: 9000;
   width: 50px !important;
   height: 50px !important;
@@ -85,11 +105,160 @@
   border-left: 0;
   border-radius: 0;
 }
+
+.mediaCard {
+  font-weight: bold !important;
+}
+
+.mediaCard>.ant-card-body {
+  font-size: 1.1rem !important;
+}
+
+.mediaCard>.ant-card-head {
+  background: #DBDBDB !important;
+  color: #003478 !important;
+  font-weight: bold;
+}
+
+.mediaFile {
+  background: #004B87 !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 1921px) {
+
+  #layoutMainRow {
+    width: 1920px;
+    margin: 0 auto;
+  }
+
+}
+
 @media only screen and (min-width: 769px) {
+
+
   .drawerButton {
     display: none !important;
   }
+
+  .listRow,
+  .listRowMediaCol,
+  .summaryListImageContainer {
+    height: auto;
+
+  }
+
+  .mediaCard {
+    width: 180px;
+    float: right !important;
+
+  }
+
+
+  .listRow {
+    padding-bottom: 24px;
+
+    margin-top: 24px;
+    border-bottom: 1px solid #c5c7c7;
+
+  }
+
+
+  .summaryListImageContainer {
+    max-height: 220px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .summaryListImageContainer img {
+    object-fit: cover !important;
+    width: 80%;
+    max-width: 180px;
+    height: auto;
+
+  }
 }
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .homeCard {
+    height: auto !important;
+  }
+
+  .summaryImageContainer {
+    height: 65% !important;
+    background-size: auto 70% !important;
+
+  }
+
+  .summaryCard {
+    height: 100vw !important
+  }
+
+  .listRow,
+  .listRowMediaCol {
+    min-height: 220px;
+  }
+
+  .listRow {
+
+    border: 1px solid #c5c7c7;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    padding: 20px;
+
+    text-align: center;
+  }
+
+
+
+  .summaryListImageContainer {
+    min-height: 220px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .summaryListImageContainer img {
+    object-fit: cover !important;
+    width: 60%;
+    height: auto;
+
+  }
+
+  .mediaCard {
+    width: 190px;
+    margin: 0 auto !important;
+  }
+}
+
+@media screen and (min-device-width: 481px) and (max-device-width: 768px) {
+  .summaryCard {
+    height: 50vw !important
+  }
+
+  .listRow {
+    padding-bottom: 20px;
+
+    text-align: left;
+  }
+
+}
+
+@media only screen and (max-width: 580px) {
+  #summaryButtonGroup {
+    display: none !important;
+  }
+
+
+}
+
 
 .backTop {
   width: 50px !important;
@@ -99,7 +268,9 @@
   text-align: center;
   font-size: 25px !important;
   border-radius: 10% !important;
+  bottom: 100px !important;
 }
+
 .headerNavigation {
   color: white !important;
   font-weight: 600 !important;
@@ -114,22 +285,47 @@
   background-color: #2d96cd !important;
 }
 
-.homeCard {
+.homeCard,
+.summaryCard {
   border: 1px solid #e5e5e5 !important;
+
 }
 
-.homeCard:hover {
-  background: #dbdbdb !important;
+
+
+.summaryImageContainer {
+  height: 20vw;
+  max-height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 60%;
+  transition: all .3s;
+}
+
+.summaryImageContainer:hover {
+  transform: scale(1.05);
+}
+
+
+
+.cardImage {
+  object-fit: cover !important;
+  width: 100%;
+  height: auto;
 }
 
 .homeList {
   background: white !important;
   cursor: pointer;
+
 }
 
-.homeList:hover {
-  background: #e5e5e5 !important;
+.cardListImage img {
+  object-fit: cover !important;
+  width: 100%;
+  height: auto;
 }
+
 
 .card-header {
   background-color: #1b394e !important;
@@ -139,4 +335,58 @@
 .card-footer {
   background-color: white !important;
   color: white !important;
+}
+
+.reportTree svg {
+  margin-top: 5px !important;
+}
+
+
+#summary_report .ant-radio-button-wrapper>.ant-radio-button {
+  display: inherit !important
+}
+
+#summary_report .backTop svg {
+  margin-top: 12px !important;
+}
+
+.ant-radio-button-wrapper:hover {
+  color: #2d96cd !important;
+}
+
+.ant-radio-button-wrapper.ant-radio-button-wrapper-checked:hover {
+  color: white !important
+}
+
+#sumNavBar {
+  border-top: 1px solid #cccccc5e;
+  box-shadow: 5px 10px 18px #888888;
+  width: 100% !important;
+  height: 60px;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+
+
+}
+
+.sumNavBarButton {
+  border-radius: 0 !important;
+  height: 100% !important;
+  width: 25% !important;
+  border: 0 !important;
+  font-size: 20px !important;
+}
+
+#treeDrawer .ant-drawer-content-wrapper {
+  width: 100vw !important;
+  max-width: 700px !important;
+}
+
+.ant-pagination {
+  text-align: center !important;
+}
+
+.ant-pagination-item-link i {
+  margin-top: 10px !important;
 }

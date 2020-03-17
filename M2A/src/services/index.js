@@ -2,17 +2,18 @@ import X2JS from "../lib/xml2json.min";
 
 export const JSON_ARRAY_FIELD = [
   "report.item",
-  "report.item.item_box_group",
-  "report.item.item_subject_group",
   "report.filters.div.xml.filter",
   "report.filters.div.xml.filter.item_group"
 ];
 export function xmlToJson(xml, arrayForm) {
   let xmlText = new XMLSerializer().serializeToString(xml);
+
   var x2js = new X2JS({
     arrayAccessFormPaths: arrayForm
   });
+
   var jsonObj = x2js.xml_str2json(xmlText);
+
   return jsonObj;
 }
 

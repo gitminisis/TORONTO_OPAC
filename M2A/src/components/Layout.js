@@ -15,25 +15,32 @@ class PageLayout extends React.Component {
         <Layout>
           <Header />
           <PageDrawer />
-          <Row justify="center" align="middle">
-            <Col lg={6} md={0}></Col>
-            <Col
-              lg={12}
-              md={24}
-              style={{
-                paddingTop: "30px",
-                paddingBottom: "30px"
-              }}
-            >
+          <Row id="layoutMainRow">
+            <Col span={24}>
               {" "}
-              <SearchBar />
+              <Row justify="center" align="middle">
+                <Col
+                  lg={{ offset: 6, span: 12 }}
+                  md={24}
+                  style={{
+                    paddingTop: "30px",
+
+                    paddingBottom: "30px"
+                  }}
+                >
+                  {" "}
+                  <SearchBar />
+                </Col>
+              </Row>{" "}
+              <Row justify="center" align="middle">
+                <Col span={24}>{this.props.children}</Col>
+              </Row>
+              <BackTop className="backTop">
+                <Icon type="caret-up" />
+              </BackTop>
             </Col>
           </Row>
-          {this.props.children}
 
-          <BackTop className="backTop">
-            <Icon type="caret-up" />
-          </BackTop>
           <Footer />
         </Layout>
       </Layout>

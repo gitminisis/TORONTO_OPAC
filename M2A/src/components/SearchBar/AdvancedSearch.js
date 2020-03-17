@@ -93,8 +93,6 @@ class AdvancedSearch extends React.Component {
   };
 
   getCluster = (keyvalue, keyname, url) => {
-    console.log(keyvalue, keyname);
-    console.log(url);
     let data = `KEYNAME=${keyname}&KEYVALUE=${keyvalue}`;
     getCluster(url, data)
       .then(res => {
@@ -119,7 +117,6 @@ class AdvancedSearch extends React.Component {
   };
 
   selectCluster = (val, keyname) => {
-    console.log(val, keyname);
     let searchExp = this.state.searchExp;
     let field = searchExp.filter(
       e => e.field.toLowerCase() === keyname.toLowerCase()
@@ -135,7 +132,6 @@ class AdvancedSearch extends React.Component {
     let searchExp = this.state.searchExp;
     let searchInput = searchExp[index];
     searchInput[field] = value;
-    console.log(searchExp);
     this.setState({
       searchExp: searchExp
     });
@@ -148,56 +144,60 @@ class AdvancedSearch extends React.Component {
       data
         .map((exp, index) => ` ${exp.boolean} ${exp.field} "${exp.keyword}"`)
         .join(" ");
-    console.log(data);
     document.getElementById("advancedSearchInput").value = data;
     document.getElementById("advancedSearchForm").submit();
   };
   render() {
     let { searchExp } = this.state;
-    console.log(searchExp);
+
+    const session = document.getElementById("session-id").innerText;
     return (
-      <Collapse in={this.props.open}>
-        <Form>
-          <Form
-            hidden
-            method="POST"
-            id="advancedSearchForm"
-            action={this.props.action}
-          >
-            <Input name="KEYWORD" hidden id="advancedSearchInput" />
-          </Form>
-          <Card className="text-center">
-            <ClusterModal
-              open={this.state.openModal}
-              close={_ => this.closeModal()}
-              data={this.state.clusterList}
-              getCluster={this.getCluster}
-              pageAction={this.pageAction}
-              submit={this.selectCluster}
-            />
-            <Card.Header as="h4">Advanced Search</Card.Header>
-            <Card.Body>
-              <Form.Group>
-                {/* <RadioGroup name="FIELD_OP_1" /> */}
-                {this.state.searchExp.map((exp, index) => (
-                  <FieldGroup
-                    update={this.updateField}
-                    exp={exp}
-                    handleClick={field => this.openModal(exp)}
-                    form_name={exp.keyword}
-                    field={exp.title}
-                    val={this.state.searchExp[index].keyword}
-                    index={index}
-                  />
-                ))}
-              </Form.Group>
-            </Card.Body>
-            <Card.Footer>
-              <Button onClick={_ => this.submitSearch()}>Search</Button>
-            </Card.Footer>
-          </Card>
+      <>
+        {" "}
+        <Form
+          hidden
+          method="POST"
+          id="advancedSearchForm"
+          action={`${session}/1/1?SEARCH&DATABASE=DESCRIPTION_OPAC&ERRMSG=[FORD_OPAC]/no-record.html`}
+          method="POST"
+        >
+          <Input name="KEYWORD" hidden id="advancedSearchInput" />
         </Form>
-      </Collapse>
+        <Collapse in={this.props.open}>
+          <Form>
+            <Card className="text-center">
+              <ClusterModal
+                open={this.state.openModal}
+                close={_ => this.closeModal()}
+                data={this.state.clusterList}
+                getCluster={this.getCluster}
+                pageAction={this.pageAction}
+                submit={this.selectCluster}
+              />
+              <Card.Header as="h4">Advanced Search</Card.Header>
+              <Card.Body>
+                <Form.Group>
+                  {/* <RadioGroup name="FIELD_OP_1" /> */}
+                  {this.state.searchExp.map((exp, index) => (
+                    <FieldGroup
+                      update={this.updateField}
+                      exp={exp}
+                      handleClick={field => this.openModal(exp)}
+                      form_name={exp.keyword}
+                      field={exp.title}
+                      val={this.state.searchExp[index].keyword}
+                      index={index}
+                    />
+                  ))}
+                </Form.Group>
+              </Card.Body>
+              <Card.Footer>
+                <Button onClick={_ => this.submitSearch()}>Search</Button>
+              </Card.Footer>
+            </Card>
+          </Form>
+        </Collapse>
+      </>
     );
   }
 }

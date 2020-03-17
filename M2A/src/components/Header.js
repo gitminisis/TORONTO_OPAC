@@ -10,7 +10,7 @@ class PageHeader extends React.Component {
         {" "}
         <Header
           style={{
-            height: "100%",
+         
             paddingTop: "0",
             paddingBottom: "0",
             background: "#1B394E"
@@ -25,11 +25,7 @@ class PageHeader extends React.Component {
                 cursor: "pointer",
                 textAlign: "center"
               }}
-              onClick={_ =>
-                (window.location = `${
-                  document.getElementById("session-id").innerText
-                }?get&file=[MIT_ROOT]home.html`)
-              }
+              onClick={_ => (window.location = "/")}
             >
               <img
                 src={logo}
