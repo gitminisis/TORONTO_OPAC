@@ -4,14 +4,17 @@ const { Meta } = Card;
 import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
 import { FiCameraOff } from "react-icons/fi";
+import mustang from "../../assets/images/mustang.jpg";
 class GridView extends React.Component {
   render() {
     return new Array(12).fill("").map((item, index) => (
       <Col lg={8} md={12} xs={24}>
         <Card
           bordered
-          onClick={_ => {}}
-          className="summaryCard"
+          onClick={_ => {
+         
+          }}
+          className="homeCard"
           hoverable
           style={{
             width: "100%",
@@ -21,12 +24,12 @@ class GridView extends React.Component {
           }}
         >
           <div
-            className="summaryImageContainer"
+            className="homeImageContainer"
             style={{
-              backgroundImage: `url(https://pbs.twimg.com/media/EEEfO2JU8AApJZO.jpg)`
+              backgroundImage: `url(${index % 2 === 0 ? mustang : mustang})`
             }}
           ></div>
-          <Meta title={"FORD Mustang"} description={"Search FORD Mustang"} />
+          <Meta title={"Mustang"} description={"Mustang Car"} />
         </Card>
       </Col>
     ));

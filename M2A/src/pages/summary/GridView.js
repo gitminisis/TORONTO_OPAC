@@ -4,6 +4,7 @@ const { Meta } = Card;
 import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
 import { FiCameraOff } from "react-icons/fi";
+
 class GridView extends React.Component {
   render() {
     let { data } = this.props;
@@ -27,11 +28,7 @@ class GridView extends React.Component {
               backgroundImage: `url(${index % 2 === 0 ? FordCar : noImage})`
             }}
           ></div>
-          <Meta
-          
-            title={item.item_title}
-            description={item.item_level_desc}
-          />
+          <Meta title={item.item_title} description={item.item_level_desc} />
         </Card>
       </Col>
     ));

@@ -4,6 +4,7 @@ const { Meta } = Card;
 import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
 import { FiCameraOff } from "react-icons/fi";
+import mustang from "../../assets/images/mustang.jpg";
 const gridStyle = {
   width: "50%",
   textAlign: "center"
@@ -16,15 +17,13 @@ class ListView extends React.Component {
         size="large"
         dataSource={new Array(12).fill("")}
         renderItem={(item, index) => (
-          <Row className="listRow" gutter={8}>
+          <Row className="listRow" gutter={0}>
             <Col lg={5} md={10} className="listRowMediaCol">
               {" "}
               <Row>
                 {" "}
                 <Col span={24} className="summaryListImageContainer">
-                  <img
-                    src={"https://pbs.twimg.com/media/EEEfO2JU8AApJZO.jpg"}
-                  />
+                  <img src={mustang} />
                 </Col>
               </Row>
             </Col>

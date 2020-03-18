@@ -3,11 +3,9 @@
   font-family: "AntennaBold";
 
   src:
-    /*IE8*/
-    url("./85bf2123-24cb-4bfd-a720-efe63c68c84d-3.woff") format("woff");
+    /*IE8*/ url("./85bf2123-24cb-4bfd-a720-efe63c68c84d-3.woff")
+    format("woff");
 }
-
-
 
 @font-face {
   /* Antenna Light */
@@ -23,7 +21,6 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-
 }
 
 /* Handle */
@@ -35,7 +32,6 @@
 * {
   font-family: "Antenna", Arial, Helvetica, sans-serif;
 }
-
 
 .btn-primary,
 .ant-btn-primary,
@@ -110,34 +106,30 @@
   font-weight: bold !important;
 }
 
-.mediaCard>.ant-card-body {
+.mediaCard > .ant-card-body {
   font-size: 1.1rem !important;
 }
 
-.mediaCard>.ant-card-head {
-  background: #DBDBDB !important;
+.mediaCard > .ant-card-head {
+  background: #dbdbdb !important;
   color: #003478 !important;
   font-weight: bold;
 }
 
 .mediaFile {
-  background: #004B87 !important;
+  background: #004b87 !important;
   color: white !important;
   font-weight: bold;
 }
 
 @media only screen and (min-width: 1921px) {
-
   #layoutMainRow {
     width: 1920px;
     margin: 0 auto;
   }
-
 }
 
 @media only screen and (min-width: 769px) {
-
-
   .drawerButton {
     display: none !important;
   }
@@ -146,24 +138,19 @@
   .listRowMediaCol,
   .summaryListImageContainer {
     height: auto;
-
   }
 
   .mediaCard {
     width: 180px;
     float: right !important;
-
   }
-
 
   .listRow {
     padding-bottom: 24px;
 
     margin-top: 24px;
     border-bottom: 1px solid #c5c7c7;
-
   }
-
 
   .summaryListImageContainer {
     max-height: 220px;
@@ -178,14 +165,10 @@
     width: 80%;
     max-width: 180px;
     height: auto;
-
   }
 }
 
-
-
 @media only screen and (max-width: 768px) {
-
   .homeCard {
     height: auto !important;
   }
@@ -193,11 +176,14 @@
   .summaryImageContainer {
     height: 65% !important;
     background-size: auto 70% !important;
-
+  }
+  .homeImageContainer {
+    height: 65vw !important;
   }
 
-  .summaryCard {
-    height: 100vw !important
+  .summaryCard,
+  .homeCard {
+    height: 100vw !important;
   }
 
   .listRow,
@@ -206,7 +192,6 @@
   }
 
   .listRow {
-
     border: 1px solid #c5c7c7;
     margin-bottom: 12px;
     margin-top: 12px;
@@ -214,8 +199,6 @@
 
     text-align: center;
   }
-
-
 
   .summaryListImageContainer {
     min-height: 220px;
@@ -229,7 +212,6 @@
     object-fit: cover !important;
     width: 60%;
     height: auto;
-
   }
 
   .mediaCard {
@@ -239,8 +221,9 @@
 }
 
 @media screen and (min-device-width: 481px) and (max-device-width: 768px) {
-  .summaryCard {
-    height: 50vw !important
+  .summaryCard,
+  .homeCard {
+    height: 50vw !important;
   }
 
   .listRow {
@@ -248,17 +231,13 @@
 
     text-align: left;
   }
-
 }
 
 @media only screen and (max-width: 580px) {
   #summaryButtonGroup {
     display: none !important;
   }
-
-
 }
-
 
 .backTop {
   width: 50px !important;
@@ -288,25 +267,21 @@
 .homeCard,
 .summaryCard {
   border: 1px solid #e5e5e5 !important;
-
 }
 
-
-
-.summaryImageContainer {
+.summaryImageContainer,
+.homeImageContainer {
   height: 20vw;
   max-height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 60%;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .summaryImageContainer:hover {
   transform: scale(1.05);
 }
-
-
 
 .cardImage {
   object-fit: cover !important;
@@ -317,7 +292,6 @@
 .homeList {
   background: white !important;
   cursor: pointer;
-
 }
 
 .cardListImage img {
@@ -325,7 +299,6 @@
   width: 100%;
   height: auto;
 }
-
 
 .card-header {
   background-color: #1b394e !important;
@@ -341,9 +314,8 @@
   margin-top: 5px !important;
 }
 
-
-#summary_report .ant-radio-button-wrapper>.ant-radio-button {
-  display: inherit !important
+#summary_report .ant-radio-button-wrapper > .ant-radio-button {
+  display: inherit !important;
 }
 
 #summary_report .backTop svg {
@@ -355,7 +327,7 @@
 }
 
 .ant-radio-button-wrapper.ant-radio-button-wrapper-checked:hover {
-  color: white !important
+  color: white !important;
 }
 
 #sumNavBar {
@@ -366,8 +338,6 @@
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
-
-
 }
 
 .sumNavBarButton {
