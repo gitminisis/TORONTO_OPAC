@@ -2,6 +2,10 @@ import React from "react";
 import PageLayout from "../../components/Layout";
 import { xmlToJson } from "../../services";
 import { Row, Col, Descriptions, Card } from "antd";
+import { extractData } from "../../services/m2a";
+import Data from "./Data";
+import Carousel from "./Carousel";
+import Media from "./Media";
 class Detail extends React.Component {
   constructor(props) {
     super(props);
@@ -15,41 +19,24 @@ class Detail extends React.Component {
     this.tree = React.createRef();
   }
   render() {
-    let { data } = this.state;
-    console.log(data);
+    let rawData = this.state.data;
+
     return (
       <PageLayout>
         <Row>
           {" "}
           <Col lg={{ span: 18, offset: 3 }} md={24}>
             <Card style={{ width: "100%" }}>
-              <Row>
-                <Col md={24} lg={10}>
-                  <Descriptions
-                    title={data.item.item_title}
-                    bordered
-                    column={1}
-                  >
-                    <Descriptions.Item label="Reference Code">
-                      {data.item.item_id}
-                    </Descriptions.Item>
-                    <Descriptions.Item label="Date of Creation">
-                      {data.item.item_date}
-                    </Descriptions.Item>
-
-                    {data.item.item_subject ? (
-                      <Descriptions.Item label="Subject(s)">
-                        {data.item.item_subject.map(e => (
-                          <>
-                            {e}
-                            <br />
-                          </>
-                        ))}
-                      </Descriptions.Item>
-                    ) : null}
-                  </Descriptions>
+              <Row gutter={16}>
+                <Col md={24} lg={10} id="detailDescriptions">
+                  <Data data={rawData} />
                 </Col>
-                <Col md={24} lg={14}></Col>
+                <Col md={24} lg={14}>
+                  <Carousel />
+                </Col>
+                <Col span={24}>
+                  <Media />
+                </Col>
               </Row>
             </Card>
           </Col>

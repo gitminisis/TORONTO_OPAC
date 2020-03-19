@@ -9,7 +9,6 @@ export function save(src) {
 
   assets = JSON.parse(assets);
   if (assets.filter(e => e === src).length > 0) {
-    
     return false;
   }
   assets.unshift(src);
@@ -24,7 +23,6 @@ export function deleteItem(src) {
 
   assets = JSON.parse(assets);
   assets = assets.filter(e => {
-   
     return e !== src;
   });
   assets = JSON.stringify(assets);

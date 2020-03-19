@@ -11,9 +11,7 @@ class GridView extends React.Component {
       <Col lg={8} md={12} xs={24}>
         <Card
           bordered
-          onClick={_ => {
-         
-          }}
+          onClick={_ => {}}
           className="homeCard"
           hoverable
           style={{
@@ -29,7 +27,7 @@ class GridView extends React.Component {
               backgroundImage: `url(${index % 2 === 0 ? mustang : mustang})`
             }}
           ></div>
-          <Meta title={"Mustang"} description={"Mustang Car"} />
+          <Meta title="FORD Mustang" description="SEDAN COLLECTION" />
         </Card>
       </Col>
     ));

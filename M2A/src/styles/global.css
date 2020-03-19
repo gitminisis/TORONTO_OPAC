@@ -1,3 +1,4 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
 @font-face {
   /* Antenna Bold */
   font-family: "AntennaBold";
@@ -359,4 +360,23 @@
 
 .ant-pagination-item-link i {
   margin-top: 10px !important;
+}
+
+#detailDescriptions .ant-descriptions-item-label {
+  width: 25% !important;
+  max-width: 200px !important;
+}
+
+#detailDescriptions th,
+#detailDescriptions td {
+  padding: 10px !important;
+}
+
+#detailCarousel {
+  margin-top: 44px !important;
+}
+
+#mediaTabs svg {
+  margin-bottom: 5px !important;
+  font-size: 20px !important;
 }
