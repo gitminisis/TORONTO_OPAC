@@ -4,6 +4,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
+          options: {
+            attrs: [":src"]
+          }
+        }
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
@@ -27,10 +36,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|jpeg|png|svg)$/,
+        test: /\.(jpg|jpeg|png|svg|mp4|mp3)$/,
         loader: "url-loader",
         options: {
-          limit: 1024 * 500
+          limit: 1024 * 5000,
+          name: "m2a/dist/[hash].[ext]"
         }
       }
     ]
