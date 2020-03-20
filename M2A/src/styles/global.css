@@ -181,10 +181,16 @@
   .homeImageContainer {
     height: 65vw !important;
   }
+  .detailImageContainer {
+    background-size: auto 100% !important;
+  }
 
   .summaryCard,
   .homeCard {
     height: 100vw !important;
+  }
+  .detailCard {
+    height: auto !important;
   }
 
   .listRow,
@@ -226,7 +232,9 @@
   .homeCard {
     height: 50vw !important;
   }
-
+  .detailCard {
+    height: auto !important;
+  }
   .listRow {
     padding-bottom: 20px;
 
@@ -266,10 +274,14 @@
 }
 
 .homeCard,
-.summaryCard {
+.summaryCard,
+.detailCard {
   border: 1px solid #e5e5e5 !important;
 }
 
+.detailCard .ant-card-body {
+  padding: 20 !important;
+}
 .summaryImageContainer,
 .homeImageContainer {
   height: 20vw;
@@ -279,7 +291,14 @@
   background-size: auto 60%;
   transition: all 0.3s;
 }
+.detailImageContainer {
+  height: 200px;
 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 80%;
+  transition: all 0.3s;
+}
 .summaryImageContainer:hover {
   transform: scale(1.05);
 }
@@ -319,7 +338,8 @@
   display: inherit !important;
 }
 
-#summary_report .backTop svg {
+#summary_report .backTop svg,
+#detail_report .backTop svg {
   margin-top: 12px !important;
 }
 

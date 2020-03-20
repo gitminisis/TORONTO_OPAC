@@ -46,7 +46,7 @@ class ListView extends React.Component {
                       }
                       description={`Level: ${item.item_level_desc}`}
                     />
-                    <p> {`Reference Code: ${item.item_id}`}</p>
+                    <p> {`Reference Code: ${item.item_refd}`}</p>
                   </List.Item>
                 </Col>
                 <Col lg={8} md={12}>
