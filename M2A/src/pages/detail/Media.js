@@ -5,6 +5,8 @@ const { TabPane } = Tabs;
 import { save } from "../../services/savedBag";
 import Image from "./Image";
 import Video from "./Video";
+import Audio from "./Audio";
+import Text from "./Text";
 class Media extends React.Component {
   render() {
     let image = [
@@ -14,7 +16,7 @@ class Media extends React.Component {
       "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2020/gt500/exterior/DSC09949_2.jpg/_jcr_content/renditions/cq5dam.web.374.210.jpeg"
     ];
 
-    let audio = [];
+    let audio = ["s"];
 
     let video = [
       "blob:https://media.ford.com/2ebe498a-3db7-4a8a-b777-635ab52288bc"
@@ -35,9 +37,7 @@ class Media extends React.Component {
             key="1"
           >
             <Row gutter={16}>
-              {image.map(item => (
-                <Image item={item}></Image>
-              ))}
+              <Image item={image}></Image>
             </Row>
           </TabPane>
           <TabPane
@@ -49,9 +49,7 @@ class Media extends React.Component {
             key="2"
           >
             <Row gutter={16}>
-              {video.map(item => (
-                <Video item={item} />
-              ))}
+              <Video item={video} />
             </Row>
           </TabPane>
           <TabPane
@@ -61,7 +59,12 @@ class Media extends React.Component {
               </span>
             }
             key="3"
-          ></TabPane>
+          >
+            {" "}
+            <Row gutter={16}>
+              <Audio item={audio} />
+            </Row>
+          </TabPane>
           <TabPane
             tab={
               <span>
@@ -69,7 +72,12 @@ class Media extends React.Component {
               </span>
             }
             key="4"
-          ></TabPane>
+          >
+            {" "}
+            <Row gutter={16}>
+              <Text item={text} />
+            </Row>
+          </TabPane>
         </Tabs>
       </div>
     );

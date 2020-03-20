@@ -396,7 +396,12 @@
   margin-top: 44px !important;
 }
 
-#mediaTabs svg {
+#mediaTabs .ant-tabs-bar svg {
   margin-bottom: 5px !important;
   font-size: 20px !important;
+}
+
+.noMedia {
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
 }

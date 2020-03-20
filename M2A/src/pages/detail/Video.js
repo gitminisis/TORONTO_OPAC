@@ -2,13 +2,13 @@ import React from "react";
 import { Tabs, Icon, Col, Row, Card, Tooltip, message, Empty } from "antd";
 import { save } from "../../services/savedBag";
 import video from "../../assets/video/video.mp4";
-class Image extends React.Component {
+class Video extends React.Component {
   render() {
-    let item = this.props.item;
-    if (item.length === 0) {
-      return <Empty />;
+    let data = this.props.item;
+    if (data.length === 0) {
+      return <Empty className="noMedia" />;
     }
-    return (
+    return data.map(item => (
       <Col xl={8} lg={12} md={12} sm={24}>
         <Card
           bordered
@@ -58,8 +58,8 @@ class Image extends React.Component {
           </div>
         </Card>
       </Col>
-    );
+    ));
   }
 }
 
-export default Image;
+export default Video;
