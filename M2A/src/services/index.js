@@ -3,7 +3,8 @@ import X2JS from "../lib/xml2json.min";
 export const JSON_ARRAY_FIELD = [
   "report.item",
   "report.filters.div.xml.filter",
-  "report.filters.div.xml.filter.item_group"
+  "report.filters.div.xml.filter.item_group",
+  "report.item.item_subject"
 ];
 export function xmlToJson(xml, arrayForm) {
   let xmlText = new XMLSerializer().serializeToString(xml);

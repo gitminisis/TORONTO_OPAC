@@ -1,4 +1,5 @@
 export function extractData(item) {
+  console.log(item);
   return {
     item_sisn: item.item_sisn,
     item_refd: item.item_refd,

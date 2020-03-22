@@ -400,7 +400,9 @@
   margin-bottom: 5px !important;
   font-size: 20px !important;
 }
-
+.detailCard.ant-card-actions svg{
+  margin-bottom: 5px !important;
+}
 .noMedia {
   margin-top: 50px !important;
   margin-bottom: 50px !important;

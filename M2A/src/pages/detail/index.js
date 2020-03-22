@@ -11,7 +11,7 @@ class Detail extends React.Component {
     super(props);
     let xml = document.querySelector("#detail_xml");
 
-    let json = xmlToJson(xml, "report.item", "report.item.item_subject");
+    let json = xmlToJson(xml,"report.item.item_subject", "report.item", "report.item.item_subject");
 
     this.state = {
       data: json.report
@@ -20,7 +20,7 @@ class Detail extends React.Component {
   }
   render() {
     let rawData = this.state.data;
-
+    console.log(rawData)
     return (
       <PageLayout>
         <Row>
