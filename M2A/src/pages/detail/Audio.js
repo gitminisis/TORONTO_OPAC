@@ -6,7 +6,7 @@ class Audio extends React.Component {
   render() {
     let data = this.props.item;
     if (data.length === 0) {
-        return <Empty className="noMedia" />;
+      return <Empty className="noMedia" />;
     }
     return data.map(item => (
       <Col xl={8} lg={12} md={12} sm={24}>
