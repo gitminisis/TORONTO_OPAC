@@ -27,6 +27,8 @@ import ListView from "./ListView";
 const { Meta } = Card;
 const { Option } = Select;
 import Filter from "./Filter";
+import Sort from "./Sort";
+import SortDrawer from "../../components/SortDrawer";
 class Summary extends React.Component {
   constructor(props) {
     super(props);
@@ -40,12 +42,16 @@ class Summary extends React.Component {
     };
     this.tree = React.createRef();
     this.filter = React.createRef();
+    this.sort = React.createRef();
   }
   openTree = _ => {
     this.tree.current.showDrawer();
   };
   openFilter = _ => {
     this.filter.current.showDrawer();
+  };
+  openSort = _ => {
+    this.sort.current.showDrawer();
   };
   render() {
     let searchLink = document.getElementById("search-link").innerText;
@@ -92,6 +98,7 @@ class Summary extends React.Component {
                   >
                     {" "}
                     <Filter data={data.filters.div.xml.filter} />
+                    <Sort data={data.sorts} />
                     <Row>
                       {" "}
                       <Col lg={{ span: 8, offset: 16 }} md={{ span: 24 }}>
@@ -120,6 +127,10 @@ class Summary extends React.Component {
                             data={data.filters.div.xml.filter}
                             ref={this.filter}
                           ></FilterDrawer>
+                          <SortDrawer
+                            data={data.sorts}
+                            ref={this.sort}
+                          ></SortDrawer>
                         </div>
                       </Col>
                       <Col span={24}>
@@ -151,7 +162,11 @@ class Summary extends React.Component {
                         >
                           <MdTune />
                         </Button>
-                        <Button sm={6} className="mobileNavBarButton">
+                        <Button
+                          sm={6}
+                          className="mobileNavBarButton"
+                          onClick={this.openSort}
+                        >
                           <MdSort />
                         </Button>
                         <Button
