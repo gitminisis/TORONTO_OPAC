@@ -217,7 +217,7 @@
 
   .summaryListImageContainer img {
     object-fit: cover !important;
-    width: 60%;
+    width: 80%;
     height: auto;
   }
 
@@ -407,10 +407,32 @@
   margin-bottom: 5px !important;
   font-size: 20px !important;
 }
+
 .detailCard li svg {
   margin-bottom: 6px !important;
 }
+
 .noMedia {
   margin-top: 50px !important;
   margin-bottom: 50px !important;
+}
+
+.summaryMedia {
+  text-align: center;
+  margin: 0 auto !important;
+}
+.summaryMediaCard {
+  font-size: 1.2rem !important;
+  width: 80% !important;
+  margin: 0 auto !important;
+}
+.summaryMediaCard .ant-card-actions > li > span:hover {
+  color: rgba(0, 0, 0, 0.45) !important;
+}
+.summaryMedia .ant-card-body {
+  display: none !important;
+}
+
+.hasMedia {
+  color: #004b87 !important;
 }

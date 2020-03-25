@@ -4,6 +4,7 @@ const { Meta } = Card;
 import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
 import { FiCameraOff } from "react-icons/fi";
+import { FaImage, FaVolumeUp, FaPlayCircle, FaFileAlt } from "react-icons/fa";
 const gridStyle = {
   width: "50%",
   textAlign: "center"
@@ -24,11 +25,28 @@ class ListView extends React.Component {
         renderItem={(item, index) => (
           <Row className="listRow" gutter={8}>
             <Col lg={5} md={10} className="listRowMediaCol">
-              {" "}
               <Row>
-                {" "}
                 <Col span={24} className="summaryListImageContainer">
                   <img src={index % 2 === 0 ? FordCar : noImage} />
+                </Col>
+                <Col span={24} className="summaryMedia">
+                  <Card
+                    className="summaryMediaCard"
+                    actions={[
+                      <span className={index % 2 === 0 ? "hasMedia" : ""}>
+                        <FaImage />
+                      </span>,
+                      <span>
+                        <FaVolumeUp />
+                      </span>,
+                      <span>
+                        <FaPlayCircle />
+                      </span>,
+                      <span>
+                        <FaFileAlt />
+                      </span>
+                    ]}
+                  ></Card>
                 </Col>
               </Row>
             </Col>
@@ -48,28 +66,6 @@ class ListView extends React.Component {
                     />
                     <p> {`Reference Code: ${item.item_refd}`}</p>
                   </List.Item>
-                </Col>
-                <Col lg={8} md={12}>
-                  {" "}
-                  <Card title="Media" className="mediaCard">
-                    <Card.Grid
-                      hoverable={false}
-                      style={gridStyle}
-                      className={index % 2 === 0 ? "mediaFile" : ""}
-                    >
-                      <Icon type="picture" />
-                    </Card.Grid>
-
-                    <Card.Grid hoverable={false} style={gridStyle}>
-                      <Icon type="audio" />
-                    </Card.Grid>
-                    <Card.Grid hoverable={false} style={gridStyle}>
-                      <Icon type="video-camera" />
-                    </Card.Grid>
-                    <Card.Grid hoverable={false} style={gridStyle}>
-                      <Icon type="file-text" />
-                    </Card.Grid>
-                  </Card>
                 </Col>
               </Row>
             </Col>
