@@ -6,6 +6,8 @@ export const JSON_ARRAY_FIELD = [
   "report.filters.div.xml.filter.item_group",
   "report.item.item_subject"
 ];
+
+export const DETAIL_JSON_ARRAY_FIELD = ["report.item.item_subject"];
 export function xmlToJson(xml, arrayForm) {
   let xmlText = new XMLSerializer().serializeToString(xml);
 

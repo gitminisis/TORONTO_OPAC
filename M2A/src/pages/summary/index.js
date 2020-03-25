@@ -143,27 +143,27 @@ class Summary extends React.Component {
                           />
                         ) : null} */}
                       </Col>
-                      <Col sm={24} md={0} lg={0} id="sumNavBar">
+                      <Col sm={24} md={0} lg={0} id="mobileNavBar">
                         <Button
                           sm={6}
-                          className="sumNavBarButton"
+                          className="mobileNavBarButton"
                           onClick={this.openFilter}
                         >
                           <MdTune />
                         </Button>
-                        <Button sm={6} className="sumNavBarButton">
+                        <Button sm={6} className="mobileNavBarButton">
                           <MdSort />
                         </Button>
                         <Button
                           sm={6}
-                          className="sumNavBarButton"
+                          className="mobileNavBarButton"
                           onClick={this.openTree}
                         >
                           <FaTree />
                         </Button>
                         <Button
                           sm={6}
-                          className="sumNavBarButton"
+                          className="mobileNavBarButton"
                           onClick={_ =>
                             this.setState({ grid: !this.state.grid })
                           }

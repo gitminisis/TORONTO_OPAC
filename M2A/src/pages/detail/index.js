@@ -1,17 +1,19 @@
 import React from "react";
 import PageLayout from "../../components/Layout";
 import { xmlToJson } from "../../services";
-import { Row, Col, Descriptions, Card } from "antd";
+import { Row, Col, Descriptions, Card, Button, Icon } from "antd";
 import { extractData } from "../../services/m2a";
 import Data from "./Data";
 import Carousel from "./Carousel";
 import Media from "./Media";
+import { DETAIL_JSON_ARRAY_FIELD } from "../../services/index";
+import { FaTree } from "react-icons/fa";
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     let xml = document.querySelector("#detail_xml");
 
-    let json = xmlToJson(xml,"report.item.item_subject", "report.item", "report.item.item_subject");
+    let json = xmlToJson(xml, DETAIL_JSON_ARRAY_FIELD);
 
     this.state = {
       data: json.report
@@ -20,7 +22,7 @@ class Detail extends React.Component {
   }
   render() {
     let rawData = this.state.data;
-    console.log(rawData)
+    console.log(rawData);
     return (
       <PageLayout>
         <Row>
@@ -39,6 +41,22 @@ class Detail extends React.Component {
                 </Col>
               </Row>
             </Card>
+          </Col>
+          <Col sm={24} md={0} lg={0} id="mobileNavBar">
+            <Button sm={8} className="detailMobileNavBarButton">
+              <Icon type="arrow-left" />
+            </Button>
+
+            <Button sm={8} className="detailMobileNavBarButton">
+              <Icon type="book" />
+            </Button>
+            <Button
+              sm={8}
+              className="detailMobileNavBarButton"
+              onClick={this.openTree}
+            >
+              <FaTree />
+            </Button>
           </Col>
         </Row>
       </PageLayout>
