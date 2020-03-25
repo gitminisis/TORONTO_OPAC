@@ -1,49 +1,49 @@
 import { message } from "antd";
 
-export function save(src) {
-  if (!localStorage.getItem("asset")) {
-    localStorage.setItem("asset", "[]");
+export function save(src, type) {
+  if (!localStorage.getItem(type)) {
+    localStorage.setItem(type, "[]");
   }
 
-  let assets = localStorage.getItem("asset");
+  let media = localStorage.getItem(type);
 
-  assets = JSON.parse(assets);
-  if (assets.filter(e => e === src).length > 0) {
+  media = JSON.parse(media);
+  if (media.filter(e => e === src).length > 0) {
     return false;
   }
-  assets.unshift(src);
-  assets = JSON.stringify(assets);
-  localStorage.setItem("asset", assets);
+  media.unshift(src);
+  media = JSON.stringify(media);
+  localStorage.setItem(type, media);
 
   return true;
 }
 
-export function deleteItem(src) {
-  let assets = localStorage.getItem("asset");
+export function deleteItem(src, type) {
+  let media = localStorage.getItem(type);
 
-  assets = JSON.parse(assets);
-  assets = assets.filter(e => {
+  media = JSON.parse(media);
+  media = media.filter(e => {
     return e !== src;
   });
-  assets = JSON.stringify(assets);
+  media = JSON.stringify(media);
 
-  localStorage.setItem("asset", assets);
+  localStorage.setItem(type, media);
 }
 
-export function getAll() {
-  if (!localStorage.getItem("asset")) {
-    localStorage.setItem("asset", "[]");
+export function getAll(type) {
+  if (!localStorage.getItem(type)) {
+    localStorage.setItem(type, "[]");
     return [];
   }
 
-  let assets = localStorage.getItem("asset");
-  assets = JSON.parse(assets);
-  console.log(assets);
-  return assets;
+  let media = localStorage.getItem(type);
+  media = JSON.parse(media);
+  console.log(media);
+  return media;
 }
 
-export function removeAll() {
-  localStorage.setItem("asset", "[]");
+export function removeAll(type) {
+  localStorage.setItem(type, "[]");
   return true;
 }
 export function copyURL(domId) {
