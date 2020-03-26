@@ -246,6 +246,11 @@
   #summaryButtonGroup {
     display: none !important;
   }
+
+  .summaryFilter,
+  .summarySort {
+    display: none !important;
+  }
 }
 
 .backTop {
@@ -439,3 +444,4 @@
 .hasMedia {
   color: #004b87 !important;
 }
+

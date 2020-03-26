@@ -31,10 +31,11 @@ class Sort extends React.Component {
   };
   render() {
     let { data } = this.props;
-   
+
     let current = data.current;
     return (
       <Collapse
+        className="summarySort"
         style={{ marginTop: "20px" }}
         expandIconPosition={"right"}
         expandIcon={({ isActive }) =>

@@ -8,7 +8,8 @@ import {
   Switch,
   Card,
   Checkbox,
-  Button,Drawer,
+  Button,
+  Drawer,
   Icon
 } from "antd";
 const { SubMenu } = Menu;
@@ -38,6 +39,7 @@ class Filter extends React.Component {
     console.log(data);
     return (
       <Collapse
+        className="summaryFilter"
         expandIconPosition={"right"}
         expandIcon={({ isActive }) =>
           isActive ? <Icon type="minus" /> : <Icon type="plus" />
@@ -77,7 +79,7 @@ class Filter extends React.Component {
                     </Panel>
                   </Collapse>
                 </Col>
-                <Col xl={0} lg={0} md={24} sm={24} xs={24}>
+                <Col xl={0} lg={0} md={0} sm={0} xs={0}>
                   <Card
                     onClick={_ => this.toggleFilter(index)}
                     title={item_group._title}
@@ -88,7 +90,6 @@ class Filter extends React.Component {
                   <Drawer
                     title={item_group._title}
                     placement={"right"}
-                  
                     onClose={this.onClose}
                     visible={this.state.open}
                   >

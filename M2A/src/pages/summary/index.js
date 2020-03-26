@@ -56,7 +56,7 @@ class Summary extends React.Component {
   render() {
     let searchLink = document.getElementById("search-link").innerText;
     let { data } = this.state;
-
+    console.log(data);
     return (
       <PageLayout>
         <Row>
@@ -65,6 +65,7 @@ class Summary extends React.Component {
               <Row>
                 <Col span={24}>
                   <Card
+                  className="summaryHeader"
                     title={
                       <h4>
                         {data.record_count} results for "{data.search_statement}
@@ -104,24 +105,6 @@ class Summary extends React.Component {
                       <Col lg={{ span: 8, offset: 16 }} md={{ span: 24 }}>
                         {" "}
                         <div style={{ float: "right", maxWidth: "420px" }}>
-                          {" "}
-                          {/* <Select
-                            defaultValue="default"
-                            style={{ width: "200px" }}
-                          >
-                            <Option value="default">Relevance</Option>
-                            <Option value="title">Title</Option>
-                            <Option value="date-asc">Date Ascending</Option>
-                            <Option value="date-desc">Date Descending</Option>
-                          <Option value="location-asc">
-                              Location Ascending
-                            </Option>
-                            <Option value="location-desc">
-                              Location Descending
-                            </Option>
-                            <Option value="box">box</Option>
-                            <Option value="folder">Folder</Option>
-                          </Select> */}
                           <Tree ref={this.tree}></Tree>
                           <FilterDrawer
                             data={data.filters.div.xml.filter}

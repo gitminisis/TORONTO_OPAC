@@ -155,12 +155,10 @@ class TreeView extends React.Component {
   componentWillUpdate() {
     window.addEventListener("touchmove", ontouchmove);
     function ontouchmove(e) {
-
       if (e.cancelable) {
         e.preventDefault();
         e.stopPropagation();
         return false;
-
       }
     }
   }
@@ -235,7 +233,6 @@ class TreeView extends React.Component {
           onClose={this.onClose}
           visible={this.state.visible}
           draggable={true}
-         
         >
           {" "}
           {/* <Search
