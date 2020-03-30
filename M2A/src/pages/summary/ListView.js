@@ -5,6 +5,7 @@ import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
 import { FiCameraOff } from "react-icons/fi";
 import { FaImage, FaVolumeUp, FaPlayCircle, FaFileAlt } from "react-icons/fa";
+import { extractData, getFirstImage } from "../../services/m2a";
 const gridStyle = {
   width: "50%",
   textAlign: "center"
@@ -12,11 +13,12 @@ const gridStyle = {
 class ListView extends React.Component {
   render() {
     let { data } = this.props;
+    let dataJson = data.item.map(item => extractData(item));
     return (
       <List
         itemLayout="vertical"
         size="large"
-        dataSource={data.item}
+        dataSource={dataJson}
         footer={
           <div>
             <b>ant design</b> footer part
@@ -27,13 +29,15 @@ class ListView extends React.Component {
             <Col lg={5} md={10} className="listRowMediaCol">
               <Row>
                 <Col span={24} className="summaryListImageContainer">
-                  <img src={index % 2 === 0 ? FordCar : noImage} />
+                  <img
+                    src={getFirstImage(item) ? getFirstImage(item) : noImage}
+                  />
                 </Col>
                 <Col span={24} className="summaryMedia">
                   <Card
                     className="summaryMediaCard"
                     actions={[
-                      <span className={index % 2 === 0 ? "hasMedia" : ""}>
+                      <span className={getFirstImage(item) ? "hasMedia" : ""}>
                         <FaImage />
                       </span>,
                       <span>
@@ -55,16 +59,22 @@ class ListView extends React.Component {
               <Row>
                 <Col lg={16} md={24}>
                   {" "}
-                  <List.Item key={item.item_sisn}>
+                  <List.Item key={item.data.item_sisn.value}>
                     <List.Item.Meta
                       title={
                         <a href={item.item_link}>
-                          <strong>{item.item_title}</strong>
+                          <strong>{item.data.item_title.value}</strong>
                         </a>
                       }
-                      description={`Level: ${item.item_level_desc}`}
+                      description={`Level: ${item.data.item_level_desc.value}`}
                     />
-                    <p> {`Reference Code: ${item.item_refd}`}</p>
+                    <p> {`Reference Code: ${item.data.item_refd.value}`}</p>
+                    {item.data.item_location.value.map((e, i) => {
+                      if (i === 0) {
+                        return <p>{`Location: ${e}`}</p>;
+                      }
+                      return <p>{e}</p>;
+                    })}
                   </List.Item>
                 </Col>
               </Row>

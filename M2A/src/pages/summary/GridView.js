@@ -4,11 +4,14 @@ const { Meta } = Card;
 import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
 import { FiCameraOff } from "react-icons/fi";
-
+import { extractData, getFirstImage } from "../../services/m2a";
 class GridView extends React.Component {
   render() {
     let { data } = this.props;
-    return data.item.map((item, index) => (
+    let dataJson = data.item.map(item => extractData(item));
+    console.log(dataJson);
+
+    return dataJson.map((item, index) => (
       <Col lg={8} md={12} xs={24}>
         <Card
           bordered
@@ -25,10 +28,15 @@ class GridView extends React.Component {
           <div
             className="summaryImageContainer"
             style={{
-              backgroundImage: `url(${index % 2 === 0 ? FordCar : noImage})`
+              backgroundImage: `url(${
+                getFirstImage(item) ? getFirstImage(item) : noImage
+              })`
             }}
           ></div>
-          <Meta title={item.item_title} description={item.item_level_desc} />
+          <Meta
+            title={item.data.item_title.value}
+            description={item.data.item_level_desc.value}
+          />
         </Card>
       </Col>
     ));
