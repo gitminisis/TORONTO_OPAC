@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Card, List, Avatar, Icon } from "antd";
+import { Row, Col, Card, List, Avatar, Icon, Button } from "antd";
 const { Meta } = Card;
 import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
@@ -20,8 +20,25 @@ class ListView extends React.Component {
         size="large"
         dataSource={dataJson}
         footer={
-          <div>
-            <b>ant design</b> footer part
+          <div id="listViewFooter" style={{ textAlign: "center" }}>
+            <Button.Group>
+              <Button
+                type="primary"
+                disabled={!data.prev_page}
+                href={data.prev_page ? data.prev_page.a._href : "#"}
+              >
+                <Icon type="left" />
+                Prev.
+              </Button>
+              <Button
+                type="primary"
+                disabled={!data.next_page}
+                href={data.next_page ? data.next_page.a._href : "#"}
+              >
+                Next
+                <Icon type="right" />
+              </Button>
+            </Button.Group>
           </div>
         }
         renderItem={(item, index) => (

@@ -445,3 +445,6 @@
   color: #004b87 !important;
 }
 
+#listViewFooter svg {
+  margin-bottom: 6px !important;
+}
