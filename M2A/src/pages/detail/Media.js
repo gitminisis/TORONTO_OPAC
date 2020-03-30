@@ -7,14 +7,14 @@ import Image from "./Image";
 import Video from "./Video";
 import Audio from "./Audio";
 import Text from "./Text";
+import { extractData } from "../../services/m2a";
+import noImage from "../../assets/images/no-image.png";
 class Media extends React.Component {
   render() {
-    let image = [
-      "https://media.ford.com/content/dam/fordmedia/North%20America/US/2019/11/05/DHF24672_C1.jpg/_jcr_content/renditions/cq5dam.web.374.210.jpeg",
-      "https://media.ford.com/content/dam/fordmedia/North%20America/US/Events/19-SEMA/SUVs/goodboydaisy-expedition/SEMA2019p0009%20402.jpg/_jcr_content/renditions/cq5dam.web.374.210.jpeg",
-      "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2020/gt500/exterior/DJI_0200_2.jpg/_jcr_content/renditions/cq5dam.web.374.210.jpeg",
-      "https://media.ford.com/content/dam/fordmedia/North%20America/US/product/2020/gt500/exterior/DSC09949_2.jpg/_jcr_content/renditions/cq5dam.web.374.210.jpeg"
-    ];
+    let rawData = this.props.data;
+    let data = extractData(rawData.item);
+
+    let image = data.media.filter(e => (e.type = "Image"));
 
     let audio = ["s"];
 

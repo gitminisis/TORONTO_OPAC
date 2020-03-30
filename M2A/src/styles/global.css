@@ -448,3 +448,7 @@
 #listViewFooter svg {
   margin-bottom: 6px !important;
 }
+
+#noImageCarousel  {
+  text-align: center !important;
+}

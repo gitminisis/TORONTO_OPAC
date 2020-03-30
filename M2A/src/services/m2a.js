@@ -31,7 +31,7 @@ export function extractData(item) {
       item_subject: {
         title: "Subject(s)",
         type: "array",
-        value: item.item_subject ? item.item_subject : []
+        value: item.item_subject
       },
       item_box: {
         title: "Box",
@@ -66,7 +66,7 @@ export function extractData(item) {
       item_location: {
         title: "Location",
         type: "array",
-        value: item.item_location ? item.item_location : []
+        value: item.item_location
       },
       item_make: {
         title: "Make",
@@ -94,3 +94,20 @@ export function getFirstImage(item) {
   }
   return imageArray[0];
 }
+
+// export const DETAIL_DATA_FIELD = [
+//   "item_refd",
+//   "item_date",
+//   "item_box_qualifier",
+//   "item_box",
+//   "item_folder",
+//   "item_collection",
+//   "item_location",
+//   "item_level_desc",
+//   "item_make",
+//   "item_model",
+//   "item_color",
+//   "item_desc"
+// ];
+
+export const DETAIL_DATA_FIELD = ["item_refd", "item_date", "item_level_desc"];

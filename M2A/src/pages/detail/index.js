@@ -30,14 +30,14 @@ class Detail extends React.Component {
           <Col lg={{ span: 18, offset: 3 }} md={24}>
             <Card style={{ width: "100%" }}>
               <Row gutter={16}>
-                <Col md={24} lg={10} id="detailDescriptions">
+                <Col md={24} lg={14} id="detailDescriptions">
                   <Data data={rawData} />
                 </Col>
-                <Col md={24} lg={14}>
-                  <Carousel />
+                <Col md={24} lg={10}>
+                  <Carousel data={rawData} />
                 </Col>
                 <Col span={24}>
-                  <Media />
+                  <Media data={rawData} />
                 </Col>
               </Row>
             </Card>
