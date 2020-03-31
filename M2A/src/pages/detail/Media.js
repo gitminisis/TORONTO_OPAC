@@ -9,20 +9,19 @@ import Audio from "./Audio";
 import Text from "./Text";
 import { extractData } from "../../services/m2a";
 import noImage from "../../assets/images/no-image.png";
+import { FaImage, FaVolumeUp, FaPlayCircle, FaFileAlt } from "react-icons/fa";
 class Media extends React.Component {
   render() {
     let rawData = this.props.data;
     let data = extractData(rawData.item);
 
-    let image = data.media.filter(e => (e.type = "Image"));
+    let image = data.media.filter(e => e.type === "Image");
 
-    let audio = ["s"];
+    let audio = data.media.filter(e => e.type === "Audio");
 
-    let video = [
-      "blob:https://media.ford.com/2ebe498a-3db7-4a8a-b777-635ab52288bc"
-    ];
+    let video = data.media.filter(e => e.type === "Moving Image");
 
-    let text = [];
+    let text = data.media.filter(e => e.type === "Textual");
     return (
       <div id="mediaTabs">
         <hr />
@@ -31,7 +30,7 @@ class Media extends React.Component {
           <TabPane
             tab={
               <span>
-                <Icon type="picture" />
+                <FaImage />
               </span>
             }
             key="1"
@@ -43,7 +42,7 @@ class Media extends React.Component {
           <TabPane
             tab={
               <span>
-                <Icon type="video-camera" />
+                <FaPlayCircle />
               </span>
             }
             key="2"
@@ -55,7 +54,7 @@ class Media extends React.Component {
           <TabPane
             tab={
               <span>
-                <Icon type="audio" />
+                <FaVolumeUp />
               </span>
             }
             key="3"
@@ -68,7 +67,7 @@ class Media extends React.Component {
           <TabPane
             tab={
               <span>
-                <Icon type="file-text" />
+                <FaFileAlt />
               </span>
             }
             key="4"

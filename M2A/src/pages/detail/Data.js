@@ -7,9 +7,14 @@ class Data extends React.Component {
   render() {
     let rawData = this.props.data;
     let data = extractData(rawData.item);
-    console.log(DETAIL_DATA_FIELD, data);
+
     return (
-      <Descriptions title={data.data.item_title.value} bordered column={1}>
+      <Descriptions
+        id="dataDescriptions"
+        title={data.data.item_title.value}
+        bordered
+        column={1}
+      >
         {DETAIL_DATA_FIELD.map(field => {
           let item = data.data[field];
           if (item.value) {

@@ -22,30 +22,39 @@ class Image extends React.Component {
           }}
           actions={[
             <Tooltip title="Download">
-              <span>
+              <Button
+                disabled={item.rights !== "Yes"}
+                onClick={_ => {
+                  downloadMedia(item.low_res);
+                }}
+              >
                 <Icon type="download" /> Low
-              </span>
+              </Button>
             </Tooltip>,
             <Tooltip title="Download">
-              <span>
+              <Button
+                disabled={item.rights !== "Yes"}
+                onClick={_ => {
+                  downloadMedia(item.high_res);
+                }}
+              >
                 <Icon type="download" /> High
-              </span>
+              </Button>
             </Tooltip>,
             <Tooltip title="Additional Clearance">
-              <span>
-                <Icon
-                  type="save"
-                  onClick={_ => {
-                    let res = save(item);
-                    if (res) {
-                      message.success("This asset was succesfully saved !");
-                    } else {
-                      message.warning("This asset has already been saved");
-                    }
-                  }}
-                />{" "}
-                Save
-              </span>
+              <Button
+                disabled={!item.rights === "Additional Clearance"}
+                onClick={_ => {
+                  let res = save(item.low_res, item.type);
+                  if (res) {
+                    message.success("This asset was succesfully saved !");
+                  } else {
+                    message.warning("This asset has already been saved");
+                  }
+                }}
+              >
+                <Icon type="save" /> Save
+              </Button>
             </Tooltip>
           ]}
         >

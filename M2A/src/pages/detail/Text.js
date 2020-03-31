@@ -22,31 +22,40 @@ class Audio extends React.Component {
           }}
           actions={[
             <Tooltip title="Download">
-              <span>
-                <Icon type="download" /> Low
-              </span>
-            </Tooltip>,
-            <Tooltip title="Download">
-              <span>
-                <Icon type="download" /> High
-              </span>
-            </Tooltip>,
-            <Tooltip title="Additional Clearance">
-              <span>
-                <Icon
-                  type="save"
-                  onClick={_ => {
-                    let res = save(item);
-                    if (res) {
-                      message.success("This asset was succesfully saved !");
-                    } else {
-                      message.warning("This asset has already been saved");
-                    }
-                  }}
-                />{" "}
-                Save
-              </span>
-            </Tooltip>
+            <Button
+               disabled={item.rights !== "Yes"}
+              onClick={_ => {
+                downloadMedia(item.low_res);
+              }}
+            >
+              <Icon type="download" /> Low
+            </Button>
+          </Tooltip>,
+          <Tooltip title="Download">
+            <Button
+              disabled={item.rights !== "Yes"}
+              onClick={_ => {
+                downloadMedia(item.high_res);
+              }}
+            >
+              <Icon type="download" /> High
+            </Button>
+          </Tooltip>,
+          <Tooltip title="Additional Clearance">
+            <Button
+              disabled={!item.rights === "Additional Clearance"}
+              onClick={_ => {
+                let res = save(item.low_res, item.type);
+                if (res) {
+                  message.success("This asset was succesfully saved !");
+                } else {
+                  message.warning("This asset has already been saved");
+                }
+              }}
+            >
+              <Icon type="save" /> Save
+            </Button>
+          </Tooltip>
           ]}
         >
           <div className="detailVideoContainer">

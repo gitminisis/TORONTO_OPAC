@@ -31,7 +31,7 @@ export function extractData(item) {
       item_subject: {
         title: "Subject(s)",
         type: "array",
-        value: item.item_subject
+        value: item.item_subject ? item.item_subject : []
       },
       item_box: {
         title: "Box",
@@ -66,7 +66,7 @@ export function extractData(item) {
       item_location: {
         title: "Location",
         type: "array",
-        value: item.item_location
+        value: item.item_location ? item.item_location : []
       },
       item_make: {
         title: "Make",

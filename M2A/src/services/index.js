@@ -59,3 +59,13 @@ export function getCookie(cname) {
   }
   return "";
 }
+
+export function downloadMedia(url) {
+  var link = document.createElement("a");
+  link.href = url;
+  link.download = url;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  return true;
+}
