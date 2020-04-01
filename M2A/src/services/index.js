@@ -7,7 +7,10 @@ export const JSON_ARRAY_FIELD = [
   "report.item.item_subject"
 ];
 
-export const DETAIL_JSON_ARRAY_FIELD = ["report.item.item_subject"];
+export const DETAIL_JSON_ARRAY_FIELD = [
+  "report.item.item_subject",
+  "report.item.item_location"
+];
 export function xmlToJson(xml, arrayForm) {
   let xmlText = new XMLSerializer().serializeToString(xml);
 
