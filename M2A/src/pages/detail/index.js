@@ -1,7 +1,7 @@
 import React from "react";
 import PageLayout from "../../components/Layout";
 import { xmlToJson } from "../../services";
-import { Row, Col, Descriptions, Card, Button, Icon } from "antd";
+import { Row, Col, Descriptions, Card, Button, Icon, Tooltip } from "antd";
 import { extractData } from "../../services/m2a";
 import Data from "./Data";
 import Carousel from "./Carousel";
@@ -38,7 +38,59 @@ class Detail extends React.Component {
         <Row>
           <Tree ref={this.tree}></Tree>
           <Col lg={{ span: 18, offset: 3 }} md={24}>
-            <Card style={{ width: "100%" }}>
+            <Card
+              className="summaryHeader"
+              title={<h4>Detail Page</h4>}
+              style={{ width: "100%" }}
+              extra={
+                <Button.Group id="summaryButtonGroup">
+                  <Tooltip title="Previous Record">
+                    {" "}
+                    <Button
+                      disabled={!rawData.prev_page}
+                      onClick={_ =>
+                        (window.location = rawData.prev_page
+                          ? rawData.prev_page.a._href
+                          : "#")
+                      }
+                    >
+                      <AiFillCaretLeft />
+                    </Button>
+                  </Tooltip>
+                  <Tooltip title="Return to Summary">
+                    {" "}
+                    <Button
+                      onClick={_ =>
+                        (window.location = rawData.return_summary
+                          ? rawData.return_summary.a._href
+                          : ".")
+                      }
+                    >
+                      <AiOutlineRollback />
+                    </Button>
+                  </Tooltip>
+                  <Tooltip title="Subject Tree">
+                    {" "}
+                    <Button onClick={this.openTree}>
+                      <FaTree />
+                    </Button>
+                  </Tooltip>
+                  <Tooltip title="Next Record">
+                    {" "}
+                    <Button
+                      disabled={!rawData.next_page}
+                      onClick={_ =>
+                        (window.location = rawData.next_page
+                          ? rawData.next_page.a._href
+                          : "#")
+                      }
+                    >
+                      <AiFillCaretRight />
+                    </Button>
+                  </Tooltip>
+                </Button.Group>
+              }
+            >
               <Row gutter={16}>
                 <Col
                   md={{ span: 24, order: 1 }}

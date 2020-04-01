@@ -1,5 +1,15 @@
 import React from "react";
-import { Tabs, Icon, Col, Row, Card, Tooltip, message, Empty } from "antd";
+import {
+  Tabs,
+  Icon,
+  Col,
+  Row,
+  Card,
+  Tooltip,
+  message,
+  Empty,
+  Button
+} from "antd";
 const { Meta } = Card;
 const { TabPane } = Tabs;
 import { save } from "../../services/savedBag";
@@ -25,7 +35,7 @@ class Media extends React.Component {
     return (
       <div id="mediaTabs">
         <hr />
-        <h3>Graphics</h3>
+        <h3>Media</h3>
         <Tabs defaultActiveKey="1">
           <TabPane
             tab={
@@ -78,6 +88,9 @@ class Media extends React.Component {
             </Row>
           </TabPane>
         </Tabs>
+        <Button type="primary" href="/bookmark.html">
+          View Additional Clearance
+        </Button>
       </div>
     );
   }
