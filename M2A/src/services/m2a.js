@@ -1,7 +1,8 @@
 export function extractData(item) {
+  console.log(item)
   return {
     item_link: item.item_link,
-    media: item.item_media ? item.item_media : [],
+    media: item.item_media!=="" ? item.item_media : [],
     data: {
       item_sisn: {
         title: "SISN",
@@ -88,11 +89,12 @@ export function extractData(item) {
 }
 
 export function getFirstImage(item) {
+  console.log(item)
   let imageArray = item.media.filter(e => e.type === "Image");
   if (imageArray.length === 0) {
     return null;
   }
-  return imageArray[0];
+  return imageArray[0].low_res;
 }
 
 // export const DETAIL_DATA_FIELD = [
