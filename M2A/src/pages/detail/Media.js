@@ -8,7 +8,7 @@ import {
   Tooltip,
   message,
   Empty,
-  Button
+  Button,
 } from "antd";
 const { Meta } = Card;
 const { TabPane } = Tabs;
@@ -25,13 +25,13 @@ class Media extends React.Component {
     let rawData = this.props.data;
     let data = extractData(rawData.item);
 
-    let image = data.media.filter(e => e.type === "Image");
+    let image = data.media.filter((e) => e.type === "Image");
 
-    let audio = data.media.filter(e => e.type === "Audio");
+    let audio = data.media.filter((e) => e.type === "Audio");
 
-    let video = data.media.filter(e => e.type === "Moving Image");
+    let video = data.media.filter((e) => e.type === "Moving Image");
 
-    let text = data.media.filter(e => e.type === "Textual");
+    let text = data.media.filter((e) => e.type === "Textual");
     return (
       <div id="mediaTabs">
         <hr />
@@ -88,9 +88,18 @@ class Media extends React.Component {
             </Row>
           </TabPane>
         </Tabs>
-        <Button type="primary" href="/bookmark.html">
-          View Additional Clearance
-        </Button>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "50px",
+            marginBottom: "20px",
+          }}
+        >
+          {" "}
+          <Button type="primary" href="/bookmark.html" size="large">
+            View Additional Clearance
+          </Button>
+        </div>
       </div>
     );
   }

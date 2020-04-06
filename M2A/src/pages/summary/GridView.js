@@ -8,7 +8,7 @@ import { extractData, getFirstImage } from "../../services/m2a";
 class GridView extends React.Component {
   render() {
     let { data } = this.props;
-    let dataJson = data.item.map(item => extractData(item));
+    let dataJson = data.item.map((item) => extractData(item));
     console.log(dataJson);
 
     return (
@@ -18,14 +18,14 @@ class GridView extends React.Component {
           <Col lg={8} md={12} xs={24}>
             <Card
               bordered
-              onClick={_ => (window.location = item.item_link)}
+              onClick={(_) => (window.location = item.item_link)}
               className="summaryCard"
               hoverable
               style={{
                 width: "100%",
                 marginTop: "2px",
                 height: "auto",
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               <div
@@ -33,7 +33,7 @@ class GridView extends React.Component {
                 style={{
                   backgroundImage: `url(${
                     getFirstImage(item) ? getFirstImage(item) : noImage
-                  })`
+                  })`,
                 }}
               ></div>
               <Meta
@@ -43,26 +43,32 @@ class GridView extends React.Component {
             </Card>
           </Col>
         ))}{" "}
-        <div id="listViewFooter" style={{ textAlign: "center" }}>
-          <Button.Group>
-            <Button
-              type="primary"
-              disabled={!data.prev_page}
-              href={data.prev_page ? data.prev_page.a._href : "#"}
-            >
-              <Icon type="left" />
-              Prev.
-            </Button>
-            <Button
-              type="primary"
-              disabled={!data.next_page}
-              href={data.next_page ? data.next_page.a._href : "#"}
-            >
-              Next
-              <Icon type="right" />
-            </Button>
-          </Button.Group>
-        </div>
+        <Col span={24}>
+          {" "}
+          <div
+            id="listViewFooter"
+            style={{ textAlign: "center", marginTop: "40px" }}
+          >
+            <Button.Group>
+              <Button
+                type="primary"
+                disabled={!data.prev_page}
+                href={data.prev_page ? data.prev_page.a._href : "#"}
+              >
+                <Icon type="left" />
+                Prev.
+              </Button>
+              <Button
+                type="primary"
+                disabled={!data.next_page}
+                href={data.next_page ? data.next_page.a._href : "#"}
+              >
+                Next
+                <Icon type="right" />
+              </Button>
+            </Button.Group>
+          </div>
+        </Col>
       </>
     );
   }
