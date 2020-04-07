@@ -1,24 +1,24 @@
 import X2JS from "../lib/xml2json.min";
-
+import axios from "axios";
 export const JSON_ARRAY_FIELD = [
   "report.item",
   "report.filters.div.xml.filter",
   "report.filters.div.xml.filter.item_group",
   "report.item.item_subject",
   "report.item.item_location",
-  "report.item.item_media"
+  "report.item.item_media",
 ];
 
 export const DETAIL_JSON_ARRAY_FIELD = [
   "report.item.item_subject",
   "report.item.item_location",
-  "report.item.item_media"
+  "report.item.item_media",
 ];
 export function xmlToJson(xml, arrayForm) {
   let xmlText = new XMLSerializer().serializeToString(xml);
 
   var x2js = new X2JS({
-    arrayAccessFormPaths: arrayForm
+    arrayAccessFormPaths: arrayForm,
   });
 
   var jsonObj = x2js.xml_str2json(xmlText);
@@ -28,7 +28,7 @@ export function xmlToJson(xml, arrayForm) {
 
 export function xmlStrToJson(xml, arrayForm) {
   var x2js = new X2JS({
-    arrayAccessFormPaths: arrayForm
+    arrayAccessFormPaths: arrayForm,
   });
   var jsonObj = x2js.xml_str2json(xml);
   return jsonObj;
@@ -46,7 +46,7 @@ export function extractTopBarData(data) {
     range: data.record_range,
     total: data.record_count,
     next: data.next_page ? data.next_page.a._href : "#",
-    prev: data.prev_page ? data.prev_page.a._href : "#"
+    prev: data.prev_page ? data.prev_page.a._href : "#",
   };
 }
 
@@ -67,12 +67,28 @@ export function getCookie(cname) {
 }
 
 export function downloadMedia(url) {
-  var link = document.createElement("a");
-  link.href = "";
-  link.download = url;
-  console.log(url);
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  return true;
+  axios({
+    url: url, //your url
+    method: "GET",
+    responseType: "arraybuffer", // important
+  })
+    .then((response) => {
+      let url;
+      if (window.webkitURL) {
+        url = window.webkitURL.createObjectURL(new Blob([response.data]));
+      } else if (window.URL && window.URL.createObjectURL) {
+        url = window.URL.createObjectURL(new Blob([response.data]));
+      }
+      const link = document.createElement("a");
+      link.href = url;
+      const fileName = response.headers["content-disposition"].split("=")[1];
+      link.setAttribute("download", fileName);
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+     
+    })
+    .catch((error) => {
+      onError(error, errorHandler);
+    });
 }

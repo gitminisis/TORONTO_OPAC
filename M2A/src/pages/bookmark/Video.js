@@ -8,7 +8,7 @@ class Video extends React.Component {
     if (data.length === 0) {
       return <Empty className="noMedia" />;
     }
-    return data.map(item => (
+    return data.map((item) => (
       <Col xl={8} lg={12} md={12} sm={24}>
         <Card
           bordered
@@ -18,17 +18,31 @@ class Video extends React.Component {
             width: "100%",
             marginTop: "40px",
 
-            textAlign: "center"
+            textAlign: "center",
           }}
           actions={[
             <Tooltip title="Remove">
-              <Icon type="close-circle" /> Remove
+              <Button onClick={(_) => this.props.remove(item, "Moving Image")}>
+                {" "}
+                <Icon type="close-circle" /> Remove
+              </Button>
             </Tooltip>,
             <Tooltip title="Copy URL">
-              <span>
+              {" "}
+              <input
+                style={{
+                  height: 0,
+                  position: "absolute",
+                  zIndex: "-1",
+                  opacity: ".01",
+                }}
+                id={item}
+                value={item}
+              ></input>
+              <Button onClick={(_) => this.props.copy(item)}>
                 <Icon type="link" /> Copy
-              </span>
-            </Tooltip>
+              </Button>
+            </Tooltip>,
           ]}
         >
           <div className="detailVideoContainer">

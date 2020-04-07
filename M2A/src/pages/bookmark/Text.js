@@ -8,7 +8,7 @@ class Audio extends React.Component {
     if (data.length === 0) {
       return <Empty className="noMedia" />;
     }
-    return data.map(item => (
+    return data.map((item) => (
       <Col xl={8} lg={12} md={12} sm={24}>
         <Card
           bordered
@@ -18,17 +18,31 @@ class Audio extends React.Component {
             width: "100%",
             marginTop: "40px",
 
-            textAlign: "center"
+            textAlign: "center",
           }}
           actions={[
             <Tooltip title="Remove">
-              <Icon type="close-circle" /> Remove
+              <Button onClick={(_) => this.props.remove(item, "Textual")}>
+                {" "}
+                <Icon type="close-circle" /> Remove
+              </Button>
             </Tooltip>,
             <Tooltip title="Copy URL">
-              <span>
+              {" "}
+              <input
+                style={{
+                  height: 0,
+                  position: "absolute",
+                  zIndex: "-1",
+                  opacity: ".01",
+                }}
+                id={item}
+                value={item}
+              ></input>
+              <Button onClick={(_) => this.props.copy(item)}>
                 <Icon type="link" /> Copy
-              </span>
-            </Tooltip>
+              </Button>
+            </Tooltip>,
           ]}
         >
           <div className="detailVideoContainer">
@@ -38,7 +52,7 @@ class Audio extends React.Component {
               style={{
                 fontSize: "6rem",
                 marginBottom: "20px",
-                marginTop: "20px"
+                marginTop: "20px",
               }}
             />
           </div>

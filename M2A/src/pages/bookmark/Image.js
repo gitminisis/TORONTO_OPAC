@@ -38,7 +38,16 @@ class Image extends React.Component {
               </Button>
               
             </Tooltip>,
-            <Tooltip title="Copy URL">
+            <Tooltip title="Copy URL">  <input
+            style={{
+              height: 0,
+              position: "absolute",
+              zIndex: "-1",
+              opacity: ".01"
+            }}
+            id={item}
+            value={item}
+          ></input>
               <Button onClick={_ => this.props.copy(item)}>
                 <Icon type="link" /> Copy
               </Button>

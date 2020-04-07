@@ -8,7 +8,7 @@ import {
   Tooltip,
   message,
   Empty,
-  Button
+  Button,
 } from "antd";
 const { Meta } = Card;
 const { TabPane } = Tabs;
@@ -18,7 +18,8 @@ import Video from "./Video";
 import Audio from "./Audio";
 import Text from "./Text";
 import { FaImage, FaVolumeUp, FaPlayCircle, FaFileAlt } from "react-icons/fa";
-import { deleteItem, getAll, removeAll } from "../../services/savedBag";
+import { deleteItem, getAll, removeAll,copyURL } from "../../services/savedBag";
+import MailForm from "./MailForm";
 class Media extends React.Component {
   constructor(props) {
     super(props);
@@ -26,30 +27,28 @@ class Media extends React.Component {
       image: getAll("Image"),
       audio: getAll("Audio"),
       video: getAll("Moving Image"),
-      text: getAll("Textual")
+      text: getAll("Textual"),
     };
+    this.form = React.createRef();
   }
+  openForm = (_) => {
+    this.form.current.showModal();
+  };
   remove = (url, type) => {
     deleteItem(url, type);
     this.setState({
       image: getAll("Image"),
       audio: getAll("Audio"),
       video: getAll("Moving Image"),
-      text: getAll("Textual")
+      text: getAll("Textual"),
     });
   };
-  copy = _ => {};
+  copy = (url) => {copyURL(url)};
   render() {
-    let image = getAll("Image");
-
-    let audio = getAll("Audio");
-
-    let video = getAll("Moving Image");
-
-    let text = getAll("Textual");
     return (
       <div id="mediaTabs">
         <h3>Additional Clearance</h3>
+        <MailForm ref={this.form} />
         <Tabs defaultActiveKey="1">
           <TabPane
             tab={
@@ -118,6 +117,18 @@ class Media extends React.Component {
             </Row>
           </TabPane>
         </Tabs>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "50px",
+            marginBottom: "20px",
+          }}
+        >
+          {" "}
+          <Button type="primary" onClick={(_) => this.openForm()} size="large">
+            Request Additional Clearance
+          </Button>
+        </div>
       </div>
     );
   }
