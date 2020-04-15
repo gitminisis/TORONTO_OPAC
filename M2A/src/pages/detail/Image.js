@@ -1,14 +1,24 @@
 import React from "react";
-import { Tabs, Icon, Col, Row, Card, Tooltip, message, Empty,Button } from "antd";
+import {
+  Tabs,
+  Icon,
+  Col,
+  Row,
+  Card,
+  Tooltip,
+  message,
+  Empty,
+  Button,
+} from "antd";
 import { save } from "../../services/savedBag";
-import {downloadMedia} from '../../services/index';
+import { downloadMedia } from "../../services/index";
 class Image extends React.Component {
   render() {
     let data = this.props.item;
     if (data.length === 0) {
       return <Empty className="noMedia" />;
     }
-    return data.map(item => (
+    return data.map((item) => (
       <Col xl={8} lg={12} md={12} sm={24}>
         <Card
           bordered
@@ -18,13 +28,13 @@ class Image extends React.Component {
             width: "100%",
             marginTop: "40px",
 
-            textAlign: "center"
+            textAlign: "center",
           }}
           actions={[
             <Tooltip title="Download">
               <Button
                 disabled={item.rights !== "Yes"}
-                onClick={_ => {
+                onClick={(_) => {
                   downloadMedia(item.low_res);
                 }}
               >
@@ -34,7 +44,7 @@ class Image extends React.Component {
             <Tooltip title="Download">
               <Button
                 disabled={item.rights !== "Yes"}
-                onClick={_ => {
+                onClick={(_) => {
                   downloadMedia(item.high_res);
                 }}
               >
@@ -44,7 +54,7 @@ class Image extends React.Component {
             <Tooltip title="Additional Clearance">
               <Button
                 disabled={!item.rights === "Additional Clearance"}
-                onClick={_ => {
+                onClick={(_) => {
                   let res = save(item.low_res, item.type);
                   if (res) {
                     message.success("This asset was succesfully saved !");
@@ -55,13 +65,14 @@ class Image extends React.Component {
               >
                 <Icon type="save" /> Save
               </Button>
-            </Tooltip>
+            </Tooltip>,
           ]}
         >
           <div
             className="detailImageContainer"
+            onClick={(_) => window.open(item.low_res, "_blank")}
             style={{
-              backgroundImage: `url(${item.low_res})`
+              backgroundImage: `url(${item.low_res})`,
             }}
           ></div>
         </Card>

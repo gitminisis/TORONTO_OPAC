@@ -1,7 +1,17 @@
 import React from "react";
-import { Tabs, Icon, Col, Row, Card, Tooltip, message, Empty } from "antd";
+import {
+  Tabs,
+  Icon,
+  Col,
+  Row,
+  Card,
+  Tooltip,
+  message,
+  Empty,
+  Button,
+} from "antd";
 import { save } from "../../services/savedBag";
-import audio from "../../assets/audio/audio.mp3";
+
 class Audio extends React.Component {
   render() {
     let data = this.props.item;
@@ -55,7 +65,7 @@ class Audio extends React.Component {
                 marginTop: "20px",
               }}
             />
-            <audio style={{ width: "100%" }} src={audio} controls></audio>
+            <audio style={{ width: "100%" }} src={item} controls></audio>
           </div>
         </Card>
       </Col>

@@ -12,7 +12,7 @@ class Carousel extends React.Component {
       images.length > 0
         ? images.map(e => {
             return {
-              original: e.high_res,
+              original: e.low_res,
               thumbnail: e.low_res
             };
           })

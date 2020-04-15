@@ -488,3 +488,11 @@
 .ant-tabs-nav .ant-tabs-tab-active {
   color: #2d96cd !important;
 }
+
+#mainForm .ant-form-item-label {
+  text-align: left !important;
+}
+
+#mainForm textarea {
+  height: 100px !important;
+}

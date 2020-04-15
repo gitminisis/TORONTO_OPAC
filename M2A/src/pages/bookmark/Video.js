@@ -1,7 +1,17 @@
 import React from "react";
-import { Tabs, Icon, Col, Row, Card, Tooltip, message, Empty } from "antd";
+import {
+  Tabs,
+  Icon,
+  Col,
+  Row,
+  Card,
+  Tooltip,
+  message,
+  Empty,
+  Button,
+} from "antd";
 import { save } from "../../services/savedBag";
-import video from "../../assets/video/video.mp4";
+
 class Video extends React.Component {
   render() {
     let data = this.props.item;
@@ -46,11 +56,7 @@ class Video extends React.Component {
           ]}
         >
           <div className="detailVideoContainer">
-            <video
-              style={{ width: "100%" }}
-              src={`/m2a/dist/${video}`}
-              controls
-            ></video>
+            <video style={{ width: "100%" }} src={item} controls></video>
           </div>
         </Card>
       </Col>

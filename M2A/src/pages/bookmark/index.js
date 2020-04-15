@@ -2,6 +2,7 @@ import React from "react";
 import PageLayout from "../../components/Layout";
 import { Row, Col, Card } from "antd";
 import Media from "./Media";
+
 class Bookmark extends React.Component {
   render() {
     return (
@@ -14,6 +15,7 @@ class Bookmark extends React.Component {
                 <Col span={24}>
                   <Media />
                 </Col>
+              
               </Row>
             </Card>
           </Col>

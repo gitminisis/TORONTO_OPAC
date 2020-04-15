@@ -6,96 +6,124 @@ export function extractData(item) {
       item_sisn: {
         title: "SISN",
         type: "string",
-        value: item.item_sisn
+        value: item.item_sisn,
       },
       item_refd: {
         title: "Reference Code",
         type: "string",
-        value: item.item_refd
+        value: item.item_refd,
       },
       item_title: {
         title: "Title",
         type: "string",
-        value: item.item_title
+        value: item.item_title,
       },
       item_level_desc: {
         title: "Level",
         type: "string",
-        value: item.item_level_desc
+        value: item.item_level_desc,
       },
       item_date: {
         title: "Date",
         type: "string",
-        value: item.item_date
+        value: item.item_date,
       },
       item_subject: {
         title: "Subject(s)",
         type: "array",
-        value: item.item_subject ? item.item_subject : []
+        value: item.item_subject ? item.item_subject : [],
       },
       item_box: {
         title: "Box",
         type: "string",
-        value: item.item_box
+        value: item.item_box,
       },
       item_box_qualifier: {
         title: "Box Qualifier",
         type: "string",
-        value: item.item_box_qualifier
+        value: item.item_box_qualifier,
       },
       item_folder: {
         title: "Folder",
         type: "string",
-        value: item.item_folder
+        value: item.item_folder,
       },
       item_box: {
         title: "Box",
         type: "string",
-        value: item.item_box
+        value: item.item_box,
       },
       item_collection: {
         title: "Collection",
         type: "string",
-        value: item.item_collection
+        value: item.item_collection,
       },
       item_desc: {
         title: "Description",
         type: "string",
-        value: item.item_box
+        value: item.item_box,
       },
       item_location: {
         title: "Location",
         type: "array",
-        value: item.item_location ? item.item_location : []
+        value: item.item_location ? item.item_location : [],
       },
       item_make: {
         title: "Make",
         type: "string",
-        value: item.item_make
+        value: item.item_make,
       },
       item_model: {
         title: "Model",
         type: "string",
-        value: item.item_model
+        value: item.item_model,
       },
       item_color: {
         title: "Color",
         type: "string",
-        value: item.item_color
-      }
-    }
+        value: item.item_color,
+      },
+    },
   };
 }
 
 export function getFirstImage(item) {
   console.log(item);
-  let imageArray = item.media.filter(e => e.type === "Image");
+  let imageArray = item.media.filter((e) => e.type === "Image");
   if (imageArray.length === 0) {
     return null;
   }
   return imageArray[0].low_res;
 }
 
+export function hasImage(item) {
+  let array = item.media.filter((e) => e.type === "Image");
+  if (array.length === 0) {
+    return false;
+  }
+  return true;
+}
+export function hasVideo(item) {
+  let array = item.media.filter((e) => e.type === "Moving Image");
+  if (array.length === 0) {
+    return false;
+  }
+  return true;
+}
+export function hasAudio(item) {
+  let array = item.media.filter((e) => e.type === "Audio");
+  if (array.length === 0) {
+    return false;
+  }
+  return true;
+}
+export function hasTextual(item) {
+  let array = item.media.filter((e) => e.type === "Textual");
+  if (array.length === 0) {
+    return false;
+  }
+  return true;
+}
 export const DETAIL_DATA_FIELD = [
   "item_refd",
   "item_date",
@@ -108,5 +136,5 @@ export const DETAIL_DATA_FIELD = [
   "item_make",
   "item_model",
   "item_color",
-  "item_desc"
+  "item_desc",
 ];

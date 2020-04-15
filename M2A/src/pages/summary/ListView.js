@@ -5,15 +5,22 @@ import noImage from "../../assets/images/no-image.png";
 import FordCar from "../../assets/images/fordCar.jpg";
 import { FiCameraOff } from "react-icons/fi";
 import { FaImage, FaVolumeUp, FaPlayCircle, FaFileAlt } from "react-icons/fa";
-import { extractData, getFirstImage } from "../../services/m2a";
+import {
+  extractData,
+  getFirstImage,
+  hasImage,
+  hasAudio,
+  hasVideo,
+  hasTextual,
+} from "../../services/m2a";
 const gridStyle = {
   width: "50%",
-  textAlign: "center"
+  textAlign: "center",
 };
 class ListView extends React.Component {
   render() {
     let { data } = this.props;
-    let dataJson = data.item.map(item => extractData(item));
+    let dataJson = data.item.map((item) => extractData(item));
     return (
       <List
         itemLayout="vertical"
@@ -54,18 +61,18 @@ class ListView extends React.Component {
                   <Card
                     className="summaryMediaCard"
                     actions={[
-                      <span className={getFirstImage(item) ? "hasMedia" : ""}>
+                      <span className={hasImage(item) ? "hasMedia" : ""}>
                         <FaImage />
                       </span>,
-                      <span>
+                      <span className={hasAudio(item) ? "hasMedia" : ""}>
                         <FaVolumeUp />
                       </span>,
-                      <span>
+                      <span className={hasVideo(item) ? "hasMedia" : ""}>
                         <FaPlayCircle />
                       </span>,
-                      <span>
+                      <span className={hasTextual(item) ? "hasMedia" : ""}>
                         <FaFileAlt />
-                      </span>
+                      </span>,
                     ]}
                   ></Card>
                 </Col>

@@ -7,9 +7,6 @@ class MailForm extends React.Component {
     this.state = { visible: false };
     this.form = React.createRef();
   }
-  submit() {
-    this.form.current.handleSubmit();
-  }
 
   showModal = () => {
     this.setState({
@@ -18,14 +15,14 @@ class MailForm extends React.Component {
   };
 
   handleOk = (e) => {
-    this.submit();
     this.setState({
       visible: false,
     });
   };
 
   handleCancel = (e) => {
-    console.log(e);
+    this.form.current.submit();
+    this.form.current.resetFields();
     this.setState({
       visible: false,
     });
@@ -45,16 +42,19 @@ class MailForm extends React.Component {
               Cancel
             </Button>,
             <Button
+              form="mainForm"
               key="submit"
-              type="primary"
-              loading={loading}
-              onClick={this.handleOk}
+              htmlType="submit"
+            
             >
               Submit
             </Button>,
           ]}
         >
-          <MainForm ref={this.form} />
+          <MainForm ref={this.form} close={this.handleCancel} />
+          <Button hidden   onClick={(_) => {
+                this.handleOk();
+              }} id="hiddenModalButton"></Button>
         </Modal>
       </div>
     );
