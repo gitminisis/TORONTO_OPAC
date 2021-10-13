@@ -1,0 +1,132 @@
+import React from "react";
+import {
+  Menu,
+  Layout,
+  Icon,
+  Drawer,
+  Button,
+  Card,
+  Checkbox,
+  Row,
+  Col,
+} from "antd";
+import axios from "axios";
+const { Sider, Content } = Layout;
+const { SubMenu } = Menu;
+import { xmlStrToJson } from "../../services/index";
+import ViewAll from "./ViewAll";
+class FilterDrawer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      viewAllData: null,
+    };
+    this.viewAll = React.createRef();
+  }
+  showModal() {
+    this.viewAll.current.showModal();
+  }
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
+  render() {
+    let filter = this.props.data;
+    return (
+      <>
+        <ViewAll ref={this.viewAll} data={this.state.viewAllData}></ViewAll>
+        <Drawer
+          id="leftDrawer"
+          placement={this.props.dir}
+          width={"100vw"}
+          zIndex={9001}
+          title="FILTER"
+          closable
+          onClose={this.onClose}
+          visible={this.state.visible}
+          draggable={true}
+        >
+          {filter
+            ? filter.map((item_group) => (
+                <Card
+                  className="filterCard"
+                  key={item_group._name}
+                  headStyle={{
+                    fontSize: "15px !important",
+                    backgroundColor: "rgba(0,0,0,.03)",
+                  }}
+                  title={item_group._title.trim()}
+                  extra={<Icon type="caret-down" />}
+                >
+                  <Row>
+                    {item_group.item_group.map((item) => (
+                      <Col
+                        span={24}
+                        className="filterCol"
+                        style={{
+                          marginTop: "10px",
+                          marginBottom: "10px",
+                        }}
+                      >
+                        {" "}
+                        {item.item_value !== "View all..." ? (
+                          <Checkbox
+                            checked={item.item_selected !== "N"}
+                            onClick={(_) => {
+                              window.location = `${item.item_link}&DATABASE=COLLECTIONS`;
+                            }}
+                          >
+                            {item.item_value} ({item.item_frequency})
+                          </Checkbox>
+                        ) : (
+                          <Checkbox
+                            checked={false}
+                            onClick={(_) => {
+                              (item.item_link);
+                              let url = item.item_link
+                                .split('ViewXmlAll("')[1]
+                                .split('")')[0];
+                              // this.props.filter(
+                              //   `${item_group._name} ${item.item_value}`
+                              // );
+                              axios
+                                .get(url)
+                                .then((res) => {
+                                  (res);
+                                  let data = res.data;
+                                  let json = xmlStrToJson(data, []);
+                                  (json);
+                                  this.setState({
+                                    viewAllData: json,
+                                    visible: false,
+                                  });
+                                  this.showModal();
+                                })
+                                .catch((err) => console.log(err));
+                            }}
+                          >
+                            {item.item_value}
+                          </Checkbox>
+                        )}
+                      </Col>
+                    ))}
+                  </Row>
+                </Card>
+              ))
+            : null}
+        </Drawer>
+      </>
+    );
+  }
+}
+
+export default FilterDrawer;
