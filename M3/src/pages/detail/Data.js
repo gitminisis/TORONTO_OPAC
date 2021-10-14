@@ -108,12 +108,10 @@ class Data extends React.Component {
         {hasChenhall(data) ? (
           <Collapse
             className="detailCollapse"
-            expandIconPosition={"right"}
-            expandIcon={({ isActive }) =>
-              isActive ? <Icon type="minus" /> : <Icon type="plus" />
-            }
+           
           >
             <Panel
+             showArrow={false}
               header={
                 <p style={{ marginBottom: "0", fontWeight: "bold" }}>
                   Chenhall
