@@ -50,15 +50,13 @@ class SearchBar extends React.Component {
                   close={(_) => this.closeHelp()}
                 />
               </InputGroup.Prepend>
-              <Form.Label htmlFor="simpleSearchInput" style={{ display: "none" }}>
-                Simple Search Help
-              </Form.Label>
+            
               <Form.Control
                 id="simpleSearchInput"
                 size="lg"
                 type="text"
                 placeholder="Search keyword"
-                aria-describedby="simpleSearchHelp"
+               
                 name="KEYWORD_CL"
                 required
               />
@@ -69,7 +67,7 @@ class SearchBar extends React.Component {
                 <Button
                   aria-label="Expand Advanced Search"
                   title="Expand Advanced Search"
-                  variant="secondary"
+                  variant="secondary" 
                   size="lg"
                   onClick={() => this.setState({ open: !this.state.open })}
                 >
