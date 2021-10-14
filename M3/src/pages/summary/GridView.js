@@ -55,7 +55,7 @@ class GridView extends React.Component {
                   }}
                 >
                   <span
-                    class="background-image"
+                    className="background-image"
                     role="img"
                     aria-label={
                       getFirstImage(item)

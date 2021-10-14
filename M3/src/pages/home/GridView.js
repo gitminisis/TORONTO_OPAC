@@ -16,7 +16,7 @@ class GridView extends React.Component {
         }
       >
         <Panel
-          header={<h1 style={{ fontSize: "1.5rem" }}>Featured Collections</h1>}
+          header={<h2 style={{ fontSize: "1.5rem" }}>Featured Collections</h2>}
           key="1"
         >
           <Row gutter={16}>
@@ -45,13 +45,13 @@ class GridView extends React.Component {
                       }}
                     ></div>
                     <span
-                      class="background-image"
+                      className="background-image"
                       role="img"
                       aria-label={item.alt}
                     ></span>
                     <Meta
                       id="featureMeta"
-                      title={item.title}
+                      title={<h3 className="featureMetaTitle">{item.title}</h3>}
                       description={item.description}
                       style={{ height: "150px" }}
                     />
@@ -62,7 +62,7 @@ class GridView extends React.Component {
           </Row>
         </Panel>
         <Panel
-          header={<h1 style={{ fontSize: "1.5rem" }}>Collection by Site</h1>}
+          header={<h2 style={{ fontSize: "1.5rem" }}>Collection by Site</h2>}
           key="2"
         >
           <Row gutter={16}>

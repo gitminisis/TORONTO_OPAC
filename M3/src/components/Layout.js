@@ -27,11 +27,11 @@ class PageLayout extends React.Component {
                 </Col>
 
                 <Col span={24} id="pageDesc">
-                  <h1>
+                  <p style={{ fontSize: "20px" }}>
                     Explore the City of Toronto's online collection including
                     150,000 artifacts, 1.1 million archaeological specimens, and
                     3,000 artworks.
-                  </h1>
+                  </p>
                 </Col>
                 <Col
                   lg={{ offset: 6, span: 12 }}
@@ -39,7 +39,7 @@ class PageLayout extends React.Component {
                   style={{
                     paddingTop: "30px",
 
-                    paddingBottom: "30px",
+                    paddingBottom: "30px"
                   }}
                 >
                   {" "}
