@@ -8,7 +8,7 @@ import {
   Card,
   Checkbox,
   Row,
-  Col,
+  Col
 } from "antd";
 import axios from "axios";
 const { Sider, Content } = Layout;
@@ -20,7 +20,7 @@ class FilterDrawer extends React.Component {
     super(props);
     this.state = {
       visible: false,
-      viewAllData: null,
+      viewAllData: null
     };
     this.viewAll = React.createRef();
   }
@@ -29,13 +29,13 @@ class FilterDrawer extends React.Component {
   }
   showDrawer = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   };
 
   onClose = () => {
     this.setState({
-      visible: false,
+      visible: false
     });
   };
 
@@ -55,33 +55,35 @@ class FilterDrawer extends React.Component {
           visible={this.state.visible}
           draggable={true}
         >
+          {" "}
+        
           {filter
-            ? filter.map((item_group) => (
+            ? filter.map(item_group => (
                 <Card
                   className="filterCard"
                   key={item_group._name}
                   headStyle={{
                     fontSize: "15px !important",
-                    backgroundColor: "rgba(0,0,0,.03)",
+                    backgroundColor: "rgba(0,0,0,.03)"
                   }}
                   title={item_group._title.trim()}
                   extra={<Icon type="caret-down" />}
                 >
                   <Row>
-                    {item_group.item_group.map((item) => (
+                    {item_group.item_group.map(item => (
                       <Col
                         span={24}
                         className="filterCol"
                         style={{
                           marginTop: "10px",
-                          marginBottom: "10px",
+                          marginBottom: "10px"
                         }}
                       >
                         {" "}
                         {item.item_value !== "View all..." ? (
                           <Checkbox
                             checked={item.item_selected !== "N"}
-                            onClick={(_) => {
+                            onClick={_ => {
                               window.location = `${item.item_link}&DATABASE=COLLECTIONS`;
                             }}
                           >
@@ -90,8 +92,8 @@ class FilterDrawer extends React.Component {
                         ) : (
                           <Checkbox
                             checked={false}
-                            onClick={(_) => {
-                              (item.item_link);
+                            onClick={_ => {
+                              item.item_link;
                               let url = item.item_link
                                 .split('ViewXmlAll("')[1]
                                 .split('")')[0];
@@ -100,18 +102,18 @@ class FilterDrawer extends React.Component {
                               // );
                               axios
                                 .get(url)
-                                .then((res) => {
-                                  (res);
+                                .then(res => {
+                                  res;
                                   let data = res.data;
                                   let json = xmlStrToJson(data, []);
-                                  (json);
+                                  json;
                                   this.setState({
                                     viewAllData: json,
-                                    visible: false,
+                                    visible: false
                                   });
                                   this.showModal();
                                 })
-                                .catch((err) => console.log(err));
+                                .catch(err => console.log(err));
                             }}
                           >
                             {item.item_value}

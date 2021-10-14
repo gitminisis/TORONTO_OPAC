@@ -1,16 +1,17 @@
 import React from "react";
-import { Col, Card, Collapse, Icon, Row } from "antd";
+import { Col, Card, Collapse, Icon, Row, Button } from "antd";
 const { Panel } = Collapse;
 const { Meta } = Card;
 import placeholder from "../../assets/images/placeholder.png";
 import { HOME_TILES, FEATURED_TILES } from "../../services/home";
+
 class GridView extends React.Component {
   render() {
     return (
       <Collapse
         defaultActiveKey="1"
         accordion
-        
+
         // expandIconPosition={"right"}
         // expandIcon={({ isActive }) =>
         //   isActive ? <Icon type="minus" /> : <Icon type="plus" />
@@ -22,12 +23,12 @@ class GridView extends React.Component {
           showArrow={false}
         >
           <Row gutter={16}>
-            {FEATURED_TILES.map((item) => {
+            {FEATURED_TILES.map(item => {
               return (
                 <Col xl={{ span: 4 }} lg={12} md={12} xs={24} className="s5">
                   <Card
                     bordered
-                    onClick={(_) => {
+                    onClick={_ => {
                       window.location = `/scripts/mwimain.dll/144/COLLECTIONS/WEB_SUM_M3/${item.expression}?SESSIONSEARCH`;
                     }}
                     className="homeCard"
@@ -37,13 +38,13 @@ class GridView extends React.Component {
                       marginTop: "2px",
                       height: "auto",
                       textAlign: "center",
-                      marginBottom: "16px",
+                      marginBottom: "16px"
                     }}
                   >
                     <div
                       className="featureImageContainer"
                       style={{
-                        backgroundImage: `url(${item.image})`,
+                        backgroundImage: `url(${item.image})`
                       }}
                     ></div>
                     <span
@@ -51,12 +52,15 @@ class GridView extends React.Component {
                       role="img"
                       aria-label={item.alt}
                     ></span>
-                    <Meta
-                      id="featureMeta"
-                      title={<h3 className="featureMetaTitle">{item.title}</h3>}
-                      description={item.description}
-                      style={{ height: "150px" }}
-                    />
+
+                    <div className="featureMeta">
+                      <a
+                        href={`/scripts/mwimain.dll/144/COLLECTIONS/WEB_SUM_M3/${item.expression}?SESSIONSEARCH`}
+                      >
+                        {item.title}
+                      </a>
+                      <p>{item.description}</p>
+                    </div>
                   </Card>
                 </Col>
               );
@@ -73,7 +77,7 @@ class GridView extends React.Component {
               <Col lg={8} md={12} xs={24} style={{ paddingBottom: "16px" }}>
                 <Card
                   bordered
-                  onClick={(_) => {
+                  onClick={_ => {
                     window.location = `/scripts/mwimain.dll/144/COLLECTIONS/WEB_SUM_M3/SITE%20"${item.expression}"?SESSIONSEARCH`;
                   }}
                   className="homeCard"
@@ -82,20 +86,24 @@ class GridView extends React.Component {
                     width: "100%",
                     marginTop: "2px",
                     height: "auto",
-                    textAlign: "center",
+                    textAlign: "center"
                   }}
                 >
                   <div
                     className="homeImageContainer"
                     style={{
-                      backgroundImage: `url(${item.image})`,
+                      backgroundImage: `url(${item.image})`
                     }}
                   ></div>
-                  <Meta
-                    title={item.title}
-                    description={item.description}
-                    style={{ height: "135px" }}
-                  />
+
+                  <div className="featureMeta">
+                    <a
+                      href={`/scripts/mwimain.dll/144/COLLECTIONS/WEB_SUM_M3/SITE%20"${item.expression}"?SESSIONSEARCH`}
+                    >
+                      {item.title}
+                    </a>
+                    <p>{item.description}</p>
+                  </div>
                 </Card>
               </Col>
             ))}
