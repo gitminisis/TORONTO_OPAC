@@ -54,11 +54,10 @@ class GridView extends React.Component {
                     ></span>
 
                     <div className="featureMeta">
-                      <a
-                        href={`/scripts/mwimain.dll/144/COLLECTIONS/WEB_SUM_M3/${item.expression}?SESSIONSEARCH`}
-                      >
-                        {item.title}
-                      </a>
+                      <Button type="link" className="featureButtonLink">
+                        {" "}
+                        <h3>{item.title}</h3>
+                      </Button>
                       <p>{item.description}</p>
                     </div>
                   </Card>
@@ -97,11 +96,10 @@ class GridView extends React.Component {
                   ></div>
 
                   <div className="featureMeta">
-                    <a
-                      href={`/scripts/mwimain.dll/144/COLLECTIONS/WEB_SUM_M3/SITE%20"${item.expression}"?SESSIONSEARCH`}
-                    >
-                      {item.title}
-                    </a>
+                    <Button type="link" className="featureButtonLink">
+                      {" "}
+                      <h3>{item.title}</h3>
+                    </Button>
                     <p>{item.description}</p>
                   </div>
                 </Card>

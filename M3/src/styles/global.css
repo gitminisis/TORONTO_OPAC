@@ -722,7 +722,7 @@ strong {
 .featureMeta {
   height: 150px;
 }
-.featureMeta a {
+.featureMeta h3 {
   font-size: 1.1rem !important;
   color: rgb(22, 87, 136) !important;
   font-weight: bold;
@@ -737,4 +737,15 @@ strong {
 
 .featureMeta p:focus {
   color: red !important;
+}
+.featureButtonLink {
+  white-space: normal;
+  word-wrap: break-word;
+  margin-bottom: 15px;
+}
+.featureButtonLink:focus {
+  text-decoration: underline;
+}
+.featureButtonLink span {
+  display: none;
 }
