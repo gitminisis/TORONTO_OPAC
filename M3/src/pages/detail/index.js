@@ -38,7 +38,7 @@ class Detail extends React.Component {
           <Col lg={{ span: 18, offset: 3 }} md={24}>
             <Card
               className="summaryHeader"
-              title={<h1 style={{ fontSize: "1.5rem" }}>Detail Page</h1>}
+              title={<h2 style={{ fontSize: "1.5rem" }}>Detail Page</h2>}
               style={{ width: "100%" }}
               extra={
                 <Button.Group id="summaryButtonGroup">

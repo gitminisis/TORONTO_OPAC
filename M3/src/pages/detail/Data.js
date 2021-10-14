@@ -3,7 +3,7 @@ import {
   extractData,
   DETAIL_DATA_FIELD,
   hasChenhall,
-  CHENHALL_FIELD,
+  CHENHALL_FIELD
 } from "../../services/m3";
 
 import { Descriptions, Collapse, Icon } from "antd";
@@ -12,18 +12,18 @@ class Data extends React.Component {
   render() {
     let rawData = this.props.data;
     let data = extractData(rawData.item);
-    (data);
+    data;
     return (
       <>
         {" "}
         <Descriptions
           id="dataDescriptions"
-          title={data.data.item_object_name.value[0]}
+          title={<h3>{data.data.item_object_name.value[0]}</h3>}
           bordered
           style={{ fontSize: "16px" }}
           column={1}
         >
-          {DETAIL_DATA_FIELD.map((field) => {
+          {DETAIL_DATA_FIELD.map(field => {
             let item = data.data[field];
             if (item.value) {
               if (item.type === "string") {
@@ -38,7 +38,7 @@ class Data extends React.Component {
                     <a
                       href={item.value.a._href}
                       style={{
-                        color: "#0056b3",
+                        color: "#0056b3"
                       }}
                     >
                       {item.value.a.__text}
@@ -63,7 +63,7 @@ class Data extends React.Component {
                         <a
                           href={e.a._href}
                           style={{
-                            color: "#0056b3",
+                            color: "#0056b3"
                           }}
                         >
                           {e.a.__text}
@@ -126,14 +126,14 @@ class Data extends React.Component {
               }
               key="2"
             >
-              {CHENHALL_FIELD.map((el) => {
+              {CHENHALL_FIELD.map(el => {
                 return data.data[el].value ? (
                   <>
                     <strong>{data.data[el].title}: </strong>
                     <a
                       href={data.data[el].value.a._href}
                       style={{
-                        color: "#0056b3",
+                        color: "#0056b3"
                       }}
                     >
                       {data.data[el].value.a.__text}
