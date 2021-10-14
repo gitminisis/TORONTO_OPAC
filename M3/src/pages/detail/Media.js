@@ -8,7 +8,7 @@ import {
   Tooltip,
   message,
   Empty,
-  Button,
+  Button
 } from "antd";
 
 const { TabPane } = Tabs;
@@ -25,13 +25,13 @@ class Media extends React.Component {
     let rawData = this.props.data;
     let data = extractData(rawData.item);
 
-    let image = data.media.filter((e) => e.type === "image");
+    let image = data.media.filter(e => e.type === "image");
 
-    let audio = data.media.filter((e) => e.type === "audio");
+    let audio = data.media.filter(e => e.type === "audio");
 
-    let video = data.media.filter((e) => e.type === "video");
+    let video = data.media.filter(e => e.type === "video");
 
-    let text = data.media.filter((e) => e.type === "text");
+    let text = data.media.filter(e => e.type === "text");
     return (
       <div id="mediaTabs">
         <hr />
@@ -51,8 +51,11 @@ class Media extends React.Component {
           </TabPane> */}
           <TabPane
             tab={
-              <span>
-                <FaPlayCircle />
+              <span aria-label="Video Files">
+                <Tooltip title="Video Files">
+                  {" "}
+                  <FaPlayCircle />
+                </Tooltip>
               </span>
             }
             key="2"
@@ -63,8 +66,11 @@ class Media extends React.Component {
           </TabPane>
           <TabPane
             tab={
-              <span>
-                <FaVolumeUp />
+              <span aria-label="Audio Files">
+                <Tooltip title="Audio Files">
+                  {" "}
+                  <FaVolumeUp />
+                </Tooltip>
               </span>
             }
             key="3"
@@ -76,8 +82,11 @@ class Media extends React.Component {
           </TabPane>
           <TabPane
             tab={
-              <span>
-                <FaFileAlt />
+              <span aria-label="Textual Files">
+                <Tooltip title="Textual Files">
+                  {" "}
+                  <FaFileAlt />
+                </Tooltip>
               </span>
             }
             key="4"
@@ -92,11 +101,10 @@ class Media extends React.Component {
           style={{
             textAlign: "center",
             marginTop: "50px",
-            marginBottom: "20px",
+            marginBottom: "20px"
           }}
         >
           {" "}
-         
         </div>
       </div>
     );
