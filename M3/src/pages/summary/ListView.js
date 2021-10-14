@@ -11,16 +11,16 @@ import {
   hasImage,
   hasAudio,
   hasVideo,
-  hasTextual,
+  hasTextual
 } from "../../services/m3";
 const gridStyle = {
   width: "50%",
-  textAlign: "center",
+  textAlign: "center"
 };
 class ListView extends React.Component {
   render() {
     let { data } = this.props;
-    let dataJson = data.item.map((item) => extractData(item));
+    let dataJson = data.item.map(item => extractData(item));
     console.log(dataJson);
     return (
       <List
@@ -32,7 +32,7 @@ class ListView extends React.Component {
             <Button.Group>
               <Button
                 disabled={!data.prev_page}
-                onClick={(_) =>
+                onClick={_ =>
                   (window.location = data.prev_page
                     ? data.prev_page.a._href
                     : "#")
@@ -43,7 +43,7 @@ class ListView extends React.Component {
               </Button>
               <Button
                 disabled={!data.next_page}
-                onClick={(_) =>
+                onClick={_ =>
                   (window.location = data.next_page
                     ? data.next_page.a._href
                     : "#")
@@ -89,7 +89,7 @@ class ListView extends React.Component {
                       </span>,
                       <span className={hasTextual(item) ? "hasMedia" : ""}>
                         <FaFileAlt />
-                      </span>,
+                      </span>
                     ]}
                   ></Card>
                 </Col>
@@ -103,9 +103,12 @@ class ListView extends React.Component {
                   <List.Item key={item.data.item_sisn.value}>
                     <List.Item.Meta
                       title={
-                        <a href={item.item_link}>
+                        <h3
+                          className="summaryListTitle"
+                          onClick={_ => window.open(item.item_lin, "_blank")}
+                        >
                           {`${item.data.item_object_name.value[0]}`}
-                        </a>
+                        </h3>
                       }
                       description={`Accession Number:  ${item.data.item_refd.value}`}
                     />

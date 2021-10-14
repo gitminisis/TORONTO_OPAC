@@ -77,7 +77,7 @@ class GridView extends React.Component {
                   ) : null} */}
                 </div>
                 <Meta
-                  title={`${item.data.item_object_name.value[0]}`}
+                  title={<h3>{`${item.data.item_object_name.value[0]}`}</h3>}
                   description={`Accession Number:  ${item.data.item_refd.value}`}
                 />
               </Card>

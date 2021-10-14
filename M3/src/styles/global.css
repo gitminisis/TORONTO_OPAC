@@ -671,3 +671,10 @@ strong {
 .featureMetaTitle {
   cursor: pointer;
 } */
+
+.ant-collapse-header:focus {
+  border: 1px solid red;
+}
+.homeCard:focus {
+  border: 1px solid red;
+}

@@ -51,10 +51,10 @@ class Summary extends React.Component {
                   <Card
                     className="summaryHeader"
                     title={
-                      <h1 style={{ fontSize: "1.5rem" }}>
+                      <h2 style={{ fontSize: "1.5rem" }}>
                         {data.record_count} results for "{data.search_statement}
                         "
-                      </h1>
+                      </h2>
                     }
                     extra={
                       <Button.Group id="summaryButtonGroup">

@@ -65,6 +65,7 @@ class SearchBar extends React.Component {
                   Go
                 </Button>
                 <Button
+                className="expandedButton"
                   aria-label="Expand Advanced Search"
                   title="Expand Advanced Search"
                   variant="secondary" 
