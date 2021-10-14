@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Card, List, Icon, Button } from "antd";
+import { Row, Col, Card, List, Icon, Button, Tooltip } from "antd";
 
 import noImage from "../../assets/images/no-image.png";
 
@@ -78,17 +78,81 @@ class ListView extends React.Component {
                   <Card
                     className="summaryMediaCard"
                     actions={[
-                      <span className={hasImage(item) ? "hasMedia" : ""}>
-                        <FaImage />
+                      <span
+                        className={hasImage(item) ? "hasMedia" : ""}
+                        aria-label={
+                          hasImage(item)
+                            ? "Contain Image File"
+                            : "No Image File"
+                        }
+                      >
+                        <Tooltip
+                          title={
+                            hasImage(item)
+                              ? "Contain Image File"
+                              : "No Image File"
+                          }
+                          placement="bottom"
+                        >
+                          <FaImage />
+                        </Tooltip>
                       </span>,
-                      <span className={hasAudio(item) ? "hasMedia" : ""}>
-                        <FaVolumeUp />
+                      <span
+                        className={hasAudio(item) ? "hasMedia" : ""}
+                        aria-label={
+                          hasAudio(item)
+                            ? "Contain Audio File"
+                            : "No Audio File"
+                        }
+                      >
+                        <Tooltip
+                          title={
+                            hasAudio(item)
+                              ? "Contain Audio File"
+                              : "No Audio File"
+                          }
+                          placement="bottom"
+                        >
+                          <FaVolumeUp />
+                        </Tooltip>
                       </span>,
-                      <span className={hasVideo(item) ? "hasMedia" : ""}>
-                        <FaPlayCircle />
+                      <span
+                        className={hasVideo(item) ? "hasMedia" : ""}
+                        aria-label={
+                          hasVideo(item)
+                            ? "Contain Video File"
+                            : "No Video File"
+                        }
+                      >
+                        <Tooltip
+                          title={
+                            hasVideo(item)
+                              ? "Contain Video File"
+                              : "No Video File"
+                          }
+                          placement="bottom"
+                        >
+                          <FaPlayCircle />
+                        </Tooltip>
                       </span>,
-                      <span className={hasTextual(item) ? "hasMedia" : ""}>
-                        <FaFileAlt />
+                      <span
+                        className={hasTextual(item) ? "hasMedia" : ""}
+                        aria-label={
+                          hasTextual(item)
+                            ? "Contain Textual File"
+                            : "No Textual File"
+                        }
+                      >
+                        <Tooltip
+                          title={
+                            hasTextual(item)
+                              ? "Contain Textual File"
+                              : "No Textual File"
+                          }
+                          placement="bottom"
+                        >
+                          <FaFileAlt />
+                        </Tooltip>
                       </span>
                     ]}
                   ></Card>
