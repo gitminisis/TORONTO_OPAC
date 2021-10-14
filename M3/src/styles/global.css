@@ -678,3 +678,6 @@ strong {
 .homeCard:focus {
   border: 1px solid red;
 }
+.ant-list-item-meta-description {
+  color: black !important;
+}
