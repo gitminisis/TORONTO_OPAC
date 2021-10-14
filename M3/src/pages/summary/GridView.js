@@ -28,7 +28,7 @@ class GridView extends React.Component {
               load = true;
             }
           }
-          console.log(load);
+          // console.log(load);
 
           return (
             <Col lg={8} md={12} xs={24}>

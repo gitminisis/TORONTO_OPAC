@@ -21,7 +21,7 @@ class ListView extends React.Component {
   render() {
     let { data } = this.props;
     let dataJson = data.item.map(item => extractData(item));
-    console.log(dataJson);
+    // console.log(dataJson);
     return (
       <List
         itemLayout="vertical"

@@ -19,7 +19,7 @@ class Summary extends React.Component {
     let xml = document.querySelector("#summary_xml");
 
     let json = xmlToJson(xml, JSON_ARRAY_FIELD);
-    console.log(xml);
+    // console.log(xml);
     this.state = {
       data: json.report,
       grid: false,
