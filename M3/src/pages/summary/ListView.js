@@ -109,14 +109,14 @@ class ListView extends React.Component {
                       }
                       description={`Accession Number:  ${item.data.item_refd.value}`}
                     />
-                    <p>
+                    {/* <p>
                       {item.data.item_collection.value ? (
                         <>
                           <strong>Collection: </strong>
                           {item.data.item_collection.value.a.__text}
                         </>
                       ) : null}
-                    </p>
+                    </p> */}
                     <p>
                       {item.data.item_site.value ? (
                         <>

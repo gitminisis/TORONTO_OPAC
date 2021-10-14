@@ -153,7 +153,7 @@ class Summary extends React.Component {
                           className="mobileNavBarButton"
                           onClick={(_) =>
                             (window.location =
-                              "https://toronto.minisisinc.com/")
+                              "http://m3opac.minisisinc.com/")
                           }
                           aria-label="Home"
                           title="Home"
