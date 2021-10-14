@@ -10,14 +10,16 @@ class GridView extends React.Component {
       <Collapse
         defaultActiveKey="1"
         accordion
-        expandIconPosition={"right"}
-        expandIcon={({ isActive }) =>
-          isActive ? <Icon type="minus" /> : <Icon type="plus" />
-        }
+        
+        // expandIconPosition={"right"}
+        // expandIcon={({ isActive }) =>
+        //   isActive ? <Icon type="minus" /> : <Icon type="plus" />
+        // }
       >
         <Panel
           header={<h2 style={{ fontSize: "1.5rem" }}>Featured Collections</h2>}
           key="1"
+          showArrow={false}
         >
           <Row gutter={16}>
             {FEATURED_TILES.map((item) => {
@@ -64,6 +66,7 @@ class GridView extends React.Component {
         <Panel
           header={<h2 style={{ fontSize: "1.5rem" }}>Collection by Site</h2>}
           key="2"
+          showArrow={false}
         >
           <Row gutter={16}>
             {HOME_TILES.map((item, index) => (
