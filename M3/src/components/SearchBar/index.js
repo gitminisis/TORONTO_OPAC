@@ -63,7 +63,7 @@ class SearchBar extends React.Component {
                 required
               />
               <InputGroup.Append>
-                <Button type="submit" size="lg">
+                <Button type="submit" size="lg" className="searchButton">
                   Go
                 </Button>
                 <Button
