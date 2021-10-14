@@ -169,7 +169,7 @@ class ListView extends React.Component {
                       title={
                         <h3
                           className="summaryListTitle"
-                          onClick={_ => window.open(item.item_lin, "_blank")}
+                          onClick={_ => window.open(item.item_link, "_blank")}
                         >
                           {`${item.data.item_object_name.value[0]}`}
                         </h3>

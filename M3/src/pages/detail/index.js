@@ -138,7 +138,7 @@ class Detail extends React.Component {
               sm={6}
               className="mobileNavBarButton"
               onClick={(_) =>
-                (window.location = "http://m3opac.minisisinc.com/")
+                (window.location = "https://toronto.minisisinc.com/")
               }
               aria-label="Home"
               title="Home"

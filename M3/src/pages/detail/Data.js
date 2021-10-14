@@ -3,7 +3,7 @@ import {
   extractData,
   DETAIL_DATA_FIELD,
   hasChenhall,
-  CHENHALL_FIELD
+  CHENHALL_FIELD,
 } from "../../services/m3";
 
 import { Descriptions, Collapse, Icon } from "antd";
@@ -23,7 +23,7 @@ class Data extends React.Component {
           style={{ fontSize: "16px" }}
           column={1}
         >
-          {DETAIL_DATA_FIELD.map(field => {
+          {DETAIL_DATA_FIELD.map((field) => {
             let item = data.data[field];
             if (item.value) {
               if (item.type === "string") {
@@ -38,7 +38,7 @@ class Data extends React.Component {
                     <a
                       href={item.value.a._href}
                       style={{
-                        color: "#0056b3"
+                        color: "#0056b3",
                       }}
                     >
                       {item.value.a.__text}
@@ -63,7 +63,7 @@ class Data extends React.Component {
                         <a
                           href={e.a._href}
                           style={{
-                            color: "#0056b3"
+                            color: "#0056b3",
                           }}
                         >
                           {e.a.__text}
@@ -79,14 +79,9 @@ class Data extends React.Component {
           })}
         </Descriptions>
         {data.dimension.length > 0 ? (
-          <Collapse
-            className="detailCollapse"
-            expandIconPosition={"right"}
-            expandIcon={({ isActive }) =>
-              isActive ? <Icon type="minus" /> : <Icon type="plus" />
-            }
-          >
+          <Collapse className="detailCollapse">
             <Panel
+              showArrow={false}
               header={
                 <p style={{ marginBottom: "0", fontWeight: "bold" }}>
                   Dimension
@@ -126,14 +121,14 @@ class Data extends React.Component {
               }
               key="2"
             >
-              {CHENHALL_FIELD.map(el => {
+              {CHENHALL_FIELD.map((el) => {
                 return data.data[el].value ? (
                   <>
                     <strong>{data.data[el].title}: </strong>
                     <a
                       href={data.data[el].value.a._href}
                       style={{
-                        color: "#0056b3"
+                        color: "#0056b3",
                       }}
                     >
                       {data.data[el].value.a.__text}
