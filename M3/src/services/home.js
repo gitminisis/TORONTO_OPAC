@@ -1,13 +1,11 @@
-import pic1 from "../assets/images/pic1.jpg";
-import pic2 from "../assets/images/pic2.jpg";
-import pic3 from "../assets/images/pic3.jpg";
-import pic4 from "../assets/images/pic4.jpg";
-import pic5 from "../assets/images/pic5.jpg";
+
+
+const BASE_URL = 'https://toronto.minisisinc.com/M3/src/assets/images';
 export const FEATURED_TILES = [
   {
     title: "Stay and Play",
     expression: "SUB_KEYWORD At Home",
-    image: pic1,
+    image: `${BASE_URL}/pic1.jpg`,
     alt:
       "Image of a board game in a blue cardboard box labelled Happy Birthday Toronto: An Exciting Sightseeing Adventure Game",
     description:
@@ -19,7 +17,7 @@ export const FEATURED_TILES = [
     expression: "SUB_KEYWORD High Park",
     alt:
       "Image of a watercolour painting depicting a tall tree on a hill, with more trees and two small figures in the middle ground, and lake in the background.",
-    image: pic2,
+    image: `${BASE_URL}/pic2.jpg`,
     description:
       "Explore the history of High Park through objects, paintings, postcards, surveys, and other documents.",
   },
@@ -27,7 +25,7 @@ export const FEATURED_TILES = [
   {
     title: "Cooking at Home",
     expression: "SUB_KEYWORD Cooking",
-    image: pic3,
+    image: `${BASE_URL}/pic3.jpg`,
     alt:
       "Image of an aluminum three-piece double boiler with a blue domed lid and black plastic handles.",
     description:
@@ -36,7 +34,7 @@ export const FEATURED_TILES = [
   {
     title: "Health",
     expression: "SUB_KEYWORD Health",
-    image: pic4,
+    image: `${BASE_URL}/pic4.jpg`,
     alt:
       'Image of a brown canvas satchel with snap closures stencilled in black "A.R.P." to front flap with "E"s in diamonds to either side.',
     description:
@@ -45,7 +43,7 @@ export const FEATURED_TILES = [
   {
     title: "Toronto Art Collection",
     expression: 'BUS_UNIT_OWNER "Fine Art Collection"',
-    image: pic5,
+    image: `${BASE_URL}/pic5.jpg`,
     alt:
       'Toronto Art Collection',
     description:

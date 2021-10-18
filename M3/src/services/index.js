@@ -25,13 +25,13 @@ export const DETAIL_JSON_ARRAY_FIELD = [
 ];
 export function xmlToJson(xml, arrayForm) {
   let xmlText = new XMLSerializer().serializeToString(xml);
-  console.log(xmlText);
+  // console.log(xmlText);
   var x2js = new X2JS({
     arrayAccessFormPaths: arrayForm,
   });
 
   var jsonObj = x2js.xml_str2json(xmlText);
-  console.log(jsonObj);
+  // console.log(jsonObj);
   return jsonObj;
 }
 

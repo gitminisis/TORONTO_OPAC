@@ -9,13 +9,16 @@ class PageFooter extends React.Component {
       <Footer
         id="footer"
         style={{
-         
           textAlign: "left",
-        
+
           backgroundColor: "#165788",
           color: "white",
         }}
-      ><a href="https://www.toronto.ca/home/copyright-information/">&copy; City of Toronto 1998 - 2020</a></Footer>
+      >
+        <a href="https://www.toronto.ca/home/copyright-information/">
+          &copy; City of Toronto 1998 - {new Date().getFullYear()}
+        </a>
+      </Footer>
     );
   }
 }
