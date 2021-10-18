@@ -75,6 +75,12 @@ class AdvancedSearch extends React.Component {
           keyword: "",
           boolean: "and",
         },
+        {
+          field: "SUB_KEYWORD",
+          title: "Subject",
+          keyword: "",
+          boolean: "and",
+        },
       ],
     };
   }

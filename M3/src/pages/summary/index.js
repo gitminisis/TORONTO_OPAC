@@ -3,7 +3,7 @@ import PageLayout from "../../components/Layout";
 import { MdTune, MdSort } from "react-icons/md";
 
 import { xmlToJson, BASE_URL } from "../../services";
-import { Row, Col, Card, Button } from "antd";
+import { Row, Col, Card, Button, Breadcrumb, Icon } from "antd";
 
 import { FaTh, FaList, FaTree, FaHome } from "react-icons/fa";
 
@@ -22,19 +22,19 @@ class Summary extends React.Component {
     // console.log(xml);
     this.state = {
       data: json.report,
-      grid: false
+      grid: false,
     };
     this.tree = React.createRef();
     this.filter = React.createRef();
     this.sort = React.createRef();
   }
-  openTree = _ => {
+  openTree = (_) => {
     this.tree.current.showDrawer();
   };
-  openFilter = _ => {
+  openFilter = (_) => {
     this.filter.current.showDrawer();
   };
-  openSort = _ => {
+  openSort = (_) => {
     this.sort.current.showDrawer();
   };
   render() {
@@ -45,9 +45,21 @@ class Summary extends React.Component {
       <PageLayout>
         <Row>
           <Row>
+            
             <Col lg={{ span: 18, offset: 3 }} md={24}>
               <Row>
                 <Col span={24}>
+                <Breadcrumb
+                    className="pageBreadcrumb"
+              
+                  >
+                    <Breadcrumb.Item href="/">
+                      <Icon type="home" />
+                      <span>Toronto History Museums Artifact Collection</span>
+                    </Breadcrumb.Item>
+
+                    <Breadcrumb.Item>Search Result</Breadcrumb.Item>
+                  </Breadcrumb>
                   <Card
                     className="summaryHeader"
                     title={
@@ -75,7 +87,7 @@ class Summary extends React.Component {
                         </Button>
                         <Button
                           type={this.state.grid ? "primary" : ""}
-                          onClick={_ => this.setState({ grid: true })}
+                          onClick={(_) => this.setState({ grid: true })}
                           value="grid"
                           aria-label="Grid View"
                           title="Grid View"
@@ -85,7 +97,7 @@ class Summary extends React.Component {
                         </Button>
                         <Button
                           type={!this.state.grid ? "primary" : ""}
-                          onClick={_ => this.setState({ grid: false })}
+                          onClick={(_) => this.setState({ grid: false })}
                           value="list"
                           aria-label="List View"
                           title="List View"
@@ -151,7 +163,7 @@ class Summary extends React.Component {
                         <Button
                           sm={6}
                           className="mobileNavBarButton"
-                          onClick={_ => (window.location = BASE_URL)}
+                          onClick={(_) => (window.location = BASE_URL)}
                           aria-label="Home"
                           title="Home"
                         >
@@ -160,7 +172,7 @@ class Summary extends React.Component {
                         <Button
                           sm={6}
                           className="mobileNavBarButton"
-                          onClick={_ =>
+                          onClick={(_) =>
                             this.setState({ grid: !this.state.grid })
                           }
                           aria-label="Switch View"

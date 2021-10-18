@@ -19,11 +19,11 @@ class PageLayout extends React.Component {
             <Col span={24}>
               <Row justify="center" align="middle">
                 <h1 hidden>
-                  Artifact &amp; Fine Art Collection - Toronto History Museums |
+                  Toronto History Museums Art and Artifact Collection Home -
                   City of Toronto
                 </h1>
                 <Col span={24} id="pageTitle">
-                  <h1>Toronto History Museums Artifact Collection</h1>
+                  <h1>Toronto History Museums Art and Artifact Collection</h1>
                 </Col>
 
                 <Col span={24} id="pageDesc">
@@ -39,14 +39,15 @@ class PageLayout extends React.Component {
                   style={{
                     paddingTop: "30px",
 
-                    paddingBottom: "30px"
+                    paddingBottom: "30px",
                   }}
                 >
                   {" "}
+                  <h2 hidden>New Search</h2>
                   <SearchBar />
                 </Col>
               </Row>{" "}
-              <Row justify="center" align="middle">
+              <Row justify="center" align="middle"  style={{ marginTop: "20px" }}>
                 <Col span={24}>{this.props.children}</Col>
               </Row>
               <BackTop className="backTop">

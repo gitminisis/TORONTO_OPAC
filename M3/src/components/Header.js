@@ -21,18 +21,32 @@ class PageHeader extends React.Component {
             <Col
               lg={3}
               md={24}
+            
               id="banner"
               style={{
                 cursor: "pointer",
                 textAlign: "left",
                 
               }}
-              onClick={(_) => (window.location = "/")}
+              
             >
               <img
-                id="logo"
+                className="logo logo-desktop"
                 alt="City of Toronto Logo"
                 src={logo}
+                onClick={(_) => (window.location = "/")}
+                style={{
+                  width: "100%",
+                  maxWidth: "160px",
+                  minWidth: "112px",
+                  height: "auto",
+                }}
+              ></img>
+                <img
+                className="logo logo-mobile"
+                alt="City of Toronto Logo"
+                src={logo}
+                onClick={(_) => (window.location = "https://www.toronto.ca")}
                 style={{
                   width: "100%",
                   maxWidth: "160px",
@@ -41,6 +55,7 @@ class PageHeader extends React.Component {
                 }}
               ></img>
             </Col>
+            
           </Row>
         </Header>
       </Layout>
