@@ -72,6 +72,7 @@ class ListView extends React.Component {
                         ? getFirstImageAlt(item)
                         : "No Image Available"
                     }
+                    aria-describedby = {`summaryDescription-${index}`}
                   />
                 </Col>
                 <Col span={24} className="summaryMedia">
@@ -223,7 +224,7 @@ class ListView extends React.Component {
                         </>
                       ) : null}
                     </p>
-                    <p>
+                    <p id={`summaryDescription-${index}`}>
                       {item.data.item_desc.value ? (
                         <>
                           <strong>Description: </strong>

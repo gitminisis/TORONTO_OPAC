@@ -1,6 +1,6 @@
 import React from "react";
 import PageLayout from "../../components/Layout";
-import { xmlToJson } from "../../services";
+import { xmlToJson, BASE_URL } from "../../services";
 import { Row, Col, Descriptions, Card, Button, Icon, Tooltip } from "antd";
 
 import Data from "./Data";
@@ -12,7 +12,7 @@ import { FaTree, FaTh, FaHome } from "react-icons/fa";
 import {
   AiOutlineRollback,
   AiFillCaretRight,
-  AiFillCaretLeft,
+  AiFillCaretLeft
 } from "react-icons/ai";
 class Detail extends React.Component {
   constructor(props) {
@@ -22,16 +22,16 @@ class Detail extends React.Component {
     let json = xmlToJson(xml, DETAIL_JSON_ARRAY_FIELD);
 
     this.state = {
-      data: json.report,
+      data: json.report
     };
     this.tree = React.createRef();
   }
-  openTree = (_) => {
+  openTree = _ => {
     this.tree.current.showDrawer();
   };
   render() {
     let rawData = this.state.data;
-    (rawData);
+    rawData;
     return (
       <PageLayout>
         <Row>
@@ -45,7 +45,7 @@ class Detail extends React.Component {
                   <Tooltip title={rawData.prev_page ? "Previous Record" : null}>
                     <Button
                       disabled={!rawData.prev_page}
-                      onClick={(_) =>
+                      onClick={_ =>
                         (window.location = rawData.prev_page
                           ? rawData.prev_page.a._href + "&DATABASE=COLLECTIONS"
                           : "#")
@@ -59,7 +59,7 @@ class Detail extends React.Component {
                   <Tooltip title="Return to Summary">
                     {" "}
                     <Button
-                      onClick={(_) =>
+                      onClick={_ =>
                         (window.location = rawData.return_summary
                           ? rawData.return_summary.a._href
                           : "/")
@@ -75,7 +75,7 @@ class Detail extends React.Component {
                     {" "}
                     <Button
                       disabled={!rawData.next_page}
-                      onClick={(_) =>
+                      onClick={_ =>
                         (window.location = rawData.next_page
                           ? rawData.next_page.a._href
                           : "#")
@@ -111,7 +111,7 @@ class Detail extends React.Component {
               sm={6}
               className="mobileNavBarButton"
               disabled={!rawData.prev_page}
-              onClick={(_) =>
+              onClick={_ =>
                 (window.location = rawData.prev_page
                   ? rawData.prev_page.a._href + "&DATABASE=COLLECTIONS"
                   : "#")
@@ -124,7 +124,7 @@ class Detail extends React.Component {
             <Button
               sm={6}
               className="mobileNavBarButton"
-              onClick={(_) =>
+              onClick={_ =>
                 (window.location = rawData.return_summary
                   ? rawData.return_summary.a._href
                   : "/")
@@ -137,9 +137,7 @@ class Detail extends React.Component {
             <Button
               sm={6}
               className="mobileNavBarButton"
-              onClick={(_) =>
-                (window.location = "http://m3opac.minisisinc.com/")
-              }
+              onClick={_ => (window.location = BASE_URL)}
               aria-label="Home"
               title="Home"
             >
@@ -149,7 +147,7 @@ class Detail extends React.Component {
               sm={6}
               className="mobileNavBarButton"
               disabled={!rawData.next_page}
-              onClick={(_) =>
+              onClick={_ =>
                 (window.location = rawData.next_page
                   ? rawData.next_page.a._href
                   : "#")
