@@ -10,6 +10,7 @@ import {
   Icon,
   Tooltip,
   Breadcrumb,
+  message
 } from "antd";
 
 import Data from "./Data";
@@ -17,6 +18,7 @@ import Carousel from "./Carousel";
 import Media from "./Media";
 import { DETAIL_JSON_ARRAY_FIELD } from "../../services/index";
 import { FaTree, FaTh, FaHome } from "react-icons/fa";
+
 
 import {
   AiOutlineRollback,
@@ -35,6 +37,18 @@ class Detail extends React.Component {
     };
     this.tree = React.createRef();
   }
+
+  copyRecord = (sisn) => {
+    let url = `https://toronto.minisisinc.com/scripts/mwimain.dll/144/collections/WEB_M3_DETAIL/sisn%20${sisn}?sessionsearch`;
+    var inputc = document.body.appendChild(document.createElement("input"));
+    inputc.value = url;
+    // inputc.focus();
+    inputc.select();
+    document.execCommand("copy");
+    inputc.parentNode.removeChild(inputc);
+    message.success('Record URL has been copied.')
+    // alert("URL Copied.");
+  };
   openTree = (_) => {
     this.tree.current.showDrawer();
   };
@@ -117,6 +131,15 @@ class Detail extends React.Component {
                   id="detailDescriptions"
                 >
                   <Data data={rawData} />
+                  <Button
+                    aria-label="Record URL"
+                    style={{ width: "100%" }}
+                    icon="copy"
+                    size="large"
+                    onClick={(_) => this.copyRecord(rawData.item.item_sisn)}
+                  >
+                    Copy permanent URL for this record
+                  </Button>
                 </Col>
                 <Col md={{ span: 24, order: 0 }} lg={8}>
                   <Carousel data={rawData} />
