@@ -47,7 +47,9 @@ class PageLayout extends React.Component {
                 </Col>
               </Row>{" "}
               <Row justify="center" align="middle">
-                <Col span={24}>{this.props.children}</Col>
+                <Col span={24} style={{ marginTop: "20px" }}>
+                  {this.props.children}
+                </Col>
               </Row>
               <BackTop className="backTop">
                 <Icon type="caret-up" />

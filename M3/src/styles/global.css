@@ -114,6 +114,30 @@
   font-weight: bold;
 }
 
+.logo-desktop {
+  display: block;
+}
+.logo-mobile {
+  display: none;
+}
+
+.pageBreadcrumb svg {
+  margin-bottom: 8px;
+}
+.pageBreadcrumb {
+  margin-bottom: 10px !important;
+  font-weight: bold;
+
+}
+
+.pageBreadcrumb a, .pageBreadcrumb span{
+  font-size: 1.2rem;
+}
+.pageBreadcrumb a {
+  font-weight: 100;
+  color: #004b87 !important;
+}
+
 @media screen and (min-width: 1200px) {
   .s5 {
     width: 20% !important;
@@ -194,8 +218,8 @@
     margin-top: 0px !important;
     margin-bottom: -5px !important;
   }
-  #summary_report #logo,
-  #detail_report #logo {
+  #summary_report .logo,
+  #detail_report .logo {
     /* margin-top: 12px !important; */
   }
   #footer {
@@ -210,8 +234,14 @@
   .ant-layout-header {
     padding-left: 20px !important;
   }
-  #logo {
+  .logo {
     width: 112px !important;
+  }
+  .logo-desktop {
+    display: none;
+  }
+  .logo-mobile {
+    display: block;
   }
   #footer a {
     display: block !important;

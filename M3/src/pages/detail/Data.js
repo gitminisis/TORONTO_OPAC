@@ -81,7 +81,7 @@ class Data extends React.Component {
         {data.dimension.length > 0 ? (
           <Collapse className="detailCollapse">
             <Panel
-              showArrow={false}
+              showArrow={true}
               header={
                 <p style={{ marginBottom: "0", fontWeight: "bold" }}>
                   Dimension
@@ -111,7 +111,7 @@ class Data extends React.Component {
            
           >
             <Panel
-             showArrow={false}
+             showArrow={true}
               header={
                 <p style={{ marginBottom: "0", fontWeight: "bold" }}>
                   Chenhall

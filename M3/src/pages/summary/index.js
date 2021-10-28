@@ -3,7 +3,7 @@ import PageLayout from "../../components/Layout";
 import { MdTune, MdSort } from "react-icons/md";
 
 import { xmlToJson, BASE_URL } from "../../services";
-import { Row, Col, Card, Button } from "antd";
+import { Row, Col, Card, Button, Breadcrumb, Icon } from "antd";
 
 import { FaTh, FaList, FaTree, FaHome } from "react-icons/fa";
 
@@ -48,6 +48,17 @@ class Summary extends React.Component {
             <Col lg={{ span: 18, offset: 3 }} md={24}>
               <Row>
                 <Col span={24}>
+                  <Breadcrumb
+                    className="pageBreadcrumb"
+              
+                  >
+                    <Breadcrumb.Item href="/">
+                      <Icon type="home" />
+                      <span>Toronto History Museums Artifact Collection</span>
+                    </Breadcrumb.Item>
+
+                    <Breadcrumb.Item>Search Result</Breadcrumb.Item>
+                  </Breadcrumb>
                   <Card
                     className="summaryHeader"
                     title={
