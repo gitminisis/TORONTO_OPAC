@@ -714,7 +714,8 @@ strong {
     cursor: pointer;
 }
 
-.summaryListTitle:hover {
+.summaryListTitle:hover,
+.summaryListTitle:focus {
     text-decoration: underline;
     color: #165788 !important;
 }
