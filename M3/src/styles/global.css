@@ -114,6 +114,15 @@
   font-weight: bold;
 }
 
+.logo-mobile {
+  display: none;
+}
+
+.logo-desktop {
+  display: block;
+  /* margin-top: 12px; */
+}
+
 .logo-desktop {
   display: block;
 }
@@ -127,10 +136,10 @@
 .pageBreadcrumb {
   margin-bottom: 10px !important;
   font-weight: bold;
-
 }
 
-.pageBreadcrumb a, .pageBreadcrumb span{
+.pageBreadcrumb a,
+.pageBreadcrumb span {
   font-size: 1.2rem;
 }
 .pageBreadcrumb a {
@@ -232,16 +241,15 @@
     height: 56px !important;
   }
   .ant-layout-header {
-    padding-left: 20px !important;
+    /* padding-left: 20px !important; */
   }
-  .logo {
+  .logo-mobile {
     width: 112px !important;
+    margin: 0 auto;
+    display: block;
   }
   .logo-desktop {
     display: none;
-  }
-  .logo-mobile {
-    display: block;
   }
   #footer a {
     display: block !important;
@@ -495,6 +503,11 @@
   font-size: 16px !important;
 }
 
+#detailDescriptions button:hover {
+  background: white !important;
+  color: #425968 !important;
+}
+
 #detailCarousel {
   margin-top: 44px !important;
 }
@@ -714,7 +727,7 @@ strong {
 }
 
 .ant-list-item-meta-description {
-  color: black !important;
+  color: rgba(0, 0, 0, 0.65) !important;
 }
 
 .summaryListTitle,
@@ -723,10 +736,12 @@ strong {
 }
 
 .summaryListTitle {
+  color: #004b87 !important;
   cursor: pointer;
 }
 
-.summaryListTitle:hover {
+.summaryListTitle:hover,
+.summaryListTitle:focus {
   text-decoration: underline;
   color: #165788 !important;
 }
@@ -734,6 +749,7 @@ strong {
 #detailDescriptions a:focus {
   text-decoration: underline;
 }
+
 .sortItem button {
   border: 0px solid white !important;
   height: 100%;
@@ -744,6 +760,7 @@ strong {
 .sortItem p:focus {
   text-decoration: underline;
 }
+
 .sortDrawer li {
   padding: 0;
   height: 50px;
@@ -752,14 +769,17 @@ strong {
 .featureMeta {
   height: 150px;
 }
+
 .featureMeta h3 {
   font-size: 1.1rem !important;
   color: rgb(22, 87, 136) !important;
   font-weight: bold;
 }
+
 .featureMeta a:focus {
   text-decoration: underline;
 }
+
 .featureMeta p {
   font-size: 0.9rem !important;
   color: black !important;
@@ -768,14 +788,43 @@ strong {
 .featureMeta p:focus {
   color: red !important;
 }
+
 .featureButtonLink {
   white-space: normal;
   word-wrap: break-word;
   margin-bottom: 15px;
 }
+
 .featureButtonLink:focus {
   text-decoration: underline;
 }
+
 .featureButtonLink span {
   display: none;
+}
+
+#recordDetail h4 {
+  font-size: 1rem !important;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.pageBreadcrumb svg {
+  margin-bottom: 8px;
+}
+
+.pageBreadcrumb {
+  margin-bottom: 10px !important;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.pageBreadcrumb a,
+.pageBreadcrumb span {
+  font-size: 1.2rem;
+}
+
+.pageBreadcrumb a {
+  font-weight: 100;
+  color: #004b87 !important;
 }

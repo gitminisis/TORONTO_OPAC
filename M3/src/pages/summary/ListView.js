@@ -11,16 +11,16 @@ import {
   hasImage,
   hasAudio,
   hasVideo,
-  hasTextual
+  hasTextual,
 } from "../../services/m3";
 const gridStyle = {
   width: "50%",
-  textAlign: "center"
+  textAlign: "center",
 };
 class ListView extends React.Component {
   render() {
     let { data } = this.props;
-    let dataJson = data.item.map(item => extractData(item));
+    let dataJson = data.item.map((item) => extractData(item));
     // console.log(dataJson);
     return (
       <List
@@ -32,7 +32,7 @@ class ListView extends React.Component {
             <Button.Group>
               <Button
                 disabled={!data.prev_page}
-                onClick={_ =>
+                onClick={(_) =>
                   (window.location = data.prev_page
                     ? data.prev_page.a._href
                     : "#")
@@ -43,7 +43,7 @@ class ListView extends React.Component {
               </Button>
               <Button
                 disabled={!data.next_page}
-                onClick={_ =>
+                onClick={(_) =>
                   (window.location = data.next_page
                     ? data.next_page.a._href
                     : "#")
@@ -72,7 +72,7 @@ class ListView extends React.Component {
                         ? getFirstImageAlt(item)
                         : "No Image Available"
                     }
-                    aria-describedby = {`summaryDescription-${index}`}
+                    aria-describedby={`summaryDescription-${index}`}
                   />
                 </Col>
                 <Col span={24} className="summaryMedia">
@@ -154,7 +154,7 @@ class ListView extends React.Component {
                         >
                           <FaFileAlt />
                         </Tooltip>
-                      </span>
+                      </span>,
                     ]}
                   ></Card>
                 </Col>
@@ -166,15 +166,14 @@ class ListView extends React.Component {
                 <Col lg={16} md={24}>
                   {" "}
                   <List.Item key={item.data.item_sisn.value}>
+                    <h3
+                      className="summaryListTitle"
+                      onClick={(_) => window.location = item.item_link}
+                    >
+                      {`${item.data.item_object_name.value[0]}`}
+                    </h3>
                     <List.Item.Meta
-                      title={
-                        <h3
-                          className="summaryListTitle"
-                          onClick={_ => window.location(item.item_link)}
-                        >
-                          {`${item.data.item_object_name.value[0]}`}
-                        </h3>
-                      }
+                   
                       description={`Accession Number:  ${item.data.item_refd.value}`}
                     />
                     {/* <p>

@@ -1,8 +1,8 @@
 import X2JS from "../lib/xml2json.min";
 import axios from "axios";
 
+export const BASE_URL = 'https://toronto.minisisinc.com/'
 // export const BASE_URL = 'https://toronto.minisisinc.com/'
-export const BASE_URL = 'http://m3opac.minisisinc.com/'
 export const JSON_ARRAY_FIELD = [
   "report.item",
   "report.filters.div.xml.filter",

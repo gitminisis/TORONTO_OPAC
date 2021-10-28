@@ -36,7 +36,6 @@ class ClusterModal extends React.Component {
     });
   };
   listSelect = val => {
-  
     this.setState({
       option: val
     });
@@ -74,6 +73,7 @@ class ClusterModal extends React.Component {
                   <ButtonGroup aria-label="button">
                     <Button
                       variant="secondary"
+                      className="clusterModalButton"
                       onClick={_ =>
                         this.props.pageAction(data.cluster.first_page)
                       }
@@ -82,6 +82,7 @@ class ClusterModal extends React.Component {
                     </Button>
                     <Button
                       variant="secondary"
+                      className="clusterModalButton"
                       onClick={_ =>
                         this.props.pageAction(data.cluster.prev_page)
                       }
@@ -90,6 +91,7 @@ class ClusterModal extends React.Component {
                     </Button>
                     <Button
                       variant="secondary"
+                      className="clusterModalButton"
                       onClick={_ =>
                         this.props.pageAction(data.cluster.next_page)
                       }
@@ -98,6 +100,7 @@ class ClusterModal extends React.Component {
                     </Button>
                     <Button
                       variant="secondary"
+                      className="clusterModalButton"
                       onClick={_ =>
                         this.props.pageAction(data.cluster.last_page)
                       }
@@ -119,6 +122,7 @@ class ClusterModal extends React.Component {
                     />
                     <InputGroup.Append>
                       <Button
+                        className="clusterModalButton"
                         onClick={_ =>
                           this.props.getCluster(
                             this.state.keyvalue,
@@ -170,11 +174,19 @@ class ClusterModal extends React.Component {
         </Modal.Body>
         <Modal.Footer>
           {data !== null ? (
-            <Button variant="primary" onClick={_ => this.submit()}>
+            <Button
+              variant="primary"
+              className="clusterModalButton"
+              onClick={_ => this.submit()}
+            >
               Submit
             </Button>
           ) : (
-            <Button variant="primary" onClick={_ => this.handleClose()}>
+            <Button
+              variant="primary"
+              className="clusterModalButton"
+              onClick={_ => this.handleClose()}
+            >
               Close
             </Button>
           )}

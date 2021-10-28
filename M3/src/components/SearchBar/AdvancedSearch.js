@@ -253,6 +253,7 @@ const FieldGroup = (props) => {
       />
       <InputGroup.Append>
         <Button
+        className="advancedBrowseButton"
           aria-label="Browse"
           title="Browse"
           onClick={(_) => props.handleClick(props.field)}

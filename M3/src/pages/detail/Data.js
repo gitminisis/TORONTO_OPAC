@@ -14,7 +14,7 @@ class Data extends React.Component {
     let data = extractData(rawData.item);
     data;
     return (
-      <>
+      <div id="recordDetail">
         {" "}
         <Descriptions
           id="dataDescriptions"
@@ -28,13 +28,13 @@ class Data extends React.Component {
             if (item.value) {
               if (item.type === "string") {
                 return (
-                  <Descriptions.Item label={item.title}>
+                  <Descriptions.Item label={<h4>{item.title}</h4>}>
                     {item.value}
                   </Descriptions.Item>
                 );
               } else if (item.type === "link") {
                 return (
-                  <Descriptions.Item label={item.title}>
+                  <Descriptions.Item label={<h4>{item.title}</h4>}>
                     <a
                       href={item.value.a._href}
                       style={{
@@ -47,7 +47,7 @@ class Data extends React.Component {
                 );
               } else if (item.type === "array" && item.value.length > 0) {
                 return (
-                  <Descriptions.Item label={item.title}>
+                  <Descriptions.Item label={<h4>{item.title}</h4>}>
                     {item.value.map((e, i) => (
                       <>
                         {e} {i < item.value.length - 1 ? <br></br> : null}
@@ -57,7 +57,7 @@ class Data extends React.Component {
                 );
               } else if (item.type === "array_link" && item.value.length > 0) {
                 return (
-                  <Descriptions.Item label={item.title}>
+                  <Descriptions.Item label={<h4>{item.title}</h4>}>
                     {item.value.map((e, i) => (
                       <>
                         <a
@@ -83,9 +83,9 @@ class Data extends React.Component {
             <Panel
               showArrow={true}
               header={
-                <p style={{ marginBottom: "0", fontWeight: "bold" }}>
+                <h4 >
                   Dimension
-                </p>
+                </h4>
               }
               key="1"
             >
@@ -106,16 +106,13 @@ class Data extends React.Component {
           </Collapse>
         ) : null}
         {hasChenhall(data) ? (
-          <Collapse
-            className="detailCollapse"
-           
-          >
+          <Collapse className="detailCollapse">
             <Panel
-             showArrow={true}
+              showArrow={true}
               header={
-                <p style={{ marginBottom: "0", fontWeight: "bold" }}>
+                <h4>
                   Chenhall
-                </p>
+                </h4>
               }
               key="2"
             >
@@ -138,7 +135,7 @@ class Data extends React.Component {
             </Panel>
           </Collapse>
         ) : null}
-      </>
+      </div>
     );
   }
 }

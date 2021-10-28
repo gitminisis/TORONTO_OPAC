@@ -24,10 +24,11 @@
   border: 1px solid #425968 !important;
 }
 
-.expandedButton:focus {
+.expandedButton:focus,
+.advancedBrowseButton:focus,
+#simpleSearchHelp:focus,
+.clusterModalButton:focus {
   /* border: 2px solid black !important; */
   background: white !important;
   color: #425968 !important;
-
 }
-

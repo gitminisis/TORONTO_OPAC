@@ -39,8 +39,8 @@ module.exports = {
         test: /\.(jpg|jpeg|png|svg|mp4|mp3)$/,
         loader: "url-loader",
         options: {
-          limit: 1024 * 5000,
-          name: "m3/dist/[hash].[ext]"
+          limit: 99999999, // Convert images < 8kb to base64 strings
+         
         }
       }
     ]
