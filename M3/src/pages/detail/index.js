@@ -39,7 +39,7 @@ class Detail extends React.Component {
   }
 
   copyRecord = (sisn) => {
-    let url = `https://toronto.minisisinc.com/scripts/mwimain.dll/144/collections/WEB_M3_DETAIL/sisn%20${sisn}?sessionsearch`;
+    let url = `https://toronto.minisisinc.com/scripts/mwimain.dll/144/collections/WEB_DETAIL_M3/sisn%20${sisn}?sessionsearch`;
     var inputc = document.body.appendChild(document.createElement("input"));
     inputc.value = url;
     // inputc.focus();
@@ -136,6 +136,7 @@ class Detail extends React.Component {
                     style={{ width: "100%" }}
                     icon="copy"
                     size="large"
+                    type="primary"
                     onClick={(_) => this.copyRecord(rawData.item.item_sisn)}
                   >
                     Copy permanent URL for this record

@@ -701,8 +701,7 @@ strong {
 }
 
 .ant-list-item-meta-description {
-    color: rgba(0, 0, 0, .65) !important;
-    ;
+    color: rgba(0, 0, 0, 0.65) !important;
 }
 
 .summaryListTitle,
@@ -790,6 +789,7 @@ strong {
 .pageBreadcrumb {
     margin-bottom: 10px !important;
     font-weight: bold;
+    margin-left: 15px;
 }
 
 .pageBreadcrumb a,
