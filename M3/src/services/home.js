@@ -1,6 +1,6 @@
 
 
-const BASE_URL = 'https://toronto.minisisinc.com/M3/src/assets/images';
+const BASE_URL = 'http://m3opac.minisisinc.com/M3/src/assets/images';
 export const FEATURED_TILES = [
   {
     title: "Stay and Play",

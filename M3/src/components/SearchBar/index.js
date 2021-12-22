@@ -16,14 +16,14 @@ class SearchBar extends React.Component {
     this.state = {
       open: false,
 
-      openHelp: false,
+      openHelp: false
     };
   }
 
-  closeHelp = (_) => {
+  closeHelp = _ => {
     this.setState({ openHelp: false });
   };
-  openHelp = (_) => {
+  openHelp = _ => {
     this.setState({ openHelp: true });
   };
 
@@ -39,24 +39,24 @@ class SearchBar extends React.Component {
                 <Button
                   variant="secondary"
                   id="simpleSearchHelp"
-                  onClick={(_) => this.openHelp()}
+                  onClick={_ => this.openHelp()}
                   title="Simple Search Help"
                   aria-label="Simple Search Help"
                 >
+                  <span className="sr-only">Simple Search Help</span>
                   <FaQuestionCircle className="no-format-svg" />
                 </Button>{" "}
                 <HelpModal
                   open={this.state.openHelp}
-                  close={(_) => this.closeHelp()}
+                  close={_ => this.closeHelp()}
                 />
               </InputGroup.Prepend>
-            
+
               <Form.Control
                 id="simpleSearchInput"
                 size="lg"
                 type="text"
                 placeholder="Search keyword"
-               
                 name="KEYWORD_CL"
                 required
               />
@@ -64,15 +64,17 @@ class SearchBar extends React.Component {
                 <Button type="submit" size="lg" className="searchButton">
                   Go
                 </Button>
+                <span className="sr-only">Search Button</span>
                 <Button
-                className="expandedButton"
+                  className="expandedButton"
                   aria-label="Expand Advanced Search"
                   title="Expand Advanced Search"
-                  variant="secondary" 
+                  variant="secondary"
                   size="lg"
                   onClick={() => this.setState({ open: !this.state.open })}
                 >
                   <FaCaretDown className="no-format-svg" />
+                  <span className="sr-only">Expand Advanced Search</span>
                 </Button>
               </InputGroup.Append>
             </InputGroup>

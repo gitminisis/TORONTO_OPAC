@@ -39,7 +39,7 @@ class Detail extends React.Component {
   }
 
   copyRecord = (sisn) => {
-    let url = `https://toronto.minisisinc.com/scripts/mwimain.dll/144/collections/WEB_DETAIL_M3/sisn%20${sisn}?sessionsearch`;
+    let url = `http://m3opac.minisisinc.com/scripts/mwimain.dll/144/collections/WEB_DETAIL_M3/sisn%20${sisn}?sessionsearch`;
     var inputc = document.body.appendChild(document.createElement("input"));
     inputc.value = url;
     // inputc.focus();
