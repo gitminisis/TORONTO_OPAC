@@ -17,6 +17,7 @@ class PageDrawer extends React.Component {
     this.setState({
       visible: false
     });
+    document.getElementById('simpleSearchInput').focus();
   };
 
   render() {

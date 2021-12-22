@@ -34,7 +34,7 @@ class PageHeader extends React.Component {
                 className="logo logo-desktop"
                 alt="City of Toronto Logo"
                 src={logo}
-                onClick={(_) => (window.location = "/")}
+                onClick={(_) => (window.location = "https://www.toronto.ca")}
                 style={{
                   width: "100%",
                   maxWidth: "160px",

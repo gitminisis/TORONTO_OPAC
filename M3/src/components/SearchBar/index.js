@@ -59,6 +59,7 @@ class SearchBar extends React.Component {
                 placeholder="Search keyword"
                 name="KEYWORD_CL"
                 required
+                
               />
               <InputGroup.Append>
                 <Button type="submit" size="lg" className="searchButton">
