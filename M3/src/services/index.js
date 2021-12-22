@@ -13,6 +13,7 @@ export const JSON_ARRAY_FIELD = [
   "report.item.item_maker",
   "report.item.item_material",
   "report.item.item_place",
+  "report.item.item_web_reference"
 ];
 
 export const DETAIL_JSON_ARRAY_FIELD = [
@@ -22,6 +23,7 @@ export const DETAIL_JSON_ARRAY_FIELD = [
   "report.item.item_maker",
   "report.item.item_material",
   "report.item.item_place",
+  "report.item.item_web_reference"
 ];
 export function xmlToJson(xml, arrayForm) {
   let xmlText = new XMLSerializer().serializeToString(xml);
