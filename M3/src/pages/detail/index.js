@@ -133,6 +133,7 @@ class Detail extends React.Component {
                   <Data data={rawData} />
                   <Button
                     aria-label="Record URL"
+                    id="copyRecordURL"
                     style={{ width: "100%" }}
                     icon="copy"
                     size="large"

@@ -828,3 +828,8 @@ strong {
   font-weight: 100;
   color: #004b87 !important;
 }
+
+#copyRecordURL:focus{
+  background: white !important;
+  color: #425968 !important;
+}

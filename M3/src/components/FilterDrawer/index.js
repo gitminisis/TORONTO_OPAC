@@ -10,6 +10,8 @@ import {
   Row,
   Col,
   message,
+
+  Radio
 } from "antd";
 import axios from "axios";
 const { Sider, Content } = Layout;
@@ -57,7 +59,7 @@ class FilterDrawer extends React.Component {
           visible={this.state.visible}
           draggable={true}
         >
-          {" "}
+          
           {filter
             ? filter.map((item_group) => (
                 <Card
@@ -71,6 +73,7 @@ class FilterDrawer extends React.Component {
                   extra={<Icon type="caret-down" />}
                 >
                   <Row>
+                    <Radio.Group>
                     {item_group.item_group.map((item) => (
                       <Col
                         span={24}
@@ -83,16 +86,30 @@ class FilterDrawer extends React.Component {
                         {" "}
                         {item.item_value !== "View all..." ? (
                           <Checkbox
-                            checked={item.item_selected !== "N"}
-                            onClick={(_) => {
+                            defaultChecked={item.item_selected !== "N"}
+                            disabled ={this.state.currentURL!==null && !this.state.currentURL.includes(item.item_link)}
+                            // checked={item.item_selected !== "N"}
+                            onChange={e => {
+                             let check = e.target.checked;
                               // window.location = `${item.item_link}&DATABASE=COLLECTIONS`;
-                              this.setState({
-                                currentURL: `${item.item_link}&DATABASE=COLLECTIONS`,
-                              });
+                              let currentURL ;
+                              if(item.item_selected === "Y"){
+                                this.setState({
+                                  currentURL: !check?`${item.item_link}&DATABASE=COLLECTIONS`:null,
+                                
+                                });
+                              }else{
+                                this.setState({
+                                  currentURL: check?`${item.item_link}&DATABASE=COLLECTIONS`:null,
+                                
+                                });
+                              }
+                            
                             }}
                           >
                             {item.item_value} ({item.item_frequency})
                           </Checkbox>
+                          // <Radio value={`${item.item_link}&DATABASE=COLLECTIONS`}>  {item.item_value} ({item.item_frequency})</Radio>
                         ) : (
                           <Checkbox
                             checked={false}
@@ -125,23 +142,26 @@ class FilterDrawer extends React.Component {
                         )}
                       </Col>
                     ))}
-                    <Button
-                      type="primary"
-                      onClick={(_) => {
-                        if (this.state.currentURL) {
-                          window.location = this.state.currentURL;
-                        } else {
-                          message.warn("Please select one filter");
-                        }
-                      }}
-                    >
-                      Apply Filter
-                    </Button>
-                    
+                   
+                   </Radio.Group>
                   </Row>
                 </Card>
               ))
             : null}
+            <div style={{marginTop:'20px',textAlign:'center'}}> <Button
+                      type="primary"
+                      onClick={(_) => {
+                        
+						
+                        if (this.state.currentURL) {
+                          window.location = this.state.currentURL;
+                        } else {
+                          // message.warn("Please select one filter");
+                        }
+                      }}
+                    >
+                      Apply Filter
+                    </Button></div>
         </Drawer>
       </>
     );
