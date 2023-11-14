@@ -1,0 +1,34 @@
+.fieldGroup {
+  margin-top: 50px;
+}
+.radioGroup {
+  margin-top: 15px;
+}
+
+.searchBar {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.cluster-page-button,
+.cluster-search-bar {
+  margin-bottom: 20px;
+}
+#simpleSearchHelp {
+  font-size: 20px;
+}
+
+.searchButton:focus {
+  background: white !important;
+  color: #425968 !important;
+  border: 1px solid #425968 !important;
+}
+
+.expandedButton:focus,
+.advancedBrowseButton:focus,
+#simpleSearchHelp:focus,
+.clusterModalButton:focus {
+  /* border: 2px solid black !important; */
+  background: white !important;
+  color: #425968 !important;
+}
